@@ -1,11 +1,10 @@
-import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 // Components
 import { Navbar } from './components/';
 
 // Pages
-// import { Home, Wallet, UserProfile, Settings, Footer } from './container/
+import { Home, Wallet, UserProfile, Settings, Footer } from './container'
 
 function App() {
     return (
