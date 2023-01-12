@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {Balance} from '../index'
+import {Balance} from '../../components'
 
 const Wallet = () => {
     return (
