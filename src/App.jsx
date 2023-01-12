@@ -1,19 +1,14 @@
-import './App.css'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-
+import './App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 function App() {
-
-  return (
-   <>
-    <BrowserRouter>
-      <Routes>
-        
-
-      </Routes>
-    </BrowserRouter>
-   </>
-  )
+    return (
+        <>
+            <BrowserRouter>
+                <Routes>sdadas</Routes>
+            </BrowserRouter>
+        </>
+    );
 }
 
-export default App
+export default App;
