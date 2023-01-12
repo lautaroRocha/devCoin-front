@@ -1,4 +1,3 @@
-import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 // Components
@@ -11,6 +10,7 @@ function App() {
     return (
         <>
             <BrowserRouter>
+                <Navbar />
                 <Routes></Routes>
             </BrowserRouter>
         </>
