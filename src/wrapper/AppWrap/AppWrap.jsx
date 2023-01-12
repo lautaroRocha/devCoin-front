@@ -9,4 +9,5 @@ const AppWrap = (Component) =>
         );
     };
 
+
 export default AppWrap;

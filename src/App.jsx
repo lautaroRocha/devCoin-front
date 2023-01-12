@@ -1,17 +1,23 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 // Components
-import { Navbar } from './components/';
 
 // Pages
-// import { Home, Wallet, UserProfile, Settings, Footer } from './container/
+import { Home, Wallet, UserProfile, SettingsPage} from './container'
+import {Navbar} from './components'
 
 function App() {
     return (
         <>
             <BrowserRouter>
-                <Navbar />
-                <Routes></Routes>
+
+            <Navbar />
+                <Routes>
+                    <Route path='/' element={<Home />} />
+                    <Route path="/wallet" element={<Wallet />}/>
+                    <Route path="/user" element={<UserProfile />}/>
+                    <Route path='/settings' element={<SettingsPage/>}/>
+                </Routes>
             </BrowserRouter>
         </>
     );

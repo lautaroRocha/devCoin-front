@@ -141,6 +141,7 @@ const Navbar = () => {
 
                             <span className="hidden xl:flex">Sign up</span>
                         </NavLink>
+
                     </div>
                 </div>
             </div>
