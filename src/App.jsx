@@ -4,11 +4,13 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 // Pages
 import { Home, Wallet, UserProfile, SettingsPage} from './container'
+import {Navbar} from './components'
 
 function App() {
     return (
         <>
             <BrowserRouter>
+            <Navbar />
                 <Routes>
                     <Route path='/' element={<Home />} />
                     <Route path="/wallet" element={<Wallet />}/>
