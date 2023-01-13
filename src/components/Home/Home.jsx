@@ -1,5 +1,6 @@
 import React from 'react';
-import {MinBalance, CoinRanking} from "../../components"
+import { MinBalance, CoinRanking } from '../../components';
+import { AppWrap } from '../../wrapper';
 
 const Home = () => {
     return (
@@ -9,6 +10,6 @@ const Home = () => {
             <MinBalance />
         </div>
     );
-}
+};
 
-export default Home;
+export default AppWrap(Home);
