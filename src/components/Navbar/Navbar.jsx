@@ -20,7 +20,7 @@ const Navbar = () => {
     };
 
     return (
-        <nav className="fixed min-h-screen min-w-[4rem] rounded-r-xl bg-primary/90 text-white dark:bg-primary xl:w-[15%] 1700:w-[12%]">
+        <nav className="fixed min-h-screen min-w-[4rem] rounded-r-xl bg-primary/90 text-white dark:bg-primary xl:w-[15%] 1700:w-[12%] top-0">
             <div className="m-auto h-screen w-full">
                 <div className="mt-8 text-center">DevCoin</div>
                 <div className="mt-8 flex h-full flex-col justify-between xl:ml-3">
