@@ -1,6 +1,5 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-
-// Components
+import './App.css'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 // Pages
 import { Home, Wallet, UserProfile, SettingsPage} from './container'
@@ -23,4 +22,4 @@ function App() {
     );
 }
 
-export default App;
+export default App
