@@ -12,11 +12,9 @@ const Transfer = () => {
 
 
 
-
-
     return (
         <>
-        <div className='mt-6 bg-alternative dark:bg-alternative/80 w-9/12 m-auto h-70 rounded-lg'>
+        <div className='mt-6 bg-alternative dark:bg-alternative/80 w-9/12 m-auto h-70 rounded-lg md:w-3/12'>
             <h2 className='text-lg font-bold p-5 text-center'>Enviá criptos a otro DevCoiner !</h2>
 
             <form action="" className='flex flex-col items-center content-center' >
@@ -49,7 +47,8 @@ const Transfer = () => {
                         })}}/>
                     </label>
                 </div>
-                <label htmlFor="to" className='flex flex-col items-center content-center mt-2'>Destino :
+                <div className="flex flex-col w-10/12 lg:flex-row">
+                <label htmlFor="to" className='flex flex-col items-center content-center mt-2 lg:mt-2'>Destino :
                     <input className='w-4/12 text-black text-center font-semibold rounded-md' type="text" name="to" min={0} maxLength={6} onChange={(e)=>{setTransactionData({
                               date: transactionData.date,
                               from : transactionData.from,
@@ -58,7 +57,8 @@ const Transfer = () => {
                               token : transactionData.token
                         })}}/>
                 </label>
-                <button className='px-6 py-1 my-4 text-white bg-secondary font-bold rounded-lg hover:cursor-pointer'>ENVIA</button>
+                <button className='w-fit mx-auto px-6 py-1 my-4 text-white bg-secondary font-bold rounded-lg hover:cursor-pointer '>ENVIA</button>
+                </div>
             </form>
         </div>
         </>
