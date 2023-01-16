@@ -1,25 +1,23 @@
-import './App.css'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 // Pages
-import { Home, Wallet, UserProfile, SettingsPage} from './container'
-import {Navbar} from './components'
+import { Home, Wallet, UserProfile, SettingsPage } from './container';
+import { Navbar } from './components';
 
 function App() {
     return (
         <>
             <BrowserRouter>
-
-            <Navbar />
+                <Navbar />
                 <Routes>
-                    <Route path='/' element={<Home />} />
-                    <Route path="/wallet" element={<Wallet />}/>
-                    <Route path="/profile" element={<UserProfile />}/>
-                    <Route path='/settings' element={<SettingsPage/>}/>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/wallet" element={<Wallet />} />
+                    <Route path="/profile" element={<UserProfile />} />
+                    <Route path="/settings" element={<SettingsPage />} />
                 </Routes>
             </BrowserRouter>
         </>
     );
 }
 
-export default App
+export default App;
