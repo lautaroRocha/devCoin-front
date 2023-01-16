@@ -4,7 +4,7 @@ import React, {useState} from 'react';
 ///estos dos despues se cambian por datoas reales de la API
 const MOCK_TRANSACTION_SENT = [{transactionId: 456, date: "2/1/2023", from : "Lucas", to : "David", token : "lukether", amount : 10}, {transactionId: 454, date: "8/1/2023", from : "Lucas", to : "David", token : "lukether", amount : 10}, {transactionId: 452, date: "12/1/2023", from : "Lucas", to : "David", token : "lukether", amount : 10}]
 
-const MOCK_TRANSACTION_RECEIVED = [{transactionId: 456, date: "2/1/2023", from : "Gonzalo", to : "Lucas", token : "juanbit", amount : 10}, {transactionId: 457, date: "3/1/2023", from : "Lautaro", to : "Lucas", token : "lauchatoken", amount :7}, {transactionId: 459, date: "5/1/2023", from : "Leo", to : "Lucas", token : "leoilo", amount : 8}]
+const MOCK_TRANSACTION_RECEIVED = [{transactionId: 456, date: "2/1/2023", from : "Gonzalo", to : "Lucas", token : "juanbit", amount : 10}, {transactionId: 457, date: "3/1/2023", from : "Lautaro", to : "Lucas", token : "lauken", amount :7}, {transactionId: 459, date: "5/1/2023", from : "Leo", to : "Lucas", token : "leoilo", amount : 8}]
 
 const History = () => {
 
