@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    body {
+        @apply bg-white text-black transition-colors dark:bg-black dark:text-white;
+    }
+}
+
+@layer components {
+    /* Navbar Links */
+    .navbar-links {
+        @apply w-[90%] rounded-lg py-2 transition-colors hover:bg-secondary/50 max-xl:justify-center xl:w-[95%] xl:px-4;
+    }
+    .active {
+        @apply bg-secondary text-white hover:bg-secondary;
+    }
+    /* End Navbar Link */
+
+    /* Toggle Dark mode */
+    .switch {
+        @apply relative h-[25px] w-[50px];
+    }
+    .switch input {
+        @apply h-0 w-0 opacity-0;
+    }
+
+    .slider {
+        @apply absolute top-0 left-0 right-0 bottom-0 cursor-pointer bg-[#ccc];
+        -webkit-transition: 0.4s;
+        transition: 0.4s;
+    }
+    .slider::before {
+        @apply absolute left-[5px] h-[15px] w-[15px] translate-y-[30%] bg-white dark:bg-black/80;
+        content: '';
+        -webkit-transition: 0.4s;
+        transition: 0.4s;
+    }
+
+    input.checked + .slider {
+        @apply bg-black dark:bg-white;
+    }
+    input:focus + .slider {
+        @apply shadow-md;
+    }
+
+    input:checked + .slider:before {
+        @apply left-[30px];
+    }
+
+    .slider.round {
+        @apply rounded-[34px];
+    }
+
+    .slider.round:before {
+        @apply rounded-[50%];
+    }
+    /* End Toggle Dark mode */
+}
