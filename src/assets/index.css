@@ -57,4 +57,10 @@
         @apply rounded-[50%];
     }
     /* End Toggle Dark mode */
+
+    /* Home Buttons */
+    .home-buttons {
+        @apply whitespace-nowrap rounded-2xl bg-secondary px-8 py-3 font-bold text-white shadow-md transition-colors hover:bg-secondary/90;
+    }
+    /* End Home Buttons */
 }
