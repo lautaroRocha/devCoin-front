@@ -47,8 +47,8 @@ const Transfer = () => {
                         })}}/>
                     </label>
                 </div>
-                <div className="flex flex-col w-10/12 lg:flex-row">
-                <label htmlFor="to" className='flex flex-col items-center content-center mt-2 lg:mt-2'>Destino :
+                <div className="flex flex-col w-10/12 ">
+                <label htmlFor="to" className='flex flex-col items-center content-center mt-2 md:mt-2 w-12/12'>Destino :
                     <input className='w-4/12 text-black text-center font-semibold rounded-md' type="text" name="to" min={0} maxLength={6} onChange={(e)=>{setTransactionData({
                               date: transactionData.date,
                               from : transactionData.from,
@@ -57,7 +57,7 @@ const Transfer = () => {
                               token : transactionData.token
                         })}}/>
                 </label>
-                <button className='w-fit mx-auto px-6 py-1 my-4 text-white bg-secondary font-bold rounded-lg hover:cursor-pointer '>ENVIA</button>
+                <button className='w-fit mx-auto px-6 py-1 my-4 text-white bg-secondary font-bold rounded-lg hover:cursor-pointer md:mt-7'>ENVIA</button>
                 </div>
             </form>
         </div>
