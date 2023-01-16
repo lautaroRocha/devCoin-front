@@ -5,3 +5,4 @@ export { default as MinBalance} from './MinBalance/MinBalance'
 export {default as Balance} from "./Balance/Balance"
 export {default as Navbar} from "./Navbar/Navbar"
 export {default as MinCoin} from "./MinCoin/MinCoin"
+export {default as History} from "./History/History"
