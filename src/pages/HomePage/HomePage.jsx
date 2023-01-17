@@ -1,8 +1,8 @@
 import React from 'react';
-import { MinBalance, CoinRanking } from '../../components';
+import { CoinRanking } from '../../components';
 import { AppWrap } from '../../wrapper';
 
-const Home = () => {
+const HomePage = () => {
     return (
         <>
             <div className="flex h-full w-full flex-col gap-[6rem] lg:px-8">
@@ -60,4 +60,4 @@ const Home = () => {
     );
 };
 
-export default AppWrap(Home);
+export default AppWrap(HomePage);
