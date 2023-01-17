@@ -20,7 +20,7 @@ const Navbar = () => {
     };
 
     return (
-        <nav className="fixed min-h-screen min-w-[4rem] rounded-r-xl bg-primary/90 text-white dark:bg-primary xl:w-[15%] 1700:w-[12%] top-0">
+        <nav className="fixed top-0 min-h-screen min-w-[4rem] rounded-r-xl bg-primary/90 text-white dark:bg-primary xl:w-[15%] 1700:w-[12%]">
             <div className="m-auto h-screen w-full">
                 <div className="mt-8 text-center">DevCoin</div>
                 <div className="mt-8 flex h-full flex-col justify-between xl:ml-3">
@@ -32,17 +32,12 @@ const Navbar = () => {
                         >
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
                                 viewBox="0 0 24 24"
-                                strokeWidth={1.5}
-                                stroke="currentColor"
+                                fill="currentColor"
                                 className="h-6 w-6"
                             >
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"
-                                />
+                                <path d="M11.47 3.84a.75.75 0 011.06 0l8.69 8.69a.75.75 0 101.06-1.06l-8.689-8.69a2.25 2.25 0 00-3.182 0l-8.69 8.69a.75.75 0 001.061 1.06l8.69-8.69z" />
+                                <path d="M12 5.432l8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 01-.75-.75v-4.5a.75.75 0 00-.75-.75h-3a.75.75 0 00-.75.75V21a.75.75 0 01-.75.75H5.625a1.875 1.875 0 01-1.875-1.875v-6.198a2.29 2.29 0 00.091-.086L12 5.43z" />
                             </svg>
 
                             <span className="hidden xl:flex">Home</span>
@@ -54,17 +49,11 @@ const Navbar = () => {
                         >
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
                                 viewBox="0 0 24 24"
-                                strokeWidth={1.5}
-                                stroke="currentColor"
+                                fill="currentColor"
                                 className="h-6 w-6"
                             >
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    d="M21 12a2.25 2.25 0 00-2.25-2.25H15a3 3 0 11-6 0H5.25A2.25 2.25 0 003 12m18 0v6a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 18v-6m18 0V9M3 12V9m18 0a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 9m18 0V6a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6v3"
-                                />
+                                <path d="M2.273 5.625A4.483 4.483 0 015.25 4.5h13.5c1.141 0 2.183.425 2.977 1.125A3 3 0 0018.75 3H5.25a3 3 0 00-2.977 2.625zM2.273 8.625A4.483 4.483 0 015.25 7.5h13.5c1.141 0 2.183.425 2.977 1.125A3 3 0 0018.75 6H5.25a3 3 0 00-2.977 2.625zM5.25 9a3 3 0 00-3 3v6a3 3 0 003 3h13.5a3 3 0 003-3v-6a3 3 0 00-3-3H15a.75.75 0 00-.75.75 2.25 2.25 0 01-4.5 0A.75.75 0 009 9H5.25z" />
                             </svg>
 
                             <span className="hidden xl:flex">Wallet</span>
@@ -76,16 +65,14 @@ const Navbar = () => {
                         >
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
                                 viewBox="0 0 24 24"
-                                strokeWidth={1.5}
-                                stroke="currentColor"
+                                fill="currentColor"
                                 className="h-6 w-6"
                             >
                                 <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"
+                                    fillRule="evenodd"
+                                    d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z"
+                                    clipRule="evenodd"
                                 />
                             </svg>
 
@@ -93,28 +80,6 @@ const Navbar = () => {
                         </NavLink>
                     </div>
                     <div className="flex -translate-y-[7rem] flex-col items-center gap-4 xl:items-start">
-                        <NavLink
-                            to="/settings"
-                            className="navbar-links flex gap-x-6"
-                            activeclassname="active"
-                        >
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                strokeWidth={1.5}
-                                stroke="currentColor"
-                                className="h-6 w-6"
-                            >
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75"
-                                />
-                            </svg>
-
-                            <span className="hidden xl:flex">Settings</span>
-                        </NavLink>
                         <div className="navbar-links flex gap-x-6">
                             {theme === 'light' ? (
                                 <svg
@@ -173,7 +138,7 @@ const Navbar = () => {
                                 />
                             </svg>
 
-                            <span className="hidden xl:flex">Sign up</span>
+                            <span className="hidden xl:flex">Log in</span>
                         </NavLink>
                     </div>
                 </div>

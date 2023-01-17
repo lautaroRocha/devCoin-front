@@ -1,8 +1,8 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 // Pages
-import { Home, Wallet, UserProfile, SettingsPage, SignUp, Login } from './container';
-import { Navbar} from './components';
+import { HomePage, WalletPage, UserProfilePage, SignUp, LoginPage } from './pages';
+import { Navbar } from './components';
 
 function App() {
     return (
@@ -10,11 +10,10 @@ function App() {
             <BrowserRouter>
                 <Navbar />
                 <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/wallet" element={<Wallet />} />
-                    <Route path="/profile" element={<UserProfile />} />
-                    <Route path="/settings" element={<SettingsPage />} />
-                    <Route path="/login" element={<Login />} />
+                    <Route path="/" element={<HomePage />} />
+                    <Route path="/wallet" element={<WalletPage />} />
+                    <Route path="/profile" element={<UserProfilePage />} />
+                    <Route path="/login" element={<LoginPage />} />
                     <Route path="/signup" element={<SignUp />} />
                 </Routes>
             </BrowserRouter>
