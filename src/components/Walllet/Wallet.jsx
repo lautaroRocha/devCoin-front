@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import { AppWrap } from '../../wrapper';
 
 import {Balance, History, Transfer, Deposit} from '../../components'
 
@@ -23,7 +24,7 @@ const Wallet = () => {
             break;
     }
     return (
-        <div className='flex flex-col h-screen items-center  w-11/12 ml-auto lg:w-8/12 lg:mr-auto lg:ml-45'>
+        <div className='flex flex-col items-center h-full w-full'>
         <h1 className='mt-6 text-6xl text-primary font-bold'>WALLET</h1>
         <Deposit />
         <button className='bg-alternative w-fit mx-auto p-2 rounded-lg mt-3'>COMPRAR</button>
@@ -37,4 +38,4 @@ const Wallet = () => {
     );
 }
 
-export default Wallet;
+export default AppWrap(Wallet);

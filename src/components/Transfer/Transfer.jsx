@@ -14,7 +14,7 @@ const Transfer = () => {
 
     return (
         <>
-        <div className='mt-6 bg-alternative dark:bg-alternative/80 w-9/12 m-auto h-70 rounded-lg md:w-3/12'>
+        <div className='mt-6 bg-alternative dark:bg-alternative/80 w-9/12 m-auto h-70 rounded-lg md:w-4/12'>
             <h2 className='text-lg font-bold p-5 text-center'>Enviá criptos a otro DevCoiner !</h2>
 
             <form action="" className='flex flex-col items-center content-center' >

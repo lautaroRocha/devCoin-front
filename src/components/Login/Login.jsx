@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import Cookies from 'universal-cookie'
+// import Cookies from 'universal-cookie'
 
 
 //asociar despues a la DB de usuarios esto es prueba
 
 const baseUrl = 'https://localhost:3000/usuarios';
-const cookies = new Cookies();
+// const cookies = new Cookies();
 
 
 

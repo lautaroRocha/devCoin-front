@@ -1,5 +1,6 @@
 import React, {useRef, useState} from 'react';
 import {Balance} from '../../components'
+import { AppWrap } from '../../wrapper';
 
 const UserProfile = () => {
 
@@ -49,7 +50,7 @@ const UserProfile = () => {
     }
     return (
         <>
-        <div className='flex flex-col h-screen items-center  w-11/12 ml-auto lg:w-8/12 lg:mr-auto lg:ml-45'>
+        <div className='flex flex-col items-center h-full w-full'>
         <div className='flex flex-col bg-primary/90 dark:bg-primary/90 justify-between rounded-xl items-center gap-6 mt-6 py-7 md:flex-row w-9/12 relative text-center text-white' >
             <div className='w-32 h-32 bg-red-900 rounded-full ml-5 aspect-squaren' ref={userPicture}/>            
             <h1 className='font-extrabold text-4xl px-3' ref={userName} id="user-value">{user.username}</h1>
@@ -68,4 +69,4 @@ const UserProfile = () => {
     );
 }
 
-export default UserProfile;
+export default AppWrap(UserProfile);
