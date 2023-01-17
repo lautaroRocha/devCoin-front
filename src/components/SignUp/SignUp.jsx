@@ -15,6 +15,10 @@ function SignUp() {
                 <input type="text" placeholder="Nombre" className="border border-gray-400 py-1 px-2" />
                   <input type="text" placeholder="Apellido" className="border border-gray-400 py-1 px-2" />
                   </div>
+                  <div className="grid grid-cols-2 gap-5 mt-5 w-full">
+                <input type="number" placeholder="Teléfono" className="border border-gray-400 py-1 px-2" />
+                  <input type="text" placeholder="Dirección" className="border border-gray-400 py-1 px-2" />
+                  </div>
                   <div className="mt-5">
                     <input type="email" placeholder="Email" className="border border-gray-400 py-1 px-2 w-full" />
                   </div>
