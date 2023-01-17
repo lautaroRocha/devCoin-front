@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { AppWrap } from '../../wrapper';
 
 import {Balance, History, Transfer, Deposit} from '../../components'
@@ -24,6 +24,7 @@ const Wallet = () => {
             break;
     }
 
+    useEffect(() => {
         const sectionButtons = document.querySelectorAll('#li')
         sectionButtons.forEach( (btn) =>{
             if(btn.textContent === selectedView){
@@ -32,6 +33,8 @@ const Wallet = () => {
                 btn.style.backgroundColor =  '#c0012a'
             }
         })
+    }, [selectedView]);
+       
  
 
     return (
