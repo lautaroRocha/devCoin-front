@@ -51,7 +51,7 @@ const UserProfile = () => {
     return (
         <>
         <div className='flex flex-col items-center h-full w-full'>
-        <div className='flex flex-col bg-primary/90 dark:bg-primary/90 justify-between rounded-xl items-center gap-6 mt-6 py-7 md:flex-row w-9/12 relative text-center text-white' >
+        <div className='flex flex-col bg-primary/90 dark:bg-primary/90 justify-between rounded-xl items-center gap-6 mt-6 py-7 md:flex-row w-full relative text-center text-white lg:w-8/12' >
             <div className='w-32 h-32 bg-red-900 rounded-full ml-5 aspect-squaren' ref={userPicture}/>            
             <h1 className='font-extrabold text-4xl px-3' ref={userName} id="user-value">{user.username}</h1>
             <span className='italic text-base md:mr-5' ref={userEmail} id="user-value">{user.email}</span>
