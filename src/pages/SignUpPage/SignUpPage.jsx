@@ -88,18 +88,18 @@ function SignUpPage() {
                                 />
                             </div>
                             <button className="home-buttons mt-4 w-full">Registrarse</button>
-                            <div className="flex w-full items-start">
-                                <p>
-                                    ¿Ya tienes una cuenta? ingresa{' '}
-                                    <Link
-                                        to="/login"
-                                        className="text-secondary hover:underline dark:text-indigo-400"
-                                    >
-                                        aquí!
-                                    </Link>
-                                </p>
-                            </div>
                         </form>
+                        <div className="mt-4 flex w-full flex-col items-start 500:w-[19rem] md:mx-auto">
+                            <p>
+                                ¿Ya tienes una cuenta? ingresa{' '}
+                                <Link
+                                    to="/login"
+                                    className="text-secondary hover:underline dark:text-indigo-400"
+                                >
+                                    aquí!
+                                </Link>
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import { AppWrap } from '../../wrapper';
 import { Link } from 'react-router-dom';
 
-const LoginPage = ( {setUser, setToken} ) => {
-
+const LoginPage = ({ setUser, setToken }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -11,25 +10,27 @@ const LoginPage = ( {setUser, setToken} ) => {
         event.preventDefault();
         //crear un objeto con los datos de usuario
         const userData = {
-            email : email,
-            password : password
-        }
+            email: email,
+            password: password,
+        };
         //hacer la petición, si es exitosa guardar el estado
-        fetch('url/login',{
+        fetch('url/login', {
             method: 'POST',
-            body : JSON.stringify(userData),
-            header : {
-                "Content-Type" : "application/json"
-            }
-        }).then(res =>{
-            if(!res.ok){
-                //manejo del error
-                console.log('hubo un error')
-            }else{
-                setUser(res.user)
-                setToken(res.tokenAccess)
-            }
-        }).catch(error => console.log(error))
+            body: JSON.stringify(userData),
+            header: {
+                'Content-Type': 'application/json',
+            },
+        })
+            .then((res) => {
+                if (!res.ok) {
+                    //manejo del error
+                    console.log('hubo un error');
+                } else {
+                    setUser(res.user);
+                    setToken(res.tokenAccess);
+                }
+            })
+            .catch((error) => console.log(error));
     };
 
     return (
@@ -72,21 +73,21 @@ const LoginPage = ( {setUser, setToken} ) => {
                             </label>
                         </div>
                         <button className="home-buttons mt-1 w-full">Ingresar</button>
-                        <div className="flex w-full flex-col items-start">
-                            <p>
-                                ¿No tienes una cuenta? crea una{' '}
-                                <Link
-                                    to="/signup"
-                                    className="text-secondary hover:underline dark:text-indigo-400"
-                                >
-                                    aquí!
-                                </Link>
-                            </p>
-                            <Link to="#" className="hover:underline">
-                                ¿Quieres restablecer la contraseña?
-                            </Link>
-                        </div>
                     </form>
+                    <div className="mt-4 flex w-full flex-col items-start 500:w-[19rem] md:mx-auto">
+                        <p>
+                            ¿No tienes una cuenta? crea una{' '}
+                            <Link
+                                to="/signup"
+                                className="text-secondary hover:underline dark:text-indigo-400"
+                            >
+                                aquí!
+                            </Link>
+                        </p>
+                        <Link to="#" className="hover:underline">
+                            ¿Quieres restablecer la contraseña?
+                        </Link>
+                    </div>
                 </div>
             </div>
         </div>
