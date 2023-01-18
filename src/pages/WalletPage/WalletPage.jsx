@@ -1,10 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { AppWrap } from '../../wrapper';
+
+import { userContext } from '../../context/userContext';
+import { tokenContext } from '../../context/tokenContext';
+import {Navigate } from 'react-router-dom';
 
 import { Balance, History, Transfer, Deposit } from '../../components';
 
 const Wallet = () => {
+
     const [selectedView, setSelectedView] = useState('Balance');
+
+    const token = useContext(tokenContext)
+    const user = useContext(userContext)
 
     function setView(e) {
         setSelectedView(e.target.textContent);
@@ -22,6 +30,7 @@ const Wallet = () => {
             view = <Transfer />;
             break;
     }
+    if(user){
     return (
         <div className="flex h-full w-full flex-col items-center">
             <h1 className="mt-6 text-6xl font-bold text-primary">WALLET</h1>
@@ -49,7 +58,9 @@ const Wallet = () => {
             </ul>
             {view}
         </div>
-    );
+    )}{return(
+        <Navigate to="/login" replace={true}/>
+    )}
 };
 
 export default AppWrap(Wallet);
