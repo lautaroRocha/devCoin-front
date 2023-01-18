@@ -5,7 +5,7 @@ import { HomePage, WalletPage, UserProfilePage, SignUpPage, LoginPage } from './
 import { Navbar } from './components';
 import { userContext } from './context/userContext';
 import { tokenContext } from './context/tokenContext';
-
+import * as URL from './utils/URL'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -13,13 +13,14 @@ function App() {
 
     const [user, setUser] = useState();
     const [token, setToken] = useState();
+    const [wallet, setWallet] = useState()
 
     const navigate = useNavigate()
 
     useEffect(()=>{
         const savedUser = sessionStorage.getItem('user')
         const savedToken = sessionStorage.getItem('token')
-        if(!user && !token && savedUser && savedToken){
+        if(savedUser && savedToken){
             setUser(JSON.parse(savedUser))
             setToken(savedToken)
         }
@@ -29,6 +30,15 @@ function App() {
         window.location.pathname === '/login' && navigate('/')
         user && toast.success(`Bienvenido, ${user.first_name}`)
     }, [user]);
+
+    useEffect(()=>{
+        if(user && !wallet){
+            fetch(URL.wallet+`/${user.hex_code}`)
+                .then(res => res.json())
+                .then(data => setWallet(data.wallet))
+                .catch(error => console.log(error))
+        }
+    }, [user])
 
     function logOut() {
         setUser(null);
