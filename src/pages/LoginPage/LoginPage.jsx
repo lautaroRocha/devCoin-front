@@ -1,37 +1,44 @@
 import React, { useState } from 'react';
 import { AppWrap } from '../../wrapper';
 import { Link } from 'react-router-dom';
+import * as URL from "../../utils/URL"
 
-const LoginPage = ({ setUser, setToken }) => {
+const LoginPage = (props) => {
+
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [remember, setRemember] = useState(false)
+    
+    const handleRememberSession = (user, token) =>{
+        if(remember){
+            sessionStorage.setItem('user', JSON.stringify(user))
+            sessionStorage.setItem('token', token)
+        }
+    }
+
 
     const handleSubmitLogin = (event) => {
         event.preventDefault();
-        //crear un objeto con los datos de usuario
         const userData = {
             email: email,
             password: password,
         };
-        //hacer la petición, si es exitosa guardar el estado
-        fetch('url/login', {
+        fetch(URL.login, {
             method: 'POST',
             body: JSON.stringify(userData),
-            header: {
+            headers: {
                 'Content-Type': 'application/json',
             },
         })
-            .then((res) => {
-                if (!res.ok) {
-                    //manejo del error
-                    console.log('hubo un error');
-                } else {
-                    setUser(res.user);
-                    setToken(res.tokenAccess);
-                }
+            .then((res) => res.json())
+            .then( data => {
+                    props.props.logIn(data.user, data.tokenAccess)
+                    console.log(data)
+                    handleRememberSession(data.user, data.tokenAccess)
             })
             .catch((error) => console.log(error));
     };
+
 
     return (
         <div className="flex h-full w-full items-center justify-center">
@@ -45,7 +52,7 @@ const LoginPage = ({ setUser, setToken }) => {
                 </div>
                 <div className="max-md:max-h-[50%] max-md:px-4 max-md:py-8 md:w-full">
                     <form
-                        onClick={handleSubmitLogin}
+                        onSubmit={handleSubmitLogin}
                         className="flex w-full flex-col items-center justify-center gap-4 500:w-[19rem] md:mx-auto"
                     >
                         <h1 className="mb-5 text-xl font-bold">Iniciar sesión</h1>
@@ -67,7 +74,7 @@ const LoginPage = ({ setUser, setToken }) => {
                             />
                         </div>
                         <div className="flex w-full gap-x-2">
-                            <input id="remember" type="checkbox" />
+                            <input id="remember" type="checkbox" onChange={()=>{setRemember(!remember)}}/>
                             <label htmlFor="remember" className="dark:bg-black/90 dark:text-white">
                                 Recordarme
                             </label>

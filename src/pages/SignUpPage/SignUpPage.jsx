@@ -1,18 +1,43 @@
 import React, { useState } from 'react';
 import { AppWrap } from '../../wrapper';
 import { Link } from 'react-router-dom';
+import * as URL from "../../utils/URL"
+
+const DEFAULT_PICTURE = "https://img.freepik.com/vector-gratis/fondo-azul-galaxia_125540-99.jpg?w=2000"
 
 function SignUpPage() {
     const [name, setName] = useState('');
     const [lastname, setLastname] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
-    const [address, setAddress] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [newAddress, setNewAddress] = useState('');
+    const [newEmail, setNewEmail] = useState('');
+    const [newPassword, setNewPassword] = useState('');
 
     const handleSubmitRegister = (event) => {
         event.preventDefault();
+        const newUser = {
+            first_name : name,
+            last_name : lastname,
+            image : DEFAULT_PICTURE,
+            email : newEmail,
+            password : newPassword,
+            address: newAddress,
+            phone : phoneNumber,
+            link :  "asdasdasdasdasd"
+        }
+    
+        fetch(URL.users, {
+            method: "POST",
+            body : JSON.stringify(newUser),
+            headers : {
+                "Content-Type" : "application/json"
+            }
+        }).then(res => console.log(res))
+           .catch(er => console.log(er))
+
     };
+
+
 
     return (
         <>
@@ -33,7 +58,7 @@ function SignUpPage() {
                     </div>
                     <div className="max-md:max-h-[70%] max-md:px-4 max-md:py-8 md:w-full">
                         <form
-                            onClick={handleSubmitRegister}
+                            onSubmit={handleSubmitRegister}
                             className="flex w-full flex-col items-center justify-center gap-3 500:w-[19rem] md:mx-auto"
                         >
                             <h1 className="mb-1 text-xl font-bold">Registro</h1>
@@ -67,7 +92,7 @@ function SignUpPage() {
                                     <input
                                         type="text"
                                         className="w-full rounded-xl py-2 px-4 focus:outline-none dark:bg-black/90 dark:text-white"
-                                        onChange={(event) => setAddress(event.target.value)}
+                                        onChange={(event) => setNewAddress(event.target.value)}
                                     />
                                 </div>
                             </div>
@@ -76,7 +101,7 @@ function SignUpPage() {
                                 <input
                                     type="email"
                                     className="w-full rounded-xl py-2 px-4 focus:outline-none dark:bg-black/90 dark:text-white"
-                                    onChange={(event) => setEmail(event.target.value)}
+                                    onChange={(event) => setNewEmail(event.target.value)}
                                 />
                             </div>
                             <div className="flex w-full flex-col gap-2">
@@ -84,7 +109,7 @@ function SignUpPage() {
                                 <input
                                     type="password"
                                     className="w-full rounded-xl px-4 py-2 focus:outline-none dark:bg-black/90 dark:text-white"
-                                    onChange={(event) => setPassword(event.target.value)}
+                                    onChange={(event) => setNewPassword(event.target.value)}
                                 />
                             </div>
                             <button className="home-buttons mt-4 w-full">Registrarse</button>
