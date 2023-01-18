@@ -44,12 +44,14 @@ const UserProfilePage = () => {
 
     function saveEditedContent() {
         const newValues = document.querySelectorAll('textarea');
-        
+        ///acá iría también el patch a la base de datos
+        ///para modificar el user, en esa instancia
+        //se puede reemplazar lo de abajo por vovler
+        //a fetchear el usuario actualizado
         console.log(user);
         newValues[0].replaceWith(userName.current);
         newValues[1].replaceWith(userLastName.current);
-        newValues[2].replaceWith(userEmail.current);
-
+        newValues[2].replaceWith(userEmail.current)
         userPicture.current.style.display = 'block';
         setEditing(false);
     }

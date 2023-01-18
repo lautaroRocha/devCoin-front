@@ -12,8 +12,6 @@ function App() {
     const [token, setToken] = useState()
 
 
-
-
     return (
         <>
             <BrowserRouter>
