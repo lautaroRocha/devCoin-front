@@ -41,14 +41,7 @@ const LoginPage = () => {
                                 onChange={(event) => setPassword(event.target.value)}
                             />
                         </div>
-                        <div className="flex w-full">
-                            <input id="remember" type='checkbox'></input>   
-                            <label for='remember' className='focus:outline-none dark:bg-black/90 dark:text-white'>Recordarme</label>                            
-                        </div>                                
-                        <button className="home-buttons mt-4 w-full">Ingresar</button>  
-                        <div className="flex w-full">
-                            <a href="#" className='text-center hover:underline'>Restablecer Password?</a>
-                        </div> 
+                        <button className="home-buttons mt-4 w-full">Ingresar</button>
                     </form>
                 </div>
             </div>
