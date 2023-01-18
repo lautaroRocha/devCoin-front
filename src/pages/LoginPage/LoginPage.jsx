@@ -1,12 +1,32 @@
 import React, { useState } from 'react';
 import { AppWrap } from '../../wrapper';
 
-const LoginPage = () => {
+const LoginPage = ( {setUser, setToken} ) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
     const handleSubmitLogin = (event) => {
         event.preventDefault();
+        //crear un objeto con los datos de usuario
+        const userData = {
+            email : email,
+            password : password
+        }
+        //hacer la petición, si es exitosa guardar el estado
+        fetch('url/login',{
+            method: 'POST',
+            body : JSON.stringify(userData),
+            header : {
+                "Content-Type" : "application/json"
+            }
+        }).then(res =>{
+            if(!res.ok){
+                console.log('hubo un error')
+            }else{
+                setUser(res.user)
+                setToken(res.tokenAccess)
+            }
+        }).catch(error => console.log(error))
     };
 
     return (
