@@ -4,7 +4,6 @@ import { AppWrap } from '../../wrapper';
 
 const HomePage = () => {
 
-
         return (
             <>
                 <div className="flex h-full w-full flex-col gap-[6rem] lg:px-8">

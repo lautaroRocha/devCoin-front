@@ -7,12 +7,18 @@ import { userContext } from './context/userContext';
 import { tokenContext } from './context/tokenContext';
 
 function App() {
+
     const [user, setUser] = useState();
     const [token, setToken] = useState();
 
     function logOut() {
         setUser(null);
         setToken(null);
+    }
+
+    function logIn(userData, tokenData){
+        setUser(userData);
+        setToken(tokenData)
     }
 
     return (
@@ -22,12 +28,11 @@ function App() {
                     <tokenContext.Provider value={token}>
                         <Navbar logOut={logOut} />
                         <Routes>
-                            <Route path="/" element={<HomePage />} />
+                            <Route path="/" element={<HomePage/>} />
                             <Route path="/wallet" element={<WalletPage />} />
                             <Route path="/profile" element={<UserProfilePage />} />
-                            <Route
-                                path="/login"
-                                element={<LoginPage setUser={setUser} setToken={setToken} />}
+                            <Route path="/login"
+                                element={<LoginPage logIn={logIn} />}
                             />
                             <Route path="/signup" element={<SignUpPage />} />
                         </Routes>

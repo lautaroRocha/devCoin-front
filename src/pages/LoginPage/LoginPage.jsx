@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import { AppWrap } from '../../wrapper';
 import { Link } from 'react-router-dom';
+import * as URL from "../../utils/URL"
 
-const LoginPage = ({ setUser, setToken }) => {
+const LoginPage = (props) => {
+
+
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -13,22 +16,17 @@ const LoginPage = ({ setUser, setToken }) => {
             email: email,
             password: password,
         };
-        //hacer la petición, si es exitosa guardar el estado
-        fetch('url/login', {
+        fetch(URL.login, {
             method: 'POST',
             body: JSON.stringify(userData),
-            header: {
+            headers: {
                 'Content-Type': 'application/json',
             },
         })
-            .then((res) => {
-                if (!res.ok) {
-                    //manejo del error
-                    console.log('hubo un error');
-                } else {
-                    setUser(res.user);
-                    setToken(res.tokenAccess);
-                }
+            .then((res) => res.json())
+            .then( data => {
+                    console.log(data.user)
+                    props.logIn(data.user, data.token)
             })
             .catch((error) => console.log(error));
     };
