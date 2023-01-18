@@ -44,13 +44,12 @@ const UserProfilePage = () => {
 
     function saveEditedContent() {
         const newValues = document.querySelectorAll('textarea');
-        const newUserValues = {
-            username: newValues[0].value,
-            email: newValues[1].value,
-        };
+        
         console.log(user);
         newValues[0].replaceWith(userName.current);
-        newValues[1].replaceWith(userEmail.current);
+        newValues[1].replaceWith(userLastName.current);
+        newValues[2].replaceWith(userEmail.current);
+
         userPicture.current.style.display = 'block';
         setEditing(false);
     }
@@ -63,6 +62,7 @@ const UserProfilePage = () => {
                         className="aspect-squaren ml-5 h-32 w-32 rounded-full bg-red-900"
                         ref={userPicture}
                     />
+                    <div className='flex flex-col md:mr-12'>
                     <h1 className="px-3 text-4xl font-extrabold" ref={userName} id="user-value">
                         {user.first_name} 
                     </h1>
@@ -70,6 +70,8 @@ const UserProfilePage = () => {
                     <span className="text-base italic md:mr-5" ref={userEmail} id="user-value">
                         {user.email}
                     </span>
+                    </div>
+
                     {editing ? (
                         <span
                             className="absolute top-5 right-12 font-semibold hover:cursor-pointer"

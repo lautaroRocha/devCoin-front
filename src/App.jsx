@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import {useState, useEfffect} from 'react'
+import {useState} from 'react'
 // Pages
 import { HomePage, WalletPage, UserProfilePage, SignUp, LoginPage } from './pages';
 import { Navbar } from './components';
