@@ -1,11 +1,15 @@
 // React
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
+import { userContext } from '../../context/userContext';
 
 // Routes
 import { NavLink } from 'react-router-dom';
 
+
+
 const Navbar = () => {
     const [theme, setTheme] = useState('light');
+    const user = useContext(userContext)
 
     useEffect(() => {
         if (theme === 'dark') {
@@ -25,6 +29,8 @@ const Navbar = () => {
                 <div className="mt-8 text-center">DevCoin</div>
                 <div className="mt-8 flex h-full flex-col justify-between xl:ml-3">
                     <div className="flex flex-col items-center gap-4 xl:items-start">
+                        {user &&
+                        <>
                         <NavLink
                             to="/"
                             className="navbar-links flex gap-x-6"
@@ -78,6 +84,8 @@ const Navbar = () => {
 
                             <span className="hidden xl:flex">Profile</span>
                         </NavLink>
+                        </>
+                        }
                     </div>
                     <div className="flex -translate-y-[7rem] flex-col items-center gap-4 xl:items-start">
                         <div className="navbar-links flex gap-x-6">
