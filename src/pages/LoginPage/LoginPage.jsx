@@ -7,11 +7,18 @@ const LoginPage = (props) => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [remember, setRemember] = useState(false)
     
+    const handleRememberSession = (user, token) =>{
+        if(remember){
+            sessionStorage.setItem('user', JSON.stringify(user))
+            sessionStorage.setItem('token', token)
+        }
+    }
+
 
     const handleSubmitLogin = (event) => {
         event.preventDefault();
-        //crear un objeto con los datos de usuario
         const userData = {
             email: email,
             password: password,
@@ -25,10 +32,13 @@ const LoginPage = (props) => {
         })
             .then((res) => res.json())
             .then( data => {
-                    props.props.logIn(data.user, data.token)
+                    props.props.logIn(data.user, data.tokenAccess)
+                    console.log(data)
+                    handleRememberSession(data.user, data.tokenAccess)
             })
             .catch((error) => console.log(error));
     };
+
 
     return (
         <div className="flex h-full w-full items-center justify-center">
@@ -64,7 +74,7 @@ const LoginPage = (props) => {
                             />
                         </div>
                         <div className="flex w-full gap-x-2">
-                            <input id="remember" type="checkbox" />
+                            <input id="remember" type="checkbox" onChange={()=>{setRemember(!remember)}}/>
                             <label htmlFor="remember" className="dark:bg-black/90 dark:text-white">
                                 Recordarme
                             </label>

@@ -16,6 +16,15 @@ function App() {
 
     const navigate = useNavigate()
 
+    useEffect(()=>{
+        const savedUser = sessionStorage.getItem('user')
+        const savedToken = sessionStorage.getItem('token')
+        if(!user && !token && savedUser && savedToken){
+            setUser(JSON.parse(savedUser))
+            setToken(savedToken)
+        }
+    }, [])
+
     useEffect(() => {
         window.location.pathname === '/login' && navigate('/')
         user && toast.success(`Bienvenido, ${user.first_name}`)
@@ -24,6 +33,8 @@ function App() {
     function logOut() {
         setUser(null);
         setToken(null);
+        sessionStorage.removeItem('user')
+        sessionStorage.removeItem('token')
     }
 
     function logIn(userData, tokenData){
@@ -48,8 +59,8 @@ function App() {
                         </Routes>
                         <ToastContainer
                             position="bottom-center"
-                            autoClose={3000}
-                            hideProgressBar={false}
+                            autoClose={4000}
+                            hideProgressBar={true}
                             newestOnTop={true}
                             closeOnClick
                             rtl={false}
