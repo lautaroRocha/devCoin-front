@@ -5,11 +5,9 @@ import { userContext } from '../../context/userContext';
 // Routes
 import { NavLink } from 'react-router-dom';
 
-
-
-const Navbar = ({logOut}) => {
+const Navbar = ({ logOut }) => {
     const [theme, setTheme] = useState('light');
-    const user = useContext(userContext)
+    const user = useContext(userContext);
 
     useEffect(() => {
         if (theme === 'dark') {
@@ -46,46 +44,46 @@ const Navbar = ({logOut}) => {
 
                             <span className="hidden xl:flex">Home</span>
                         </NavLink>
-                        {user &&
-                        <>
-                        <NavLink
-                            to="/wallet"
-                            className="navbar-links flex gap-x-6"
-                            activeclassname="active"
-                        >
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 24 24"
-                                fill="currentColor"
-                                className="h-6 w-6"
-                            >
-                                <path d="M2.273 5.625A4.483 4.483 0 015.25 4.5h13.5c1.141 0 2.183.425 2.977 1.125A3 3 0 0018.75 3H5.25a3 3 0 00-2.977 2.625zM2.273 8.625A4.483 4.483 0 015.25 7.5h13.5c1.141 0 2.183.425 2.977 1.125A3 3 0 0018.75 6H5.25a3 3 0 00-2.977 2.625zM5.25 9a3 3 0 00-3 3v6a3 3 0 003 3h13.5a3 3 0 003-3v-6a3 3 0 00-3-3H15a.75.75 0 00-.75.75 2.25 2.25 0 01-4.5 0A.75.75 0 009 9H5.25z" />
-                            </svg>
+                        {user && (
+                            <>
+                                <NavLink
+                                    to="/wallet"
+                                    className="navbar-links flex gap-x-6"
+                                    activeclassname="active"
+                                >
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 24 24"
+                                        fill="currentColor"
+                                        className="h-6 w-6"
+                                    >
+                                        <path d="M2.273 5.625A4.483 4.483 0 015.25 4.5h13.5c1.141 0 2.183.425 2.977 1.125A3 3 0 0018.75 3H5.25a3 3 0 00-2.977 2.625zM2.273 8.625A4.483 4.483 0 015.25 7.5h13.5c1.141 0 2.183.425 2.977 1.125A3 3 0 0018.75 6H5.25a3 3 0 00-2.977 2.625zM5.25 9a3 3 0 00-3 3v6a3 3 0 003 3h13.5a3 3 0 003-3v-6a3 3 0 00-3-3H15a.75.75 0 00-.75.75 2.25 2.25 0 01-4.5 0A.75.75 0 009 9H5.25z" />
+                                    </svg>
 
-                            <span className="hidden xl:flex">Wallet</span>
-                        </NavLink>
-                        <NavLink
-                            to="/profile"
-                            className="navbar-links flex gap-x-6"
-                            activeclassname="active"
-                        >
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 24 24"
-                                fill="currentColor"
-                                className="h-6 w-6"
-                            >
-                                <path
-                                    fillRule="evenodd"
-                                    d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z"
-                                    clipRule="evenodd"
-                                />
-                            </svg>
+                                    <span className="hidden xl:flex">Wallet</span>
+                                </NavLink>
+                                <NavLink
+                                    to="/profile"
+                                    className="navbar-links flex gap-x-6"
+                                    activeclassname="active"
+                                >
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 24 24"
+                                        fill="currentColor"
+                                        className="h-6 w-6"
+                                    >
+                                        <path
+                                            fillRule="evenodd"
+                                            d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z"
+                                            clipRule="evenodd"
+                                        />
+                                    </svg>
 
-                            <span className="hidden xl:flex">Profile</span>
-                        </NavLink>
-                        </>
-                        }
+                                    <span className="hidden xl:flex">Profile</span>
+                                </NavLink>
+                            </>
+                        )}
                     </div>
                     <div className="flex -translate-y-[7rem] flex-col items-center gap-4 xl:items-start">
                         <div className="navbar-links flex gap-x-6">
@@ -126,31 +124,49 @@ const Navbar = ({logOut}) => {
                                 <span className="slider round"></span>
                             </label>
                         </div>
-                        {!user ?
-                        <NavLink
-                            to="/login"
-                            className="navbar-links flex gap-x-6"
-                            activeclassname="active"
-                        >
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                strokeWidth={1.5}
-                                stroke="currentColor"
-                                className="h-6 w-6"
+                        {!user ? (
+                            <NavLink
+                                to="/login"
+                                className="navbar-links flex gap-x-6"
+                                activeclassname="active"
                             >
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3 0l3-3m0 0l-3-3m3 3H9"
-                                />
-                            </svg>
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    strokeWidth={1.5}
+                                    stroke="currentColor"
+                                    className="h-6 w-6"
+                                >
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3 0l3-3m0 0l-3-3m3 3H9"
+                                    />
+                                </svg>
 
-                            <span className="hidden xl:flex">Log in</span>
-                        </NavLink> :
-                        <span onClick={logOut}>LogOut</span>
-                            }   
+                                <span className="hidden xl:flex">Log in</span>
+                            </NavLink>
+                        ) : (
+                            <div className="navbar-links flex gap-x-6">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24"
+                                    fill="currentColor"
+                                    className="h-6 w-6"
+                                >
+                                    <path
+                                        fillRule="evenodd"
+                                        d="M7.5 3.75A1.5 1.5 0 006 5.25v13.5a1.5 1.5 0 001.5 1.5h6a1.5 1.5 0 001.5-1.5V15a.75.75 0 011.5 0v3.75a3 3 0 01-3 3h-6a3 3 0 01-3-3V5.25a3 3 0 013-3h6a3 3 0 013 3V9A.75.75 0 0115 9V5.25a1.5 1.5 0 00-1.5-1.5h-6zm5.03 4.72a.75.75 0 010 1.06l-1.72 1.72h10.94a.75.75 0 010 1.5H10.81l1.72 1.72a.75.75 0 11-1.06 1.06l-3-3a.75.75 0 010-1.06l3-3a.75.75 0 011.06 0z"
+                                        clipRule="evenodd"
+                                    />
+                                </svg>
+
+                                <span onClick={logOut} className="hidden xl:flex">
+                                    Log out
+                                </span>
+                            </div>
+                        )}
                     </div>
                 </div>
             </div>

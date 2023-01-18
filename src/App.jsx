@@ -13,6 +13,7 @@ function App() {
     function logOut() {
         setUser(null);
         setToken(null);
+        window.location.href = '/';
     }
 
     return (
