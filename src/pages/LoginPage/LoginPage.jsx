@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { AppWrap } from '../../wrapper';
 
 const LoginPage = ( {setUser, setToken} ) => {
+
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -21,6 +22,7 @@ const LoginPage = ( {setUser, setToken} ) => {
             }
         }).then(res =>{
             if(!res.ok){
+                //manejo del error
                 console.log('hubo un error')
             }else{
                 setUser(res.user)

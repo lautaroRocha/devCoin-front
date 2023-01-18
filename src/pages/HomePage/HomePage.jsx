@@ -1,13 +1,10 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import { CoinRanking } from '../../components';
 import { AppWrap } from '../../wrapper';
-import { userContext } from '../../context/userContext';
 
 const HomePage = () => {
 
-    const user = useContext(userContext)
 
-    if(user){
         return (
             <>
                 <div className="flex h-full w-full flex-col gap-[6rem] lg:px-8">
@@ -63,11 +60,7 @@ const HomePage = () => {
                 </div>
             </>
         );
-    }else{
-        return(
-            <Navigate to="/login" replace={true}/>
-        )
-    }
+    
    
 };
 
