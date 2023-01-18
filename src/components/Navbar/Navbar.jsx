@@ -1,11 +1,15 @@
 // React
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
+import { userContext } from '../../context/userContext';
 
 // Routes
 import { NavLink } from 'react-router-dom';
 
-const Navbar = () => {
+
+
+const Navbar = ({logOut}) => {
     const [theme, setTheme] = useState('light');
+    const user = useContext(userContext)
 
     useEffect(() => {
         if (theme === 'dark') {
@@ -42,6 +46,8 @@ const Navbar = () => {
 
                             <span className="hidden xl:flex">Home</span>
                         </NavLink>
+                        {user &&
+                        <>
                         <NavLink
                             to="/wallet"
                             className="navbar-links flex gap-x-6"
@@ -78,6 +84,8 @@ const Navbar = () => {
 
                             <span className="hidden xl:flex">Profile</span>
                         </NavLink>
+                        </>
+                        }
                     </div>
                     <div className="flex -translate-y-[7rem] flex-col items-center gap-4 xl:items-start">
                         <div className="navbar-links flex gap-x-6">
@@ -118,6 +126,7 @@ const Navbar = () => {
                                 <span className="slider round"></span>
                             </label>
                         </div>
+                        {!user ?
                         <NavLink
                             to="/login"
                             className="navbar-links flex gap-x-6"
@@ -139,7 +148,9 @@ const Navbar = () => {
                             </svg>
 
                             <span className="hidden xl:flex">Log in</span>
-                        </NavLink>
+                        </NavLink> :
+                        <span onClick={logOut}>LogOut</span>
+                            }   
                     </div>
                 </div>
             </div>
