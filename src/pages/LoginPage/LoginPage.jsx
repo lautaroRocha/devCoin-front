@@ -5,7 +5,6 @@ import * as URL from "../../utils/URL"
 
 const LoginPage = (props) => {
 
-
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -26,7 +25,7 @@ const LoginPage = (props) => {
             .then((res) => res.json())
             .then( data => {
                     console.log(data.user)
-                    props.logIn(data.user, data.token)
+                    props.props.logIn(data.user, data.token)
             })
             .catch((error) => console.log(error));
     };
@@ -43,7 +42,7 @@ const LoginPage = (props) => {
                 </div>
                 <div className="max-md:max-h-[50%] max-md:px-4 max-md:py-8 md:w-full">
                     <form
-                        onClick={handleSubmitLogin}
+                        onSubmit={handleSubmitLogin}
                         className="flex w-full flex-col items-center justify-center gap-4 500:w-[19rem] md:mx-auto"
                     >
                         <h1 className="mb-5 text-xl font-bold">Iniciar sesión</h1>
