@@ -7,6 +7,7 @@ const LoginPage = (props) => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    
 
     const handleSubmitLogin = (event) => {
         event.preventDefault();
@@ -24,7 +25,6 @@ const LoginPage = (props) => {
         })
             .then((res) => res.json())
             .then( data => {
-                    console.log(data.user)
                     props.props.logIn(data.user, data.token)
             })
             .catch((error) => console.log(error));
