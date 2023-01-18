@@ -10,8 +10,8 @@ module.exports = {
                 1700: '1700px',
             },
             colors: {
-                primary: '#f5061d',
-                secondary: '#c0012a',
+                primary: '##121111',
+                secondary: '##6701c0',
                 black: '#161616',
                 white: '#f6f6f6',
                 alternative: '#ffb300',
