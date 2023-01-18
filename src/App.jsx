@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import {useState} from 'react'
 // Pages
-import { HomePage, WalletPage, UserProfilePage, SignUp, LoginPage } from './pages';
+import { HomePage, WalletPage, UserProfilePage, SignUpPage, LoginPage } from './pages';
 import { Navbar } from './components';
 import {userContext} from "./context/userContext"
 import {tokenContext} from "./context/tokenContext"

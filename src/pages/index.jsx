@@ -4,4 +4,4 @@ export { default as WalletPage } from './WalletPage/WalletPage';
 export { default as UserProfilePage } from './UserProfilePage/UserProfilePage';
 
 export { default as LoginPage } from './LoginPage/LoginPage';
-export { default as SignUp } from '../components/SignUp/SignUp';
+export { default as SignUpPage } from './SignUpPage/SignUpPage';
