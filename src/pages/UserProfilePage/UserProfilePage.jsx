@@ -56,7 +56,7 @@ const UserProfilePage = () => {
         setEditing(false);
     }
 
-    if(user){
+    if(user.verified_user){
     return (
             <div className="flex h-full w-full flex-col items-center">
                 <div className="relative mt-6 flex w-9/12 flex-col items-center justify-between gap-6 rounded-xl bg-primary/90 py-7 text-center text-white dark:bg-primary/90 md:flex-row">
