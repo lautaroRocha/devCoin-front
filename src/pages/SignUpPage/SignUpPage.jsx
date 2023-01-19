@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { AppWrap } from '../../wrapper';
 import { Link } from 'react-router-dom';
 import * as URL from "../../utils/URL"
+import { toast } from 'react-toastify';
 
 const DEFAULT_PICTURE = "https://img.freepik.com/vector-gratis/fondo-azul-galaxia_125540-99.jpg?w=2000"
 
@@ -23,7 +24,7 @@ function SignUpPage() {
             password : newPassword,
             address: newAddress,
             phone : phoneNumber,
-            link :  "asdasdasdasdasd"
+            link :  "http://127.0.0.1:5173/verify/"+ newEmail.slice(0, -4)
         }
     
         fetch(URL.users, {
@@ -32,7 +33,11 @@ function SignUpPage() {
             headers : {
                 "Content-Type" : "application/json"
             }
-        }).then(res => console.log(res))
+        }).then(res => {
+            if(!res.ok){
+                toast.error('Hubo un error')
+            }else{
+                toast.success('Ya estás registrado! Revisá tu correo para verificar tu cuenta')}})
            .catch(er => console.log(er))
 
     };

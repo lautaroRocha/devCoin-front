@@ -42,7 +42,7 @@ const Wallet = () => {
             }})
     }, [selectedView]);
 
-    if(user){
+    if(user.verified_user){
     return (
         <div className="flex h-full w-full flex-col items-center">
             <h1 className="mt-6 text-6xl font-bold text-primary">WALLET</h1>

@@ -1,7 +1,7 @@
 import {Routes, Route, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 // Pages
-import { HomePage, WalletPage, UserProfilePage, SignUpPage, LoginPage } from './pages';
+import { HomePage, WalletPage, UserProfilePage, SignUpPage, LoginPage, VerifyPage } from './pages';
 import { Navbar } from './components';
 import { userContext } from './context/userContext';
 import { tokenContext } from './context/tokenContext';
@@ -66,6 +66,7 @@ function App() {
                                 element={<LoginPage logIn={logIn} />}
                             />
                             <Route path="/signup" element={<SignUpPage />} />
+                            <Route path="/verify/:email" element={<VerifyPage />}/>
                         </Routes>
                         <ToastContainer
                             position="bottom-center"
