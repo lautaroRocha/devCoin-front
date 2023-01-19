@@ -11,7 +11,7 @@
 @layer components {
     /* Navbar Links */
     .navbar-links {
-        @apply w-[90%] rounded-lg py-2 transition-colors hover:bg-secondary/50 max-xl:justify-center xl:w-[95%] xl:px-4;
+        @apply w-[90%] rounded-md py-2 transition-colors hover:bg-purple-800 max-xl:justify-center xl:w-[95%] xl:px-4;
     }
     .active {
         @apply bg-secondary text-white hover:bg-secondary;
@@ -58,9 +58,9 @@
     }
     /* End Toggle Dark mode */
 
-    /* Home Buttons */
-    .home-buttons {
-        @apply whitespace-nowrap rounded-2xl bg-secondary px-8 py-3 font-bold text-white shadow-md transition-colors hover:bg-secondary/90;
+    /* Buttons */
+    .buttons {
+        @apply transform rounded-md bg-purple-700 px-4 py-2 tracking-wide text-white transition-colors duration-200 hover:bg-purple-600 focus:bg-purple-600 focus:outline-none;
     }
-    /* End Home Buttons */
+    /* End Buttons */
 }
