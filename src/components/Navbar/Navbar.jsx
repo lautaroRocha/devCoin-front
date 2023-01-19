@@ -42,7 +42,7 @@ const Navbar = ({ logOut }) => {
                                 <path d="M12 5.432l8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 01-.75-.75v-4.5a.75.75 0 00-.75-.75h-3a.75.75 0 00-.75.75V21a.75.75 0 01-.75.75H5.625a1.875 1.875 0 01-1.875-1.875v-6.198a2.29 2.29 0 00.091-.086L12 5.43z" />
                             </svg>
 
-                            <span className="hidden xl:flex">Home</span>
+                            <span className="hidden xl:flex">Inicio</span>
                         </NavLink>
                         {user && (
                             <>
@@ -60,7 +60,7 @@ const Navbar = ({ logOut }) => {
                                         <path d="M2.273 5.625A4.483 4.483 0 015.25 4.5h13.5c1.141 0 2.183.425 2.977 1.125A3 3 0 0018.75 3H5.25a3 3 0 00-2.977 2.625zM2.273 8.625A4.483 4.483 0 015.25 7.5h13.5c1.141 0 2.183.425 2.977 1.125A3 3 0 0018.75 6H5.25a3 3 0 00-2.977 2.625zM5.25 9a3 3 0 00-3 3v6a3 3 0 003 3h13.5a3 3 0 003-3v-6a3 3 0 00-3-3H15a.75.75 0 00-.75.75 2.25 2.25 0 01-4.5 0A.75.75 0 009 9H5.25z" />
                                     </svg>
 
-                                    <span className="hidden xl:flex">Wallet</span>
+                                    <span className="hidden xl:flex">Cartera</span>
                                 </NavLink>
                                 <NavLink
                                     to="/profile"
@@ -80,13 +80,33 @@ const Navbar = ({ logOut }) => {
                                         />
                                     </svg>
 
-                                    <span className="hidden xl:flex">Profile</span>
+                                    <span className="hidden xl:flex">Perfil</span>
                                 </NavLink>
                             </>
                         )}
+                        <NavLink
+                            to="/convert"
+                            className="navbar-links flex gap-x-6"
+                            activeclassname="active"
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24"
+                                fill="currentColor"
+                                className="h-6 w-6"
+                            >
+                                <path
+                                    fillRule="evenodd"
+                                    d="M6.32 1.827a49.255 49.255 0 0111.36 0c1.497.174 2.57 1.46 2.57 2.93V19.5a3 3 0 01-3 3H6.75a3 3 0 01-3-3V4.757c0-1.47 1.073-2.756 2.57-2.93zM7.5 11.25a.75.75 0 01.75-.75h.008a.75.75 0 01.75.75v.008a.75.75 0 01-.75.75H8.25a.75.75 0 01-.75-.75v-.008zm.75 1.5a.75.75 0 00-.75.75v.008c0 .414.336.75.75.75h.008a.75.75 0 00.75-.75V13.5a.75.75 0 00-.75-.75H8.25zm-.75 3a.75.75 0 01.75-.75h.008a.75.75 0 01.75.75v.008a.75.75 0 01-.75.75H8.25a.75.75 0 01-.75-.75v-.008zm.75 1.5a.75.75 0 00-.75.75v.008c0 .414.336.75.75.75h.008a.75.75 0 00.75-.75V18a.75.75 0 00-.75-.75H8.25zm1.748-6a.75.75 0 01.75-.75h.007a.75.75 0 01.75.75v.008a.75.75 0 01-.75.75h-.007a.75.75 0 01-.75-.75v-.008zm.75 1.5a.75.75 0 00-.75.75v.008c0 .414.335.75.75.75h.007a.75.75 0 00.75-.75V13.5a.75.75 0 00-.75-.75h-.007zm-.75 3a.75.75 0 01.75-.75h.007a.75.75 0 01.75.75v.008a.75.75 0 01-.75.75h-.007a.75.75 0 01-.75-.75v-.008zm.75 1.5a.75.75 0 00-.75.75v.008c0 .414.335.75.75.75h.007a.75.75 0 00.75-.75V18a.75.75 0 00-.75-.75h-.007zm1.754-6a.75.75 0 01.75-.75h.008a.75.75 0 01.75.75v.008a.75.75 0 01-.75.75h-.008a.75.75 0 01-.75-.75v-.008zm.75 1.5a.75.75 0 00-.75.75v.008c0 .414.336.75.75.75h.008a.75.75 0 00.75-.75V13.5a.75.75 0 00-.75-.75h-.008zm-.75 3a.75.75 0 01.75-.75h.008a.75.75 0 01.75.75v.008a.75.75 0 01-.75.75h-.008a.75.75 0 01-.75-.75v-.008zm.75 1.5a.75.75 0 00-.75.75v.008c0 .414.336.75.75.75h.008a.75.75 0 00.75-.75V18a.75.75 0 00-.75-.75h-.008zm1.748-6a.75.75 0 01.75-.75h.008a.75.75 0 01.75.75v.008a.75.75 0 01-.75.75h-.008a.75.75 0 01-.75-.75v-.008zm.75 1.5a.75.75 0 00-.75.75v.008c0 .414.336.75.75.75h.008a.75.75 0 00.75-.75V13.5a.75.75 0 00-.75-.75h-.008zm-8.25-6A.75.75 0 018.25 6h7.5a.75.75 0 01.75.75v.75a.75.75 0 01-.75.75h-7.5a.75.75 0 01-.75-.75v-.75zm9 9a.75.75 0 00-1.5 0V18a.75.75 0 001.5 0v-2.25z"
+                                    clipRule="evenodd"
+                                />
+                            </svg>
+
+                            <span className="hidden xl:flex">Conversor</span>
+                        </NavLink>
                     </div>
                     <div className="flex -translate-y-[7rem] flex-col items-center gap-4 xl:items-start">
-                        <div className="navbar-links flex gap-x-6">
+                        <div className="navbar-links flex gap-x-6 hover:bg-transparent">
                             {theme === 'light' ? (
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -145,7 +165,7 @@ const Navbar = ({ logOut }) => {
                                     />
                                 </svg>
 
-                                <span className="hidden xl:flex">Log in</span>
+                                <span className="hidden xl:flex">Iniciar sesión</span>
                             </NavLink>
                         ) : (
                             <div className="navbar-links flex gap-x-6">
@@ -163,7 +183,7 @@ const Navbar = ({ logOut }) => {
                                 </svg>
 
                                 <span onClick={logOut} className="hidden xl:flex">
-                                    Log out
+                                    Cerrar sesión
                                 </span>
                             </div>
                         )}
