@@ -6,15 +6,17 @@ import { userContext } from '../../context/userContext';
 import { NavLink } from 'react-router-dom';
 
 const Navbar = ({ logOut }) => {
-    const [theme, setTheme] = useState('light');
+
+    const savedMode = sessionStorage.getItem('mode')
+
+    const [theme, setTheme] = useState(savedMode);
     const user = useContext(userContext);
 
+    const documentClass = document.documentElement.classList
+
     useEffect(() => {
-        if (theme === 'dark') {
-            document.documentElement.classList.add('dark');
-        } else {
-            document.documentElement.classList.remove('dark');
-        }
+        theme === 'dark' ?  documentClass.add('dark') : documentClass.remove('dark')
+        sessionStorage.setItem('mode', theme)
     }, [theme]);
 
     const handleThemeSwitch = () => {
