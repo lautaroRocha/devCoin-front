@@ -48,7 +48,7 @@ const UserProfilePage = () => {
         setEditing(false);
     }
 
-    if (user.verified_user) {
+    if(user && user.verified_user) {
         return (
             <div className="flex h-full w-full flex-col items-center md:items-start">
                 <div className="flex w-full flex-col md:flex-row">

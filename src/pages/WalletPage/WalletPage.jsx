@@ -42,10 +42,10 @@ const Wallet = () => {
             }})
     }, [selectedView]);
 
-    if(user.verified_user){
+    if(user && user.verified_user){
     return (
         <div className="flex h-full w-full flex-col items-center">
-            <h1 className="mt-6 text-6xl font-bold text-primary">WALLET</h1>
+            <h1 className="mt-6 text-6xl font-bold text-primary dark:text-secondary">WALLET</h1>
             <Deposit />
             <button className="mx-auto mt-3 w-fit rounded-lg bg-alternative p-2">COMPRAR</button>
             <ul className="mt-4 flex gap-6  text-sm font-bold text-white">
