@@ -37,13 +37,18 @@ const Balance = () => {
                     <thead className="bg-secondary text-xs uppercase text-white lg:text-base">
                         <tr>
                             {['Moneda', 'Balance', '', ''].map((title, index) => (
-                                <td className="whitespace-nowrap py-3 px-6" key={index}>
+                                <td className="whitespace-nowrap py-3 px-6 font-semibold" key={index}>
                                     {title}
                                 </td>
                             ))}
+                         
                         </tr>
                     </thead>
-                    <tbody></tbody>
+                    <tbody>
+                    {USER_COINS.map((coin, index) => (
+                                <MinCoin coin={coin} key={index}/>
+                            ))} 
+                    </tbody>
                 </table>
             </div>
         </div>

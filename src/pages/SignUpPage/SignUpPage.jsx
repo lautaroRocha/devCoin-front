@@ -35,9 +35,13 @@ function SignUpPage() {
                 'Content-Type': 'application/json',
             },
         })
-            .then((res) => {
-                if (!res.ok) {
-                    toast.error('Hubo un error');
+            .then((res) =>  res.json())
+            .then((data) => {
+                if (data.message){
+                    //creamos un array de todos los mensajes de error
+                    //usando la coma como punto de separación
+                    //y por cada uno tiramos un error toast
+                     Array.from(data.message.split(',')).forEach( (err) => toast.error(err));
                 } else {
                     toast.success('Ya estás registrado! Revisá tu correo para verificar tu cuenta');
                     document.getElementById('form').reset();
@@ -90,7 +94,7 @@ function SignUpPage() {
                                 <div>
                                     <label htmlFor="">Telefono</label>
                                     <input
-                                        type="number"
+                                        type="text"
                                         className="w-full rounded-xl py-2 px-4 focus:outline-none dark:bg-black/90 dark:text-white"
                                         onChange={(event) => setPhoneNumber(event.target.value)}
                                     />

@@ -14,8 +14,9 @@ const VerifyPage = () => {
         fetch(URL.users+'/'+email.email+'.com',{
             method : "PATCH"
         })
-        .then(res => {
-            if(!res.ok){
+        .then(res => res.json())
+        .then(data => {
+            if(data.error){
                 toast.error('Hubo un problema, intentá de nuevo más tarde')
             }else{
                 toast.success('¡Verificado!')

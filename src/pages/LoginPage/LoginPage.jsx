@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { AppWrap } from '../../wrapper';
 import { Link } from 'react-router-dom';
 import * as URL from '../../utils/URL';
+import { toast } from 'react-toastify';
 
 const LoginPage = (props) => {
     const [email, setEmail] = useState('');
@@ -30,11 +31,14 @@ const LoginPage = (props) => {
         })
             .then((res) => res.json())
             .then((data) => {
-                props.props.logIn(data.user, data.tokenAccess);
-                console.log(data);
-                handleRememberSession(data.user, data.tokenAccess);
+                if(data.message){
+                    toast.error(data.message)
+                }else{
+                    props.props.logIn(data.user, data.tokenAccess)
+                    handleRememberSession(data.user, data.tokenAccess)
+                }
             })
-            .catch((error) => console.log(error));
+            .catch((error) => console.error(error));
     };
 
     return (
