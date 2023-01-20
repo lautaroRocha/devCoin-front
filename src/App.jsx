@@ -69,7 +69,7 @@ function App() {
                             <Route path="/verify/:email" element={<VerifyPage />}/>
                         </Routes>
                         <ToastContainer
-                            position="bottom-center"
+                            position="bottom-right"
                             autoClose={4000}
                             hideProgressBar={true}
                             newestOnTop={true}
