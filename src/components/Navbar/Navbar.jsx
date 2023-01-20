@@ -1,6 +1,7 @@
 // React
 import React, { useEffect, useState, useContext } from 'react';
 import { userContext } from '../../context/userContext';
+import * as Icons from '../../utils/icons'
 
 // Routes
 import { NavLink } from 'react-router-dom';
@@ -34,16 +35,7 @@ const Navbar = ({ logOut }) => {
                             className="navbar-links flex gap-x-6"
                             activeclassname="active"
                         >
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 24 24"
-                                fill="currentColor"
-                                className="h-6 w-6"
-                            >
-                                <path d="M11.47 3.84a.75.75 0 011.06 0l8.69 8.69a.75.75 0 101.06-1.06l-8.689-8.69a2.25 2.25 0 00-3.182 0l-8.69 8.69a.75.75 0 001.061 1.06l8.69-8.69z" />
-                                <path d="M12 5.432l8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 01-.75-.75v-4.5a.75.75 0 00-.75-.75h-3a.75.75 0 00-.75.75V21a.75.75 0 01-.75.75H5.625a1.875 1.875 0 01-1.875-1.875v-6.198a2.29 2.29 0 00.091-.086L12 5.43z" />
-                            </svg>
-
+                            {Icons.home}
                             <span className="hidden xl:flex">Inicio</span>
                         </NavLink>
                         {user && (
@@ -53,15 +45,7 @@ const Navbar = ({ logOut }) => {
                                     className="navbar-links flex gap-x-6"
                                     activeclassname="active"
                                 >
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        viewBox="0 0 24 24"
-                                        fill="currentColor"
-                                        className="h-6 w-6"
-                                    >
-                                        <path d="M2.273 5.625A4.483 4.483 0 015.25 4.5h13.5c1.141 0 2.183.425 2.977 1.125A3 3 0 0018.75 3H5.25a3 3 0 00-2.977 2.625zM2.273 8.625A4.483 4.483 0 015.25 7.5h13.5c1.141 0 2.183.425 2.977 1.125A3 3 0 0018.75 6H5.25a3 3 0 00-2.977 2.625zM5.25 9a3 3 0 00-3 3v6a3 3 0 003 3h13.5a3 3 0 003-3v-6a3 3 0 00-3-3H15a.75.75 0 00-.75.75 2.25 2.25 0 01-4.5 0A.75.75 0 009 9H5.25z" />
-                                    </svg>
-
+                                    {Icons.wallet}
                                     <span className="hidden xl:flex">Cartera</span>
                                 </NavLink>
                                 <NavLink
@@ -69,19 +53,7 @@ const Navbar = ({ logOut }) => {
                                     className="navbar-links flex gap-x-6"
                                     activeclassname="active"
                                 >
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        viewBox="0 0 24 24"
-                                        fill="currentColor"
-                                        className="h-6 w-6"
-                                    >
-                                        <path
-                                            fillRule="evenodd"
-                                            d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z"
-                                            clipRule="evenodd"
-                                        />
-                                    </svg>
-
+                                {Icons.profile}
                                     <span className="hidden xl:flex">Perfil</span>
                                 </NavLink>
                             </>
@@ -91,56 +63,13 @@ const Navbar = ({ logOut }) => {
                             className="navbar-links flex gap-x-6"
                             activeclassname="active"
                         >
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 24 24"
-                                fill="currentColor"
-                                className="h-6 w-6"
-                            >
-                                <path
-                                    fillRule="evenodd"
-                                    d="M6.32 1.827a49.255 49.255 0 0111.36 0c1.497.174 2.57 1.46 2.57 2.93V19.5a3 3 0 01-3 3H6.75a3 3 0 01-3-3V4.757c0-1.47 1.073-2.756 2.57-2.93zM7.5 11.25a.75.75 0 01.75-.75h.008a.75.75 0 01.75.75v.008a.75.75 0 01-.75.75H8.25a.75.75 0 01-.75-.75v-.008zm.75 1.5a.75.75 0 00-.75.75v.008c0 .414.336.75.75.75h.008a.75.75 0 00.75-.75V13.5a.75.75 0 00-.75-.75H8.25zm-.75 3a.75.75 0 01.75-.75h.008a.75.75 0 01.75.75v.008a.75.75 0 01-.75.75H8.25a.75.75 0 01-.75-.75v-.008zm.75 1.5a.75.75 0 00-.75.75v.008c0 .414.336.75.75.75h.008a.75.75 0 00.75-.75V18a.75.75 0 00-.75-.75H8.25zm1.748-6a.75.75 0 01.75-.75h.007a.75.75 0 01.75.75v.008a.75.75 0 01-.75.75h-.007a.75.75 0 01-.75-.75v-.008zm.75 1.5a.75.75 0 00-.75.75v.008c0 .414.335.75.75.75h.007a.75.75 0 00.75-.75V13.5a.75.75 0 00-.75-.75h-.007zm-.75 3a.75.75 0 01.75-.75h.007a.75.75 0 01.75.75v.008a.75.75 0 01-.75.75h-.007a.75.75 0 01-.75-.75v-.008zm.75 1.5a.75.75 0 00-.75.75v.008c0 .414.335.75.75.75h.007a.75.75 0 00.75-.75V18a.75.75 0 00-.75-.75h-.007zm1.754-6a.75.75 0 01.75-.75h.008a.75.75 0 01.75.75v.008a.75.75 0 01-.75.75h-.008a.75.75 0 01-.75-.75v-.008zm.75 1.5a.75.75 0 00-.75.75v.008c0 .414.336.75.75.75h.008a.75.75 0 00.75-.75V13.5a.75.75 0 00-.75-.75h-.008zm-.75 3a.75.75 0 01.75-.75h.008a.75.75 0 01.75.75v.008a.75.75 0 01-.75.75h-.008a.75.75 0 01-.75-.75v-.008zm.75 1.5a.75.75 0 00-.75.75v.008c0 .414.336.75.75.75h.008a.75.75 0 00.75-.75V18a.75.75 0 00-.75-.75h-.008zm1.748-6a.75.75 0 01.75-.75h.008a.75.75 0 01.75.75v.008a.75.75 0 01-.75.75h-.008a.75.75 0 01-.75-.75v-.008zm.75 1.5a.75.75 0 00-.75.75v.008c0 .414.336.75.75.75h.008a.75.75 0 00.75-.75V13.5a.75.75 0 00-.75-.75h-.008zm-8.25-6A.75.75 0 018.25 6h7.5a.75.75 0 01.75.75v.75a.75.75 0 01-.75.75h-7.5a.75.75 0 01-.75-.75v-.75zm9 9a.75.75 0 00-1.5 0V18a.75.75 0 001.5 0v-2.25z"
-                                    clipRule="evenodd"
-                                />
-                            </svg>
-
+                            {Icons.convert}
                             <span className="hidden xl:flex">Conversor</span>
                         </NavLink>
                     </div>
                     <div className="flex -translate-y-[7rem] flex-col items-center gap-4 xl:items-start">
                         <div className="flex w-[90%] gap-x-6 py-2 xl:px-4">
-                            {theme === 'light' ? (
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    strokeWidth={1.5}
-                                    stroke="currentColor"
-                                    className="h-6 w-6 max-xl:hidden"
-                                >
-                                    <path
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"
-                                    />
-                                </svg>
-                            ) : (
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    strokeWidth={1.5}
-                                    stroke="currentColor"
-                                    className="h-6 w-6 max-xl:hidden"
-                                >
-                                    <path
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z"
-                                    />
-                                </svg>
-                            )}
-
+                            {theme === 'light' ?  Icons.moon : Icons.sun}
                             <label className="switch max-xl:mx-auto">
                                 <input type="checkbox" onClick={handleThemeSwitch} />
                                 <span className="slider round"></span>
@@ -152,38 +81,12 @@ const Navbar = ({ logOut }) => {
                                 className="navbar-links flex gap-x-6"
                                 activeclassname="active"
                             >
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    strokeWidth={1.5}
-                                    stroke="currentColor"
-                                    className="h-6 w-6"
-                                >
-                                    <path
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3 0l3-3m0 0l-3-3m3 3H9"
-                                    />
-                                </svg>
-
+                         {Icons.logIn}
                                 <span className="hidden xl:flex">Iniciar sesión</span>
                             </NavLink>
                         ) : (
                             <div className="navbar-links flex gap-x-6">
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 24 24"
-                                    fill="currentColor"
-                                    className="h-6 w-6"
-                                >
-                                    <path
-                                        fillRule="evenodd"
-                                        d="M7.5 3.75A1.5 1.5 0 006 5.25v13.5a1.5 1.5 0 001.5 1.5h6a1.5 1.5 0 001.5-1.5V15a.75.75 0 011.5 0v3.75a3 3 0 01-3 3h-6a3 3 0 01-3-3V5.25a3 3 0 013-3h6a3 3 0 013 3V9A.75.75 0 0115 9V5.25a1.5 1.5 0 00-1.5-1.5h-6zm5.03 4.72a.75.75 0 010 1.06l-1.72 1.72h10.94a.75.75 0 010 1.5H10.81l1.72 1.72a.75.75 0 11-1.06 1.06l-3-3a.75.75 0 010-1.06l3-3a.75.75 0 011.06 0z"
-                                        clipRule="evenodd"
-                                    />
-                                </svg>
-
+                                {Icons.logOut}
                                 <span onClick={logOut} className="hidden xl:flex">
                                     Cerrar sesión
                                 </span>
