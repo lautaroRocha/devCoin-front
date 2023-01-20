@@ -5,7 +5,7 @@ import { AppWrap } from '../../wrapper';
 const HomePage = () => {
     return (
         <>
-            <div className="flex h-full w-full flex-col gap-[6rem] lg:px-8">
+            <div className="flex h-full w-full flex-col gap-[4rem] sm:gap-y-[6rem] lg:gap-y-[8rem] lg:px-8">
                 {/* banners */}
                 <div className="mt-[1rem] flex w-full flex-col items-center gap-[3rem] lg:mt-[4rem]">
                     <div className="flex flex-col items-center gap-[3rem] lg:flex-row lg:items-start lg:gap-x-[8rem] 2xl:gap-x-[20rem]">
@@ -28,7 +28,7 @@ const HomePage = () => {
                     </div>
                 </div>
 
-                <div className="mt-8 flex w-full flex-col items-center gap-[4rem]">
+                <div className="flex w-full flex-col items-center gap-[4rem] lg:mt-8">
                     <div className="flex flex-col items-center gap-[3rem] lg:flex-row-reverse lg:items-start lg:gap-x-[8rem] 2xl:gap-x-[10rem]">
                         <div className="flex flex-col gap-8 text-center lg:text-left">
                             <h1 className="text-3xl font-bold lg:text-5xl">

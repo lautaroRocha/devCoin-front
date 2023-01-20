@@ -11,10 +11,10 @@
 @layer components {
     /* Navbar Links */
     .navbar-links {
-        @apply w-[90%] rounded-md py-2 transition-colors hover:bg-purple-800 max-xl:justify-center xl:w-[95%] xl:px-4;
+        @apply w-[90%] cursor-pointer rounded-md py-2 transition-colors hover:bg-gradient-to-r hover:from-violet-600  hover:to-indigo-600 hover:shadow-lg max-xl:justify-center xl:w-[95%] xl:px-4;
     }
     .active {
-        @apply bg-secondary text-white hover:bg-secondary;
+        @apply bg-gradient-to-r from-violet-600 to-indigo-600 text-white shadow-lg;
     }
     /* End Navbar Link */
 
@@ -60,7 +60,7 @@
 
     /* Buttons */
     .buttons {
-        @apply transform rounded-md bg-purple-700 px-4 py-2 tracking-wide text-white transition-colors duration-200 hover:bg-purple-600 focus:bg-purple-600 focus:outline-none;
+        @apply transform rounded-md bg-gradient-to-r from-violet-600 to-indigo-600 px-4 py-2 tracking-wide text-white transition-colors duration-200 hover:bg-purple-600 focus:bg-purple-600 focus:outline-none;
     }
     /* End Buttons */
 }
