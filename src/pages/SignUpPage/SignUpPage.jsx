@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { AppWrap } from '../../wrapper';
 import { Link } from 'react-router-dom';
-import * as URL from "../../utils/URL"
+import * as URL from '../../utils/URL';
 import { toast } from 'react-toastify';
 
-const DEFAULT_PICTURE = "https://img.freepik.com/vector-gratis/fondo-azul-galaxia_125540-99.jpg?w=2000"
+const DEFAULT_PICTURE =
+    'https://img.freepik.com/vector-gratis/fondo-azul-galaxia_125540-99.jpg?w=2000';
 
 function SignUpPage() {
     const [name, setName] = useState('');
@@ -17,32 +18,33 @@ function SignUpPage() {
     const handleSubmitRegister = (event) => {
         event.preventDefault();
         const newUser = {
-            first_name : name,
-            last_name : lastname,
-            image : DEFAULT_PICTURE,
-            email : newEmail,
-            password : newPassword,
+            first_name: name,
+            last_name: lastname,
+            image: DEFAULT_PICTURE,
+            email: newEmail,
+            password: newPassword,
             address: newAddress,
-            phone : phoneNumber,
-            link :  "http://127.0.0.1:5173/verify/"+ newEmail.slice(0, -4)
-        }
-    
+            phone: phoneNumber,
+            link: 'http://127.0.0.1:5173/verify/' + newEmail.slice(0, -4),
+        };
+
         fetch(URL.users, {
-            method: "POST",
-            body : JSON.stringify(newUser),
-            headers : {
-                "Content-Type" : "application/json"
-            }
-        }).then(res => {
-            if(!res.ok){
-                toast.error('Hubo un error')
-            }else{
-                toast.success('Ya estás registrado! Revisá tu correo para verificar tu cuenta')}})
-           .catch(er => console.log(er))
-
+            method: 'POST',
+            body: JSON.stringify(newUser),
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+            .then((res) => {
+                if (!res.ok) {
+                    toast.error('Hubo un error');
+                } else {
+                    toast.success('Ya estás registrado! Revisá tu correo para verificar tu cuenta');
+                    document.getElementById('form').reset();
+                }
+            })
+            .catch((er) => console.log(er));
     };
-
-
 
     return (
         <>
@@ -63,6 +65,7 @@ function SignUpPage() {
                     </div>
                     <div className="max-md:max-h-[70%] max-md:px-4 max-md:py-8 md:w-full">
                         <form
+                            id="form"
                             onSubmit={handleSubmitRegister}
                             className="flex w-full flex-col items-center justify-center gap-3 500:w-[19rem] md:mx-auto"
                         >
@@ -117,7 +120,7 @@ function SignUpPage() {
                                     onChange={(event) => setNewPassword(event.target.value)}
                                 />
                             </div>
-                            <button className="home-buttons mt-4 w-full">Registrarse</button>
+                            <button className="buttons mt-4 w-full">Registrarse</button>
                         </form>
                         <div className="mt-4 flex w-full flex-col items-start 500:w-[19rem] md:mx-auto">
                             <p>

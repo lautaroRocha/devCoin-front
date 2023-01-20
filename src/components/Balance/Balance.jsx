@@ -1,26 +1,53 @@
-import React from 'react';
-import {MinCoin} from "../../components"
+import React, { useContext, useState, useEffect } from 'react';
+import { MinCoin } from '../../components';
+import { userContext } from '../../context/userContext';
+import { tokenContext } from '../../context/tokenContext';
 
-const Balance = ({user}) => {
+const Balance = () => {
+    const token = useContext(tokenContext);
+    const user = useContext(userContext);
+
+    const [userCoins, setUserCoins] = useState([]);
+    const [search, setSearch] = useState('');
+    const [coinsFiltered, setCoinsFiltered] = useState([]);
 
     // esto obviamente después lo sacaríamos del usuario que recibe el componente
-    const USER_COINS = [{token: "lucascoin", quantity:"5"}, {token: "gonzacoin", quantity:"7"}, {token: "juanbit", quantity:"3"}]
+    const USER_COINS = [
+        { token: 'lucascoin', quantity: '5' },
+        { token: 'gonzacoin', quantity: '7' },
+        { token: 'juanbit', quantity: '3' },
+    ];
+
+    const Filter = () => {
+        let coinsFiltered = coins.filter((coin) => {
+            if (
+                coin.name.toLowerCase().includes(search.toLowerCase()) ||
+                coin.symbol.toLowerCase().includes(search.toLowerCase())
+            ) {
+                return coin;
+            }
+        });
+        setCoinsFiltered(coinsFiltered);
+    };
 
     return (
-        <div className=' text-white w-8/12'>
-           <div className='flex   bg-secondary dark:bg-secondary/90 justify-center rounded-lg items-center my-10 mx-auto w-5/5 text-lg font-semibold px-3 py-1 sm:w-fit'>
-            <h3>Saldo disponible:</h3>
-            <span>$6000</span>
-           </div>
-           <div className="group flex flex-col gap-6 mb-28 items-center w-12/12">
-           {USER_COINS.map( (coin, idx)=> {
-            return(
-            <MinCoin coin={coin} idx={idx} />
-            )
-           })}          
-           </div>
+        <div className="mt-8 flex w-full flex-col text-white">
+            <div className="relative max-h-screen overflow-x-auto rounded-lg">
+                <table className="w-full">
+                    <thead className="bg-secondary text-xs uppercase text-white lg:text-base">
+                        <tr>
+                            {['Moneda', 'Balance', '', ''].map((title, index) => (
+                                <td className="whitespace-nowrap py-3 px-6" key={index}>
+                                    {title}
+                                </td>
+                            ))}
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
         </div>
     );
-}
+};
 
 export default Balance;

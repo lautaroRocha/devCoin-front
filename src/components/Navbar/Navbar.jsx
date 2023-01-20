@@ -22,7 +22,7 @@ const Navbar = ({ logOut }) => {
     };
 
     return (
-        <nav className="fixed top-0 min-h-screen min-w-[4rem] rounded-r-xl bg-primary/90 text-white dark:bg-primary xl:w-[15%] 1700:w-[12%]">
+        <nav className="fixed top-0 min-h-screen min-w-[4rem] bg-gradient-to-b from-indigo-600 via-zinc-900 to-zinc-900 text-white dark:bg-primary xl:w-[15%] 1700:w-[12%]">
             <div className="m-auto h-screen w-full">
                 <div className="mt-8 text-center">DevCoin</div>
                 <div className="mt-8 flex h-full flex-col justify-between xl:ml-3">
@@ -106,7 +106,7 @@ const Navbar = ({ logOut }) => {
                         </NavLink>
                     </div>
                     <div className="flex -translate-y-[7rem] flex-col items-center gap-4 xl:items-start">
-                        <div className="navbar-links flex gap-x-6 hover:bg-transparent">
+                        <div className="flex w-[90%] gap-x-6 py-2 xl:px-4">
                             {theme === 'light' ? (
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -139,7 +139,7 @@ const Navbar = ({ logOut }) => {
                                 </svg>
                             )}
 
-                            <label className="switch max-md:m-auto">
+                            <label className="switch max-xl:mx-auto">
                                 <input type="checkbox" onClick={handleThemeSwitch} />
                                 <span className="slider round"></span>
                             </label>
