@@ -14,6 +14,7 @@ function App() {
     const [user, setUser] = useState();
     const [token, setToken] = useState();
     const [wallet, setWallet] = useState()
+    const [coins, setCoins] = useState()
 
     const navigate = useNavigate()
 
@@ -35,7 +36,7 @@ function App() {
         if(user && !wallet){
             fetch(URL.wallet+`/${user.hex_code}`)
                 .then(res => res.json())
-                .then(data => setWallet(data.wallet))
+                .then(data => {setCoins(data.coins.data); setWallet(data.wallet)})
                 .catch(error => console.log(error))
         }
     }, [user])

@@ -94,7 +94,7 @@ function SignUpPage() {
                                 <div>
                                     <label htmlFor="">Telefono</label>
                                     <input
-                                        type="number"
+                                        type="text"
                                         className="w-full rounded-xl py-2 px-4 focus:outline-none dark:bg-black/90 dark:text-white"
                                         onChange={(event) => setPhoneNumber(event.target.value)}
                                     />
