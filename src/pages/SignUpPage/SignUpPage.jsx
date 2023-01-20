@@ -49,7 +49,7 @@ function SignUpPage() {
     return (
         <>
             <div className="flex h-full w-full items-center justify-center">
-                <div className="mx-auto flex h-full w-full flex-col items-center rounded-2xl bg-neutral-200/70 shadow-lg dark:bg-neutral-800/80 md:h-[40rem] md:flex-row 1150:w-[60rem] 2xl:w-[75rem]">
+                <div className="mx-auto flex h-full w-full flex-col items-center rounded-2xl bg-white shadow-lg dark:bg-neutral-800/80 md:h-[40rem] md:flex-row 1150:w-[60rem] 2xl:w-[75rem]">
                     <div className="flex flex-col items-center justify-center max-md:mt-10 max-md:max-h-[30%] md:w-full md:gap-y-[4rem] lg:ml-[4rem]">
                         <img
                             src="/register-image.svg"
@@ -67,9 +67,9 @@ function SignUpPage() {
                         <form
                             id="form"
                             onSubmit={handleSubmitRegister}
-                            className="flex w-full flex-col items-center justify-center gap-3 500:w-[19rem] md:mx-auto"
+                            className="flex w-full flex-col items-center justify-center gap-3 500:w-[25rem] md:mx-auto"
                         >
-                            <h1 className="mb-1 text-xl font-bold">Registro</h1>
+                            <h1 className="mb-1 text-3xl font-semibold">Registro</h1>
                             <div className="flex w-full flex-col gap-2">
                                 <label htmlFor="">Nombre</label>
                                 <input
