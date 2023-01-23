@@ -7,8 +7,8 @@ import { AppWrap } from '../../wrapper';
 
 function ConvertPage() {
     const [monedas, setMonedas] = useState([]);
-    const [moneda1, setMoneda1] = useState('btc');
-    const [moneda2, setMoneda2] = useState('eth');
+    const [moneda1, setMoneda1] = useState();
+    const [moneda2, setMoneda2] = useState();
     const [monto, setMonto] = useState(undefined);
     const [result, setResult] = useState(undefined);
   
@@ -17,7 +17,7 @@ function ConvertPage() {
       fetch(`https://${host}/currencies`)
         .then((resp) => resp.json())
         .then((data) => {
-          setMonedas(Object.keys(data));
+          setMonedas(data);
         });
     }, []);
   
@@ -26,15 +26,8 @@ function ConvertPage() {
       setResult('')
     }, [moneda1, moneda2])
   
-    const handleConvert = () => {
-      if (moneda1 !== moneda2) {
-        const host = 'api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1&sparkline=false';
-        fetch(
-          `https://${host}/latest?amount=${monto}&from=${moneda1}&to=${moneda2}`
-        )
-          .then((resp) => resp.json())
-          .then((data) => {setResult(data.rates[moneda2])});
-      }
+  const handleConvert = () => {
+        setResult(moneda1 / moneda2 )
     };
   
     return (
@@ -48,7 +41,7 @@ function ConvertPage() {
               onChange={(e) => setMoneda1(e.target.value)}
             >
               {monedas.map((moneda) => (
-                <option value={moneda}>{moneda}</option>
+                <option value={moneda.current_price}>{moneda.symbol}</option>
               ))}
             </select>
             <select
@@ -58,7 +51,7 @@ function ConvertPage() {
               onChange={(e) => setMoneda2(e.target.value)}
             >
               {monedas.map((moneda) => (
-                <option value={moneda}>{moneda}</option>
+                <option value={moneda.current_price}>{moneda.symbol}</option>
               ))}
             </select>
           </div>
@@ -69,7 +62,7 @@ function ConvertPage() {
               value={monto}
               onChange={(e) => setMonto(e.target.value)}
             />
-            <p className=""> {moneda2}: {result}</p>
+            <p className=""> RESULTADO: {result}</p>
           </div>
           <div>
             <button onClick={handleConvert}>Convertir</button>
