@@ -1,14 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { AppWrap } from '../../wrapper';
 import { Link } from 'react-router-dom';
 import * as URL from '../../utils/URL';
 import { toast } from 'react-toastify';
 import * as Icons from '../../utils/icons'
+import { EyeIcon } from '../../components';
+import { changePasswordInputType } from '../../utils/changePassType';
+
+
 
 const LoginPage = (props) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [remember, setRemember] = useState(false);
+
+    const passInput = useRef()
 
     const handleRememberSession = (user, token) => {
         if (remember) {
@@ -42,13 +48,42 @@ const LoginPage = (props) => {
             .catch((error) => console.error(error));
     };
 
+    const sendRecoveryEmail = (e) => {
+        e.preventDefault()
+        const recoverLink = {
+            'link' : `http://127.0.0.1:5173/recovery/${email.slice(0, -4)}`,
+            'email' : email
+        }
+        if(email !== ""){
+            fetch(URL.recover, {
+                method : "POST",
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body : JSON.stringify(recoverLink)
+            }).then(res => res.json())
+              .then(data => {
+                if(data.message){
+                    toast.success('Te envíamos un mensaje a tu correo para reestablecer tu contraseña')
+                }else{
+                    toast.error('Ingresá tu email en el campo correspondiente')
+                }
+              })
+            .catch(err => toast.error(err))
+        }else{
+            toast.error('Ingresá tu email en el campo correspondiente')
+        }
+
+    }
+
+
     return (
         <div className="relative flex min-h-screen flex-col justify-center overflow-hidden">
             <div className="m-auto w-full rounded-md bg-white p-6 shadow-xl dark:bg-neutral-800/80 dark:text-white lg:max-w-xl ">
                 <h1 className="text-center text-3xl font-semibold">Iniciar sesión</h1>
                 <form className="mt-6" onSubmit={handleSubmitLogin}>
                     <div className="mb-2 flex flex-col gap-y-2">
-                        <label htmlfor="email" className="block text-sm font-semibold">
+                        <label htmlFor="email" className="block text-sm font-semibold">
                             Email
                         </label>
                         <input
@@ -59,14 +94,19 @@ const LoginPage = (props) => {
                         />
                     </div>
                     <div className="mb-2 flex flex-col gap-y-2">
-                        <label for="password" className="block text-sm font-semibold">
+                        <label htmlFor="password" className="block text-sm font-semibold relative">
                             Contraseña
-                        </label>
                         <input
                             type="password"
                             className="w-full rounded-xl px-4 py-2 focus:outline-none dark:bg-black/90"
                             onChange={(event) => setPassword(event.target.value)}
+                            ref={passInput}
                         />
+                        <span onClick={()=>{changePasswordInputType(passInput)}} className="hover:cursor-pointer">
+                        <EyeIcon />
+                        </span>
+                        </label>
+
                     </div>
                     <div className="flex w-full gap-x-2">
                         <input
@@ -78,12 +118,12 @@ const LoginPage = (props) => {
                         />
                         <label htmlFor="remember">Recordarme</label>
                     </div>
-                    <a
-                        href="#"
+                    <Link
+                        onClick={sendRecoveryEmail}
                         className="text-xs text-purple-600 hover:underline dark:text-indigo-400"
                     >
                         ¿Quieres restablecer la contraseña?
-                    </a>
+                    </Link>
                     <div className="mt-6">
                         <button className="buttons w-full">Ingresar</button>
                     </div>

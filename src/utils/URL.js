@@ -12,4 +12,6 @@ export const login = users + "/logIn"
 
 export const recover = users + "/recover"
 
+export const recoverPass = users + "/recoverPass"
+
 
