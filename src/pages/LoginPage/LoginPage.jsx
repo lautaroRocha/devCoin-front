@@ -42,25 +42,32 @@ const LoginPage = (props) => {
             .catch((error) => console.error(error));
     };
 
-    const sendRecoveryEmail = () => {
+    const sendRecoveryEmail = (e) => {
+        e.preventDefault()
         const recoverLink = {
-            'link' : `http://127.0.0.1:5173/recovery/${email}`
+            'link' : `http://127.0.0.1:5173/recovery/${email.slice(0, -4)}`,
+            'email' : email
         }
-        fetch(URL.recover, {
-            method : "POST",
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body : JSON.stringify(recoverLink)
-        }).then(res => res.json())
-          .then(data => {
-            if(data.message){
-                toast.success('Te envíamos un mensaje a tu correo para reestablecer tu contraseña')
-            }else{
-                toast.error('Ingresá tu email en el campo correspondiente')
-            }
-          })
-        .catch(err => toast.error(err))
+        if(email !== ""){
+            fetch(URL.recover, {
+                method : "POST",
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body : JSON.stringify(recoverLink)
+            }).then(res => res.json())
+              .then(data => {
+                if(data.message){
+                    toast.success('Te envíamos un mensaje a tu correo para reestablecer tu contraseña')
+                }else{
+                    toast.error('Ingresá tu email en el campo correspondiente')
+                }
+              })
+            .catch(err => toast.error(err))
+        }else{
+            toast.error('Ingresá tu email en el campo correspondiente')
+        }
+
     }
 
     return (
