@@ -1,6 +1,7 @@
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 // Pages
+
 import { HomePage, WalletPage, UserProfilePage, SignUpPage, LoginPage, VerifyPage, RecoveryPage } from './pages';
 import { Navbar } from './components';
 import { userContext } from './context/userContext';
@@ -8,6 +9,8 @@ import { tokenContext } from './context/tokenContext';
 import * as URL from './utils/URL';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ConvertPage from './pages/ConvertPage/ConvertPage';
+
 
 function App() {
     const [user, setUser] = useState();
