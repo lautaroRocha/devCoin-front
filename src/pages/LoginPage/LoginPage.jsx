@@ -43,7 +43,24 @@ const LoginPage = (props) => {
     };
 
     const sendRecoveryEmail = () => {
-        fetch()
+        const recoverLink = {
+            'link' : `http://127.0.0.1:5173/recovery/${email}`
+        }
+        fetch(URL.recover, {
+            method : "POST",
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body : JSON.stringify(recoverLink)
+        }).then(res => res.json())
+          .then(data => {
+            if(data.message){
+                toast.success('Te envíamos un mensaje a tu correo para reestablecer tu contraseña')
+            }else{
+                toast.error('Ingresá tu email en el campo correspondiente')
+            }
+          })
+        .catch(err => toast.error(err))
     }
 
     return (
@@ -83,7 +100,7 @@ const LoginPage = (props) => {
                         <label htmlFor="remember">Recordarme</label>
                     </div>
                     <Link
-                        to={`/recovery/${email}`}
+                        onClick={sendRecoveryEmail}
                         className="text-xs text-purple-600 hover:underline dark:text-indigo-400"
                     >
                         ¿Quieres restablecer la contraseña?
