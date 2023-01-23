@@ -1,14 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { AppWrap } from '../../wrapper';
 import { Link } from 'react-router-dom';
 import * as URL from '../../utils/URL';
 import { toast } from 'react-toastify';
 import * as Icons from '../../utils/icons'
+import { EyeIcon } from '../../components';
+import { changePasswordInputType } from '../../utils/changePassType';
+
+
 
 const LoginPage = (props) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [remember, setRemember] = useState(false);
+
+    const passInput = useRef()
 
     const handleRememberSession = (user, token) => {
         if (remember) {
@@ -70,6 +76,7 @@ const LoginPage = (props) => {
 
     }
 
+
     return (
         <div className="relative flex min-h-screen flex-col justify-center overflow-hidden">
             <div className="m-auto w-full rounded-md bg-white p-6 shadow-xl dark:bg-neutral-800/80 dark:text-white lg:max-w-xl ">
@@ -87,14 +94,19 @@ const LoginPage = (props) => {
                         />
                     </div>
                     <div className="mb-2 flex flex-col gap-y-2">
-                        <label htmlFor="password" className="block text-sm font-semibold">
+                        <label htmlFor="password" className="block text-sm font-semibold relative">
                             Contraseña
-                        </label>
                         <input
                             type="password"
                             className="w-full rounded-xl px-4 py-2 focus:outline-none dark:bg-black/90"
                             onChange={(event) => setPassword(event.target.value)}
+                            ref={passInput}
                         />
+                        <span onClick={()=>{changePasswordInputType(passInput)}} className="hover:cursor-pointer">
+                        <EyeIcon />
+                        </span>
+                        </label>
+
                     </div>
                     <div className="flex w-full gap-x-2">
                         <input
