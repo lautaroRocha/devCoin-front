@@ -69,7 +69,7 @@ const LoginPage = (props) => {
                 <h1 className="text-center text-3xl font-semibold">Iniciar sesión</h1>
                 <form className="mt-6" onSubmit={handleSubmitLogin}>
                     <div className="mb-2 flex flex-col gap-y-2">
-                        <label htmlfor="email" className="block text-sm font-semibold">
+                        <label htmlFor="email" className="block text-sm font-semibold">
                             Email
                         </label>
                         <input
@@ -80,7 +80,7 @@ const LoginPage = (props) => {
                         />
                     </div>
                     <div className="mb-2 flex flex-col gap-y-2">
-                        <label for="password" className="block text-sm font-semibold">
+                        <label htmlFor="password" className="block text-sm font-semibold">
                             Contraseña
                         </label>
                         <input
