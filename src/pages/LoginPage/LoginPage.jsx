@@ -42,6 +42,10 @@ const LoginPage = (props) => {
             .catch((error) => console.error(error));
     };
 
+    const sendRecoveryEmail = () => {
+        fetch()
+    }
+
     return (
         <div className="relative flex min-h-screen flex-col justify-center overflow-hidden">
             <div className="m-auto w-full rounded-md bg-white p-6 shadow-xl dark:bg-neutral-800/80 dark:text-white lg:max-w-xl ">
@@ -78,12 +82,12 @@ const LoginPage = (props) => {
                         />
                         <label htmlFor="remember">Recordarme</label>
                     </div>
-                    <a
-                        href="#"
+                    <Link
+                        to={`/recovery/${email}`}
                         className="text-xs text-purple-600 hover:underline dark:text-indigo-400"
                     >
                         ¿Quieres restablecer la contraseña?
-                    </a>
+                    </Link>
                     <div className="mt-6">
                         <button className="buttons w-full">Ingresar</button>
                     </div>
