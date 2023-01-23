@@ -14,10 +14,10 @@ const UserProfilePage = (props) => {
 
     const [editing, setEditing] = useState(false);
 
-    const [nameUpdated, setNameUpdated] = useState(user.first_name);
-    const [lastNameUpdated, setLastnameUpdated] = useState(user.last_name);
-    const [phoneNumberUpdated, setPhoneNumberUpdated] = useState(user.phone);
-    const [addressUpdated, setAddressUpdated] = useState(user.address);
+    const [nameUpdated, setNameUpdated] = useState(user && user.first_name);
+    const [lastNameUpdated, setLastnameUpdated] = useState(user && user.last_name);
+    const [phoneNumberUpdated, setPhoneNumberUpdated] = useState(user && user.phone);
+    const [addressUpdated, setAddressUpdated] = useState(user && user.address);
     const [passwordUpdated, setPasswordUpdated] = useState();
 
     const userPicture = useRef();
