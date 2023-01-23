@@ -3,11 +3,10 @@ import { AppWrap } from '../../wrapper';
 import { Link } from 'react-router-dom';
 import * as URL from '../../utils/URL';
 import { toast } from 'react-toastify';
+
 import * as Icons from '../../utils/icons'
 import { EyeIcon } from '../../components';
 import { changePasswordInputType } from '../../utils/changePassType';
-
-
 
 const LoginPage = (props) => {
     const [email, setEmail] = useState('');
@@ -38,11 +37,11 @@ const LoginPage = (props) => {
         })
             .then((res) => res.json())
             .then((data) => {
-                if(data.message){
-                    toast.error(data.message)
-                }else{
-                    props.props.logIn(data.user, data.tokenAccess)
-                    handleRememberSession(data.user, data.tokenAccess)
+                if (data.message) {
+                    toast.error(data.message);
+                } else {
+                    props.props.logIn(data.user, data.tokenAccess);
+                    handleRememberSession(data.user, data.tokenAccess);
                 }
             })
             .catch((error) => console.error(error));
@@ -94,7 +93,7 @@ const LoginPage = (props) => {
                         />
                     </div>
                     <div className="mb-2 flex flex-col gap-y-2">
-                        <label htmlFor="password" className="block text-sm font-semibold relative">
+                        <label htmlFor="password" className="block text-sm font-semibold">
                             Contraseña
                         <input
                             type="password"
@@ -138,13 +137,13 @@ const LoginPage = (props) => {
                         type="button"
                         className="flex w-full items-center justify-center rounded-md border border-gray-600 p-2 transition-colors hover:bg-black hover:text-white focus:ring-2 focus:ring-violet-600 focus:ring-offset-1 dark:hover:bg-white dark:hover:text-black"
                     >
-                    {Icons.google}
+                        {Icons.google}
                     </button>
                     <button className="flex w-full items-center justify-center rounded-md border border-gray-600 p-2 transition-colors hover:bg-black hover:text-white focus:ring-2 focus:ring-violet-600 focus:ring-offset-1 dark:hover:bg-white dark:hover:text-black">
-                     {Icons.twitter}
+                        {Icons.twitter}
                     </button>
                     <button className="flex w-full items-center justify-center rounded-md border border-gray-600 p-2 transition-colors hover:bg-black hover:text-white focus:ring-2 focus:ring-violet-600 focus:ring-offset-1 dark:hover:bg-white dark:hover:text-black">
-                       {Icons.github}
+                        {Icons.github}
                     </button>
                 </div>
 
