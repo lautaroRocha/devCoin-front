@@ -9,6 +9,7 @@ import axios from 'axios';
 import { users } from '../../utils/URL';
 
 const UserProfilePage = (props) => {
+
     const token = useContext(tokenContext);
     const user = useContext(userContext);
 
@@ -26,25 +27,17 @@ const UserProfilePage = (props) => {
         setEditing(true);
     }
 
-    async function updateContentEdited(event) {
+    function updateContentEdited(event) {
         event.preventDefault();
-        try {
-            const resp = await axios.put(
-                users + `/${user.hex_code}`,
-                {
-                    body: {
-                        first_name: nameUpdated,
-                        last_name: lastNameUpdated,
-                        address: addressUpdated,
-                        phone: phoneNumberUpdated,
-                    },
-                },
-                { headers: { 'x-access-token': token, 'Content-Type': '' } }
-            );
-            console.log(resp);
-        } catch (error) {
-            console.log(error);
+        const updateData = {
+            first_name: nameUpdated,
+            last_name: lastNameUpdated,
+            address: addressUpdated,
+            phone: phoneNumberUpdated,
         }
+        axios.put(users + `/${user.hex_code}`, updateData, { headers: { 'x-access-token': token} })
+            .then( res => props.props.update())
+            .catch( error => console.log(error))
 
         setEditing(false);
     }

@@ -10,7 +10,7 @@ import * as URL from './utils/URL';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ConvertPage from './pages/ConvertPage/ConvertPage';
-
+import axios from 'axios'
 
 function App() {
     const [user, setUser] = useState();
@@ -59,6 +59,15 @@ function App() {
         navigate('/');
     }
 
+    function updateUserState(){
+        sessionStorage.removeItem('user')
+        axios.get(URL.users+'/'+user.hex_code)
+            .then( res => { 
+                setUser(res.data.data[0]), sessionStorage.setItem('user', JSON.stringify(res.data.data[0]))
+            })
+            .catch( error => toast.error('Ocurrió un error'))
+    }
+
     return (
         <>
             <userContext.Provider value={user}>
@@ -67,7 +76,7 @@ function App() {
                     <Routes>
                         <Route path="/" element={<HomePage />} />
                         <Route path="/wallet" element={<WalletPage wallet={wallet} />} />
-                        <Route path="/profile" element={<UserProfilePage wallet={wallet} />} />
+                        <Route path="/profile" element={<UserProfilePage wallet={wallet} update={updateUserState}/>} />
                         <Route path="/login" element={<LoginPage logIn={logIn} />} />
                         <Route path="/signup" element={<SignUpPage />} />
                         <Route path="/verify/:email" element={<VerifyPage />} />
