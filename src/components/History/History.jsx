@@ -15,18 +15,20 @@ const History = () => {
     return (
         <div className='flex flex-col h-screen items-center lg:flex-row lg:items-start lg:mt-6'>
         <table>
-            <tr>
-                <th>Recibidas</th>
-            </tr>
-        <tbody>
-            {transactionsToUser.map( (trans) => {
-                return(
-                    <tr class="odd:bg-secondary/20 even:bg-secondary/50 w-auto grid grid-cols-4 place-items-center	text-center ml-4">
-                    <td>{trans.from}</td>
-                    <td>{trans.token}</td>
-                    <td>{trans.amount}</td>
-                    <td>{trans.date}</td>
+            <thead>
+                <tr>
+                    <th>Recibidas</th>
                 </tr>
+            </thead>
+        <tbody>
+            {transactionsToUser.map( (trans, idx) => {
+                return(
+                    <tr className="odd:bg-secondary/20 even:bg-secondary/50 w-auto grid grid-cols-4 place-items-center	text-center ml-4" key={idx}>
+                        <td>{trans.from}</td>
+                        <td>{trans.token}</td>
+                        <td>{trans.amount}</td>
+                        <td>{trans.date}</td>
+                    </tr>
                 )
             })}
         </tbody>
@@ -37,14 +39,14 @@ const History = () => {
             <tr>
             <th>Enviadas</th>
             </tr>
-            {transactionsByUser.map( (trans) => {
+            {transactionsByUser.map( (trans, idx) => {
                 return(
-                    <tr class="odd:bg-secondary/20 even:bg-secondary/50 w-auto grid grid-cols-4 text-center ml-4 place-items-center	 ">
-                    <td>{trans.from}</td>
-                    <td>{trans.token}</td>
-                    <td>{trans.amount}</td>
-                    <td>{trans.date}</td>
-                </tr>
+                    <tr className="odd:bg-secondary/20 even:bg-secondary/50 w-auto grid grid-cols-4 text-center ml-4 place-items-center" key={idx}>
+                        <td>{trans.from}</td>
+                        <td>{trans.token}</td>
+                        <td>{trans.amount}</td>
+                        <td>{trans.date}</td>
+                    </tr>
                 )
             })}
         </tbody>

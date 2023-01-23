@@ -39,7 +39,6 @@ function App() {
             fetch(URL.wallet + `/${user.hex_code}`, { headers: { 'x-access-token': token } })
                 .then((res) => res.json())
                 .then((data) => {
-                    console.log(data);
                     setCoins(data.coins.data);
                     setWallet(data.wallet);
                 })
@@ -59,8 +58,6 @@ function App() {
         setToken(tokenData);
         navigate('/');
     }
-
-    console.log(coins);
 
     return (
         <>

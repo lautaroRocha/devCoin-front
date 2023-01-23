@@ -10,7 +10,7 @@ const MinCoin = ({coin, idx}) => {
                 <span>{coin.token}</span>
             </td>
             <td>
-                <span className=''>{coin.quantity}</span>
+                <span >{coin.quantity}</span>
             </td> 
             <td className='hover:cursor-pointer '>
                 COMPRAR
