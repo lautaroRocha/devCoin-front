@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { AppWrap } from '../../wrapper';
 import { Link } from 'react-router-dom';
 import * as URL from '../../utils/URL';
 import { toast } from 'react-toastify';
+import { EyeIcon } from '../../components';
+import { changePasswordInputType } from '../../utils/changePassType';
 
 const DEFAULT_PICTURE =
     'https://img.freepik.com/vector-gratis/fondo-azul-galaxia_125540-99.jpg?w=2000';
@@ -14,6 +16,8 @@ function SignUpPage() {
     const [newAddress, setNewAddress] = useState('');
     const [newEmail, setNewEmail] = useState('');
     const [newPassword, setNewPassword] = useState('');
+
+    const passInput = useRef()
 
     const handleSubmitRegister = (event) => {
         event.preventDefault();
@@ -117,12 +121,17 @@ function SignUpPage() {
                                 />
                             </div>
                             <div className="flex w-full flex-col gap-2">
-                                <label htmlFor="">Contraseña</label>
+                                <label htmlFor="" className='relative'>Contraseña
                                 <input
+                                    ref={passInput}
                                     type="password"
                                     className="w-full rounded-xl px-4 py-2 focus:outline-none dark:bg-black/90 dark:text-white"
                                     onChange={(event) => setNewPassword(event.target.value)}
                                 />
+                                  <span onClick={() => {changePasswordInputType(passInput)}} className="hover:cursor-pointer">
+                                <EyeIcon />
+                                </span>
+                                </label>
                             </div>
                             <button className="buttons mt-4 w-full">Registrarse</button>
                         </form>

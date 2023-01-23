@@ -8,3 +8,4 @@ export {default as MinCoin} from "./MinCoin/MinCoin"
 export {default as History} from "./History/History"
 export {default as Transfer} from "./Transfer/Transfer"
 export {default as Deposit} from './Deposit/Deposit'
+export {default as EyeIcon} from './EyeIcon/EyeIcon'
