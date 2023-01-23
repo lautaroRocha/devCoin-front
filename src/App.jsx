@@ -74,6 +74,7 @@ function App() {
                         <Route path="/login" element={<LoginPage logIn={logIn} />} />
                         <Route path="/signup" element={<SignUpPage />} />
                         <Route path="/verify/:email" element={<VerifyPage />} />
+                        <Route path="/convert" element={<ConvertPage />} />
                     </Routes>
                     <ToastContainer
                         position="bottom-left"
