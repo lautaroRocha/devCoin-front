@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { AppWrap } from '../../wrapper';
 import { Link } from 'react-router-dom';
 import * as URL from '../../utils/URL';
 import { toast } from 'react-toastify';
+import { EyeIcon } from '../../components';
+import { changePasswordInputType } from '../../utils/changePassType';
 
 const DEFAULT_PICTURE =
     'https://img.freepik.com/vector-gratis/fondo-azul-galaxia_125540-99.jpg?w=2000';
@@ -14,6 +16,8 @@ function SignUpPage() {
     const [newAddress, setNewAddress] = useState('');
     const [newEmail, setNewEmail] = useState('');
     const [newPassword, setNewPassword] = useState('');
+
+    const passInput = useRef()
 
     const handleSubmitRegister = (event) => {
         event.preventDefault();
@@ -35,13 +39,13 @@ function SignUpPage() {
                 'Content-Type': 'application/json',
             },
         })
-            .then((res) =>  res.json())
+            .then((res) => res.json())
             .then((data) => {
-                if (data.message){
+                if (data.message) {
                     //creamos un array de todos los mensajes de error
                     //usando la coma como punto de separación
                     //y por cada uno tiramos un error toast
-                     Array.from(data.message.split(',')).forEach( (err) => toast.error(err));
+                    Array.from(data.message.split(',')).forEach((err) => toast.error(err));
                 } else {
                     toast.success('Ya estás registrado! Revisá tu correo para verificar tu cuenta');
                     document.getElementById('form').reset();
@@ -53,7 +57,7 @@ function SignUpPage() {
     return (
         <>
             <div className="flex h-full w-full items-center justify-center">
-                <div className="mx-auto flex h-full w-full flex-col items-center rounded-2xl bg-white shadow-lg dark:bg-neutral-800/80 md:h-[40rem] md:flex-row 1150:w-[60rem] 2xl:w-[75rem]">
+                <div className="mx-auto flex h-full w-full flex-col items-center rounded-md bg-white shadow-lg dark:bg-neutral-800/80 md:h-[40rem] md:flex-row 1150:w-[60rem] 2xl:w-[75rem]">
                     <div className="flex flex-col items-center justify-center max-md:mt-10 max-md:max-h-[30%] md:w-full md:gap-y-[4rem] lg:ml-[4rem]">
                         <img
                             src="/register-image.svg"
@@ -117,12 +121,17 @@ function SignUpPage() {
                                 />
                             </div>
                             <div className="flex w-full flex-col gap-2">
-                                <label htmlFor="">Contraseña</label>
+                                <label htmlFor="" className='relative'>Contraseña
                                 <input
+                                    ref={passInput}
                                     type="password"
                                     className="w-full rounded-xl px-4 py-2 focus:outline-none dark:bg-black/90 dark:text-white"
                                     onChange={(event) => setNewPassword(event.target.value)}
                                 />
+                                  <span onClick={() => {changePasswordInputType(passInput)}} className="hover:cursor-pointer">
+                                <EyeIcon />
+                                </span>
+                                </label>
                             </div>
                             <button className="buttons mt-4 w-full">Registrarse</button>
                         </form>
