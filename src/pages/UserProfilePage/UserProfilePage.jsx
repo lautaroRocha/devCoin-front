@@ -73,7 +73,7 @@ const UserProfilePage = (props) => {
 
     if (user && user.verified_user) {
         return (
-            <div className="relative flex h-full w-full flex-col items-center overflow-x-hidden md:items-start">
+            <div className="relative flex h-full w-full flex-col items-center md:overflow-x-hidden md:items-start">
                 {editing && (
                     <>
                         {/* FORMULARIO PARA CAMBIAR DATOS */}
