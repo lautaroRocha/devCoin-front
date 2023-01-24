@@ -7,11 +7,9 @@ import { Navigate } from 'react-router-dom';
 import * as Icons from '../../utils/icons';
 import axios from 'axios';
 import { users } from '../../utils/URL';
-import { getStorage, ref, uploadBytes, getDownloadURL  } from "firebase/storage";
+import { getStorage, ref, uploadBytes} from "firebase/storage";
 import imageCompression from 'browser-image-compression';
 import { toast } from 'react-toastify';
-import getProfilePictureURL from '../../utils/getProfilePicURL';
-
 
 
 const UserProfilePage = (props) => {
@@ -53,11 +51,7 @@ const UserProfilePage = (props) => {
                 toast.info('Estamos subiendo tu foto...');
             });
         }
-        }
-
- 
-  
-
+    }
 
     function updateContentEdited(event) {
         event.preventDefault();
@@ -229,7 +223,7 @@ const UserProfilePage = (props) => {
                 </div>
             </div>
         );
-    } else {
+    }else{
         return <Navigate to="/login" replace={true} />;
     }
 };
