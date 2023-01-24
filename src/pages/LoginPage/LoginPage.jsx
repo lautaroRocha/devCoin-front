@@ -93,7 +93,7 @@ const LoginPage = (props) => {
                         />
                     </div>
                     <div className="mb-2 flex flex-col gap-y-2">
-                        <label htmlFor="password" className="block text-sm font-semibold">
+                        <label htmlFor="password" className="block text-sm font-semibold relative">
                             Contraseña
                         <input
                             type="password"
