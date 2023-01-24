@@ -25,11 +25,10 @@ const Navbar = ({ logOut }) => {
     };
 
     return (
-        <nav className="fixed top-0 min-h-screen min-w-[4rem] bg-gradient-to-b from-indigo-600 via-zinc-900 to-zinc-900 text-white dark:bg-primary xl:w-[15%] 1700:w-[12%]">
-            <div className="m-auto h-screen w-full">
-                <div className="mt-8 text-center">DevCoin</div>
-                <div className="mt-8 flex h-full flex-col justify-between xl:ml-3">
-                    <div className="flex flex-col items-center gap-4 xl:items-start">
+        <nav className="fixed top-0 h-screen min-w-[4rem] bg-gradient-to-b from-indigo-600 via-zinc-900 to-zinc-900 text-white dark:bg-primary xl:w-[15%] 1700:w-[12%]">
+            <div className="flex flex-col h-[90%] mt-8 justify-around">
+                <div className="text-center basis-1">DevCoin</div>
+                <div className="flex flex-col items-center gap-4 xl:items-start basisx-3">
                         <NavLink
                             to="/"
                             className="navbar-links flex gap-x-6"
@@ -66,8 +65,8 @@ const Navbar = ({ logOut }) => {
                             {Icons.convert}
                             <span className="hidden xl:flex">Conversor</span>
                         </NavLink>
-                    </div>
-                    <div className="flex -translate-y-[7rem] flex-col items-center gap-4 xl:items-start">
+                </div>
+                <div className="flex  flex-col items-center gap-4 xl:items-start basis-1">
                         <div className="flex w-[90%] gap-x-6 py-2 xl:px-4">
                             {theme === 'light' ?  Icons.moon : Icons.sun}
                             <label className="switch max-xl:mx-auto">
@@ -92,9 +91,9 @@ const Navbar = ({ logOut }) => {
                                 </span>
                             </div>
                         )}
-                    </div>
                 </div>
             </div>
+
         </nav>
     );
 };
