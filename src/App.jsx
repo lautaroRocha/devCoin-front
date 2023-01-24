@@ -1,7 +1,6 @@
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 // Pages
-
 import { HomePage, WalletPage, UserProfilePage, SignUpPage, LoginPage, VerifyPage, RecoveryPage } from './pages';
 import { Navbar } from './components';
 import { userContext } from './context/userContext';
@@ -11,12 +10,15 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ConvertPage from './pages/ConvertPage/ConvertPage';
 import axios from 'axios'
+import getProfilePictureURL from './utils/getProfilePicURL';
 
 function App() {
+
     const [user, setUser] = useState();
     const [token, setToken] = useState();
     const [wallet, setWallet] = useState();
     const [coins, setCoins] = useState();
+    const [userPictureURL, setUserPictureURL] = useState();
 
     const navigate = useNavigate();
 
@@ -45,6 +47,12 @@ function App() {
                 .catch((error) => console.log(error));
         }
     }, [user]);
+
+    useEffect(()=>{
+        if(user){
+            const link = getProfilePictureURL(user.email, setUserPictureURL)
+        }
+    }, [user])
 
     function logOut() {
         setUser(null);
@@ -76,7 +84,7 @@ function App() {
                     <Routes>
                         <Route path="/" element={<HomePage />} />
                         <Route path="/wallet" element={<WalletPage wallet={wallet} />} />
-                        <Route path="/profile" element={<UserProfilePage wallet={wallet} update={updateUserState}/>} />
+                        <Route path="/profile" element={<UserProfilePage wallet={wallet} update={updateUserState} url={userPictureURL}/>} />
                         <Route path="/login" element={<LoginPage logIn={logIn} />} />
                         <Route path="/signup" element={<SignUpPage />} />
                         <Route path="/verify/:email" element={<VerifyPage />} />
