@@ -1,4 +1,4 @@
-import React, { useRef, useState, useContext } from 'react';
+import React, { useRef, useState, useContext, useEffect } from 'react';
 import { Balance } from '../../components';
 import { AppWrap } from '../../wrapper';
 import { userContext } from '../../context/userContext';
@@ -7,11 +7,18 @@ import { Navigate } from 'react-router-dom';
 import * as Icons from '../../utils/icons';
 import axios from 'axios';
 import { users } from '../../utils/URL';
+import { getStorage, ref, uploadBytes} from "firebase/storage";
+import imageCompression from 'browser-image-compression';
+import { toast } from 'react-toastify';
+
 
 const UserProfilePage = (props) => {
 
     const token = useContext(tokenContext);
     const user = useContext(userContext);
+
+    const storage = getStorage()
+    const storageRef = user && ref(storage, `images/${user.email}-profilepic`);
 
     const [editing, setEditing] = useState(false);
 
@@ -22,9 +29,28 @@ const UserProfilePage = (props) => {
     const [passwordUpdated, setPasswordUpdated] = useState();
 
     const userPicture = useRef();
+    const newPhoto = useRef()
 
     function editContent() {
         setEditing(true);
+    }
+
+    async function uploadToStorage(ref, file){
+        if(!file){
+            toast.error("No se ha detectado ningun archivo")
+        }else{
+            const options = {
+            maxSizeMB: 1,
+            maxWidthOrHeight: 500,
+            useWebWorker: true,
+            convertSize: 500,
+            convertTypes: ['image/png', 'image/webp', 'image/jpg']
+            }
+            const compressedFile = await imageCompression(file, options);
+            await uploadBytes(ref, compressedFile).then((snapshot) => {
+                toast.info('Estamos subiendo tu foto...');
+            });
+        }
     }
 
     function updateContentEdited(event) {
@@ -38,7 +64,10 @@ const UserProfilePage = (props) => {
         axios.put(users + `/${user.hex_code}`, updateData, { headers: { 'x-access-token': token} })
             .then( res => props.props.update())
             .catch( error => console.log(error))
-
+        if(newPhoto.current.files[0] !== undefined){
+            const newFile = newPhoto.current.files[0] 
+            uploadToStorage(storageRef, newFile)
+        }
         setEditing(false);
     }
 
@@ -65,7 +94,7 @@ const UserProfilePage = (props) => {
                                 </h1>
 
                                 <div className="flex flex-col gap-y-3">
-                                    <input type="file" className="flex w-full" />
+                                    <input type="file" className="flex w-full" ref={newPhoto}/>
 
                                     <div className="flex w-full flex-col gap-2">
                                         <label htmlFor="name">Nombre</label>
@@ -150,7 +179,7 @@ const UserProfilePage = (props) => {
                                 ref={userPicture}
                             >
                                 <img
-                                    src={user.image}
+                                    src={props.props.url}
                                     alt="userPicture"
                                     className="h-full w-full rounded-full object-cover"
                                 />
@@ -194,7 +223,7 @@ const UserProfilePage = (props) => {
                 </div>
             </div>
         );
-    } else {
+    }else{
         return <Navigate to="/login" replace={true} />;
     }
 };
