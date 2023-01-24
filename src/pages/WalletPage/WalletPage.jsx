@@ -45,7 +45,7 @@ const Wallet = () => {
     if(user && user.verified_user){
     return (
         <div className="flex h-full w-full flex-col items-center">
-            <h1 className="mt-6 text-6xl font-bold text-primary dark:text-secondary">WALLET</h1>
+            <h1 className="text-2xl font-bold mr-auto">Wallet</h1>
             <Deposit />
             <ul className="mt-4 flex gap-6  text-sm font-bold text-white">
                 <li
