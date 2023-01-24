@@ -171,7 +171,7 @@ const UserProfilePage = (props) => {
                     {/* PÁGINA CON BLUR */}
                     <h1 className="text-2xl font-bold">Perfil</h1>
                     <div className="mt-[1rem] flex w-full flex-col md:flex-row">
-                        <div className="glass relative flex w-full flex-col items-center justify-between gap-6 rounded-md py-6 text-center text-white sm:flex-row sm:justify-center sm:gap-x-[2rem] md:w-[60%] lg:w-[70%] md:justify-start md:gap-x-[2rem] md:pl-4 lg:gap-x-[3rem] xl:gap-x-[4rem]">
+                        <div className="glass relative flex w-full flex-col items-center justify-between gap-6 rounded-md py-6 text-center text-white sm:flex-row sm:justify-center sm:gap-x-[2rem] md:w-[60%] md:justify-start md:gap-x-[2rem] md:pl-4 lg:gap-x-[3rem] xl:gap-x-[4rem]">
                             <div
                                 className={`h-32 w-32 rounded-full bg-white sm:ml-[1rem] ${
                                     editing && 'sm:ml-[1rem]'
@@ -212,7 +212,7 @@ const UserProfilePage = (props) => {
                                 ${props.props.wallet.balance}
                             </span>
                         </div> */}
-                        <div className="mt-4 flex h-[4rem] w-full items-center justify-start gap-x-4 rounded-lg bg-gray-900/90 px-[4rem] text-white dark:bg-gray-800/50 max-350:px-[0.5rem] md:w-[40%] lg:w-[30%] md:h-full md:glassMoney md:ml-5 md:mt-0">
+                        <div className="mt-4 flex h-[4rem] w-full items-center justify-start gap-x-4 rounded-lg bg-gray-900/90 px-[4rem] text-white dark:bg-gray-800/50 max-350:px-[0.5rem] md:w-[40%] md:h-full md:glassMoney md:ml-5 md:mt-0">
                             <span>
                             {Icons.bill}
                             </span>
