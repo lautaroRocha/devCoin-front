@@ -213,7 +213,9 @@ const UserProfilePage = (props) => {
                             </span>
                         </div> */}
                         <div className="mt-4 flex h-[4rem] w-full items-center justify-start gap-x-4 rounded-lg bg-gray-900/90 px-[4rem] text-white dark:bg-gray-800/50 max-350:px-[0.5rem] md:w-[40%] lg:w-[30%] md:h-full md:glassMoney md:ml-5 md:mt-0">
+                            <span>
                             {Icons.bill}
+                            </span>
                             <span className="ml-auto text-2xl font-bold lg:text-4xl">
                                 ${props.props.wallet.balance}
                             </span>
