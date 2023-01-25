@@ -70,7 +70,7 @@ function App() {
         setUser(userData);
         setToken(tokenData);
         navigate('/');
-        toast.success(`Bienvenido, ${userData.first_name}`);
+        toast.success(`Bienvenido, ${userData.first_name}`)
     }
 
     function updateUserState() {
