@@ -41,7 +41,7 @@ const Wallet = (props) => {
         return (
             <>
                 <h1 className="mr-auto text-2xl font-bold">Wallet</h1>
-                <div className="flex w-full flex-col items-center gap-8 overflow-hidden lg:grid lg:h-[70vh] lg:grid-cols-[420px,_1fr] lg:grid-rows-4 lg:gap-x-5">
+                <div className="flex w-full flex-col items-center gap-8 overflow-visible lg:grid lg:h-[70vh] lg:grid-cols-[420px,_1fr] lg:grid-rows-4 lg:gap-x-5">
                     <Deposit update={props.props.update} />
                     <div className="lg:items-left flex h-[50vh] flex-col items-center lg:col-start-1 lg:col-end-4 lg:row-start-2">
                         <ul className="mt-4 flex gap-6  text-sm font-bold text-white ">
