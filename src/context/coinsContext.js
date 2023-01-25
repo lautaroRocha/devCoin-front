@@ -1,3 +1,3 @@
-import { createContext } from "react";
-
-export const coinsContext = createContext(null)
+import { createContext } from 'react';
+const coinsContext = createContext(null);
+export default coinsContext;

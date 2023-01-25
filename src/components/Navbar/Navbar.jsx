@@ -1,6 +1,6 @@
 // React
 import React, { useEffect, useState, useContext } from 'react';
-import { userContext } from '../../context/userContext';
+import { userContext } from '../../context';
 import * as Icons from '../../utils/icons';
 
 // Routes
