@@ -42,6 +42,7 @@ const Wallet = (props) => {
             <>
                 <h1 className="mr-auto text-2xl font-bold">Wallet</h1>
                 <div className="flex w-full flex-col items-center gap-8 overflow-hidden lg:grid lg:h-[90vh] lg:grid-cols-4 lg:grid-rows-4 lg:gap-9">
+
                     <Deposit update={props.props.update} />
                     <div className="lg:items-left flex flex-col items-center lg:col-start-1 lg:col-end-4 lg:row-start-2 gap-8 lg:mt-16">
                          <ul className="mt-4 flex gap-6  text-sm font-bold text-white h-3/12">
