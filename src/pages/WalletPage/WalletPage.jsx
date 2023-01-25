@@ -27,8 +27,6 @@ const Wallet = () => {
         case 'Historial':
             view = <History />;
             break;
-        case 'Enviar':
-            view = <Transfer />;
             break;
     }
 
@@ -44,31 +42,30 @@ const Wallet = () => {
 
     if(user && user.verified_user){
     return (
-        <div className="flex h-full w-full flex-col items-center">
+        <>
             <h1 className="text-2xl font-bold mr-auto">Wallet</h1>
-            <Deposit />
-            <ul className="mt-4 flex gap-6  text-sm font-bold text-white">
-                <li
-                    className="dark:bg-secodary/90 rounded-sm bg-secondary p-2 hover:cursor-pointer"
-                    onClick={setView} id="view-btn"
-                >
-                    Balance
-                </li>
-                <li
-                    className="dark:bg-secodary/90 rounded-sm bg-secondary p-2 hover:cursor-pointer"
-                    onClick={setView} id="view-btn"
-                >
-                    Historial
-                </li>
-                <li
-                    className="dark:bg-secodary/90 rounded-sm bg-secondary p-2 hover:cursor-pointer"
-                    onClick={setView} id="view-btn"
-                >
-                    Enviar
-                </li>
-            </ul>
-            {view}
-        </div>
+            <div className='flex flex-col gap-8 items-center w-full lg:grid lg:grid-cols-4 lg:gap-9 lg:grid-rows-4 lg:h-[70vh] '>
+                <Deposit />
+                <div className='h-[50vh] flex flex-col items-center lg:items-left lg:col-start-1 lg:col-end-4 lg:row-start-2'>
+                    <ul className="mt-4 flex gap-6  text-sm font-bold text-white ">
+                        <li
+                            className="dark:bg-secodary/90 rounded-sm bg-secondary p-2 hover:cursor-pointer"
+                            onClick={setView} id="view-btn"
+                        >
+                            Balance
+                        </li>
+                        <li
+                            className="dark:bg-secodary/90 rounded-sm bg-secondary p-2 hover:cursor-pointer"
+                            onClick={setView} id="view-btn"
+                        >
+                            Historial
+                        </li>
+                    </ul>
+                    {view}
+                </div>
+                <Transfer className="lg:col-start-2"/>
+            </div>
+        </>
     )}{return(
         <Navigate to="/login" replace={true}/>
     )}

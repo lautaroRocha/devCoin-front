@@ -14,9 +14,8 @@ const Transfer = () => {
 
     return (
         <>
-        <div className='mt-6 bg-alternative dark:bg-alternative/80 w-9/12 m-auto h-70 rounded-lg md:w-4/12'>
+        <div className='bg-alternative dark:bg-alternative/80 w-full m-auto h-70 rounded-lg  lg:col-start-4'>
             <h2 className='text-lg font-bold p-5 text-center'>Enviá criptos a otro DevCoiner !</h2>
-
             <form action="" className='flex flex-col items-center content-center' >
                 <div className="flex w-10/12">
                     <label htmlFor="token" className='flex flex-col items-center content-center'> Token:

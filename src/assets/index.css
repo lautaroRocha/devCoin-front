@@ -107,3 +107,23 @@
     background: #161616;
     border-radius: 8px;
   }
+
+  .wallet-grid{
+
+  }
+  .wallet-dep{
+    grid-column: 7 / 12;
+    grid-row: 1/2;
+
+  }
+  .wallet-view{
+    grid-column: 1 / 6;
+    grid-row: 1 / 4;
+    width: auto;
+  }
+  .wallet-trans{
+    grid-column: 7 / 12;
+    grid-row: 3/4;
+    width: 100%;
+
+  }
