@@ -33,6 +33,13 @@ function ConvertPage() {
     setResult((moneda1 / moneda2).toFixed(6));
   };
 
+  const limpiarCampos = () => {
+    setMonto('');
+    setResult('');
+    setMoneda1('');
+    setMoneda2('');
+  }
+
   return (
     <div className="background">
       <h1 className="mb-8 text-left text-2xl font-semibold">
@@ -115,6 +122,12 @@ function ConvertPage() {
               Convertir
             </button>
             }
+          <button
+              onClick={limpiarCampos}
+              className="buttons px-8 text-center"
+          >
+            Limpiar
+          </button>
           </div>
         </div>
       </div>
