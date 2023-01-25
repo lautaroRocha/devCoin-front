@@ -82,12 +82,12 @@ const Navbar = ({ logOut }) => {
                             activeclassname="active"
                         >
                             {Icons.logIn}
-                            <span className="hidden xl:flex">Iniciar sesión</span>
+                            <span className="hidden whitespace-nowrap xl:flex">Iniciar sesión</span>
                         </NavLink>
                     ) : (
                         <div className="navbar-links flex gap-x-6">
                             {Icons.logOut}
-                            <span onClick={logOut} className="hidden xl:flex">
+                            <span onClick={logOut} className="hidden whitespace-nowrap xl:flex">
                                 Cerrar sesión
                             </span>
                         </div>

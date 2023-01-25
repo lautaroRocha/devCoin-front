@@ -7,17 +7,15 @@ import { Navigate } from 'react-router-dom';
 import * as Icons from '../../utils/icons';
 import axios from 'axios';
 import { users } from '../../utils/URL';
-import { getStorage, ref, uploadBytes} from "firebase/storage";
+import { getStorage, ref, uploadBytes } from 'firebase/storage';
 import imageCompression from 'browser-image-compression';
 import { toast } from 'react-toastify';
 
-
 const UserProfilePage = (props) => {
-
     const token = useContext(tokenContext);
     const user = useContext(userContext);
 
-    const storage = getStorage()
+    const storage = getStorage();
     const storageRef = user && ref(storage, `images/${user.email}-profilepic`);
 
     const [editing, setEditing] = useState(false);
@@ -29,23 +27,23 @@ const UserProfilePage = (props) => {
     const [passwordUpdated, setPasswordUpdated] = useState();
 
     const userPicture = useRef();
-    const newPhoto = useRef()
+    const newPhoto = useRef();
 
     function editContent() {
         setEditing(true);
     }
 
-    async function uploadToStorage(ref, file){
-        if(!file){
-            toast.error("No se ha detectado ningun archivo")
-        }else{
+    async function uploadToStorage(ref, file) {
+        if (!file) {
+            toast.error('No se ha detectado ningun archivo');
+        } else {
             const options = {
-            maxSizeMB: 1,
-            maxWidthOrHeight: 500,
-            useWebWorker: true,
-            convertSize: 500,
-            convertTypes: ['image/png', 'image/webp', 'image/jpg']
-            }
+                maxSizeMB: 1,
+                maxWidthOrHeight: 500,
+                useWebWorker: true,
+                convertSize: 500,
+                convertTypes: ['image/png', 'image/webp', 'image/jpg'],
+            };
             const compressedFile = await imageCompression(file, options);
             await uploadBytes(ref, compressedFile).then((snapshot) => {
                 toast.info('Estamos subiendo tu foto...');
@@ -60,20 +58,21 @@ const UserProfilePage = (props) => {
             last_name: lastNameUpdated,
             address: addressUpdated,
             phone: phoneNumberUpdated,
-        }
-        axios.put(users + `/${user.hex_code}`, updateData, { headers: { 'x-access-token': token} })
-            .then( res => props.props.update())
-            .catch( error => console.log(error))
-        if(newPhoto.current.files[0] !== undefined){
-            const newFile = newPhoto.current.files[0] 
-            uploadToStorage(storageRef, newFile)
+        };
+        axios
+            .put(users + `/${user.hex_code}`, updateData, { headers: { 'x-access-token': token } })
+            .then((res) => props.props.update())
+            .catch((error) => console.log(error));
+        if (newPhoto.current.files[0] !== undefined) {
+            const newFile = newPhoto.current.files[0];
+            uploadToStorage(storageRef, newFile);
         }
         setEditing(false);
     }
 
     if (user && user.verified_user) {
         return (
-            <div className="relative flex h-full w-full flex-col items-center md:overflow-x-hidden md:items-start">
+            <div className="relative flex h-full w-full flex-col items-center md:items-start md:overflow-x-hidden">
                 {editing && (
                     <>
                         {/* FORMULARIO PARA CAMBIAR DATOS */}
@@ -94,7 +93,7 @@ const UserProfilePage = (props) => {
                                 </h1>
 
                                 <div className="flex flex-col gap-y-3">
-                                    <input type="file" className="flex w-full" ref={newPhoto}/>
+                                    <input type="file" className="flex w-full" ref={newPhoto} />
 
                                     <div className="flex w-full flex-col gap-2">
                                         <label htmlFor="name">Nombre</label>
@@ -212,10 +211,8 @@ const UserProfilePage = (props) => {
                                 ${props.props.wallet.balance}
                             </span>
                         </div> */}
-                        <div className="mt-4 flex h-[4rem] w-full items-center justify-start gap-x-4 rounded-lg bg-gray-900/90 px-[4rem] text-white dark:bg-gray-800/50 max-350:px-[0.5rem] md:w-[40%] md:h-full md:glassMoney md:ml-5 md:mt-0">
-                            <span>
-                            {Icons.bill}
-                            </span>
+                        <div className="md:glassMoney mt-4 flex h-[4rem] w-full items-center justify-start gap-x-4 rounded-lg bg-gray-900/90 px-[4rem] dark:bg-gray-800/50 dark:text-white max-350:px-[0.5rem] md:ml-5 md:mt-0 md:h-full md:w-[40%]">
+                            <span>{Icons.bill}</span>
                             <span className="ml-auto text-2xl font-bold lg:text-4xl">
                                 ${props.props.wallet.balance}
                             </span>
@@ -225,7 +222,7 @@ const UserProfilePage = (props) => {
                 </div>
             </div>
         );
-    }else{
+    } else {
         return <Navigate to="/login" replace={true} />;
     }
 };
