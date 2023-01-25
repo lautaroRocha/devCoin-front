@@ -88,3 +88,22 @@
     }
     /* End BG User information */
 }
+
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #4F46E5 #161616;
+  }
+  
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 15px;
+  }
+  
+  *::-webkit-scrollbar-track {
+    background: #4F46E5;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background: #161616;
+    border-radius: 8px;
+  }
