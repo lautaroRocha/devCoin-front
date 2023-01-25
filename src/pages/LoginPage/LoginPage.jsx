@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import * as URL from '../../utils/URL';
 import { toast } from 'react-toastify';
 
-import * as Icons from '../../utils/icons'
+import * as Icons from '../../utils/icons';
 import { EyeIcon } from '../../components';
 import { changePasswordInputType } from '../../utils/changePassType';
 
@@ -13,7 +13,7 @@ const LoginPage = (props) => {
     const [password, setPassword] = useState('');
     const [remember, setRemember] = useState(false);
 
-    const passInput = useRef()
+    const passInput = useRef();
 
     const handleRememberSession = (user, token) => {
         if (remember) {
@@ -48,33 +48,34 @@ const LoginPage = (props) => {
     };
 
     const sendRecoveryEmail = (e) => {
-        e.preventDefault()
+        e.preventDefault();
         const recoverLink = {
-            'link' : `http://127.0.0.1:5173/recovery/${email.slice(0, -4)}`,
-            'email' : email
-        }
-        if(email !== ""){
+            link: `http://127.0.0.1:5173/recovery/${email.slice(0, -4)}`,
+            email: email,
+        };
+        if (email !== '') {
             fetch(URL.recover, {
-                method : "POST",
+                method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body : JSON.stringify(recoverLink)
-            }).then(res => res.json())
-              .then(data => {
-                if(data.message){
-                    toast.success('Te envíamos un mensaje a tu correo para reestablecer tu contraseña')
-                }else{
-                    toast.error('Ingresá tu email en el campo correspondiente')
-                }
-              })
-            .catch(err => toast.error(err))
-        }else{
-            toast.error('Ingresá tu email en el campo correspondiente')
+                body: JSON.stringify(recoverLink),
+            })
+                .then((res) => res.json())
+                .then((data) => {
+                    if (data.message) {
+                        toast.success(
+                            'Te envíamos un mensaje a tu correo para reestablecer tu contraseña'
+                        );
+                    } else {
+                        toast.error('Ingresá tu email en el campo correspondiente');
+                    }
+                })
+                .catch((err) => toast.error(err));
+        } else {
+            toast.error('Ingresá tu email en el campo correspondiente');
         }
-
-    }
-
+    };
 
     return (
         <div className="relative flex min-h-screen flex-col justify-center overflow-hidden">
@@ -93,19 +94,23 @@ const LoginPage = (props) => {
                         />
                     </div>
                     <div className="mb-2 flex flex-col gap-y-2">
-                        <label htmlFor="password" className="block text-sm font-semibold relative">
+                        <label htmlFor="password" className="relative block text-sm font-semibold">
                             Contraseña
-                        <input
-                            type="password"
-                            className="w-full rounded-xl px-4 py-2 focus:outline-none dark:bg-black/90"
-                            onChange={(event) => setPassword(event.target.value)}
-                            ref={passInput}
-                        />
-                        <span onClick={()=>{changePasswordInputType(passInput)}} className="hover:cursor-pointer">
-                        <EyeIcon />
-                        </span>
+                            <input
+                                type="password"
+                                className="w-full rounded-xl px-4 py-2 focus:outline-none dark:bg-black/90"
+                                onChange={(event) => setPassword(event.target.value)}
+                                ref={passInput}
+                            />
+                            <span
+                                onClick={() => {
+                                    changePasswordInputType(passInput);
+                                }}
+                                className="hover:cursor-pointer"
+                            >
+                                <EyeIcon />
+                            </span>
                         </label>
-
                     </div>
                     <div className="flex w-full gap-x-2">
                         <input
@@ -147,8 +152,8 @@ const LoginPage = (props) => {
                     </button>
                 </div>
 
-                <div className="mt-4 flex w-full flex-col items-start 500:w-[19rem] md:mx-auto">
-                    <p>
+                <div className="mt-4 flex w-full flex-col items-start justify-center">
+                    <p className="mx-auto">
                         ¿No tienes una cuenta? crea una{' '}
                         <Link
                             to="/signup"
