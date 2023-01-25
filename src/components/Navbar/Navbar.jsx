@@ -26,8 +26,17 @@ const Navbar = ({ logOut }) => {
 
     return (
         <nav className="fixed top-0 h-screen min-w-[4rem] bg-gradient-to-b from-indigo-600 via-zinc-900 to-zinc-900 text-white dark:bg-primary xl:w-[15%] 1700:w-[12%]">
-            <div className="flex flex-col h-[90%] mt-8 justify-around ">
-                <div className="text-center basis-1">DevCoin</div>
+            <div className="flex flex-col h-[85%] mt-12 justify-between">
+                <div className="text-center basis-1 flex  justify-center relative">
+                    <span className='z-[1] lg:scale-125'>
+                    {Icons.D}
+                    </span>
+                    <span className='absolute -top-[1.3rem] text-7xl text-alternative z-0 lg:scale-110'>
+                        ||
+                    </span>
+                </div>
+                
+
                 <div className="flex flex-col items-center gap-4 xl:items-start basis-3 mx-auto w-[95%]">
                         <NavLink
                             to="/"
