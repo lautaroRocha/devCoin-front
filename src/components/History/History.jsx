@@ -13,7 +13,7 @@ const History = () => {
 
 
     return (
-        <div className='flex flex-col h-screen items-center lg:flex-row lg:justify-center lg:items-start mt-6 w-full lg:gap-16'>
+        <div className='flex flex-col items-center lg:flex-row lg:justify-center lg:items-start mt-6 w-full lg:gap-16'>
         <table>
             <thead>
                 <tr>

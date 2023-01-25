@@ -15,6 +15,12 @@ const Balance = () => {
         { token: 'lucascoin', quantity: '5' },
         { token: 'gonzacoin', quantity: '7' },
         { token: 'juanbit', quantity: '3' },
+        { token: 'juanbit', quantity: '3' },
+        { token: 'juanbit', quantity: '3' },
+        { token: 'juanbit', quantity: '3' },
+        { token: 'juanbit', quantity: '3' },
+        { token: 'juanbit', quantity: '3' },
+        { token: 'juanbit', quantity: '3' }
     ];
 
     const Filter = () => {
