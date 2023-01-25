@@ -3,22 +3,20 @@ import { AppWrap } from '../../wrapper';
 
 import { userContext } from '../../context/userContext';
 import { tokenContext } from '../../context/tokenContext';
-import {Navigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 
 import { Balance, History, Transfer, Deposit } from '../../components';
 
 const Wallet = () => {
-
     const [selectedView, setSelectedView] = useState('Historial');
 
-    const token = useContext(tokenContext)
-    const user = useContext(userContext)
+    const token = useContext(tokenContext);
+    const user = useContext(userContext);
 
     function setView(e) {
         setSelectedView(e.target.textContent);
     }
     let view;
-
 
     switch (selectedView) {
         case 'Balance':
@@ -27,17 +25,17 @@ const Wallet = () => {
         case 'Historial':
             view = <History />;
             break;
-            break;
     }
 
     useEffect(() => {
-        const viewBtns = document.querySelectorAll('#view-btn')
-        viewBtns.forEach(btn => {
-            if(btn.textContent === selectedView){
-                btn.classList.add("bg-alternative")
-            }else{
-                btn.classList.remove("bg-alternative")
-            }})
+        const viewBtns = document.querySelectorAll('#view-btn');
+        viewBtns.forEach((btn) => {
+            if (btn.textContent === selectedView) {
+                btn.classList.add('bg-alternative');
+            } else {
+                btn.classList.remove('bg-alternative');
+            }
+        });
     }, [selectedView]);
 
     if(user && user.verified_user){
