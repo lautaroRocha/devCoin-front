@@ -1,67 +1,93 @@
-import React, {useState} from 'react';
+import React, { useState, useContext } from 'react';
+import { userContext, tokenContext, coinsContext, walletContext } from '../../context';
 
 const Transfer = () => {
+    const token = useContext(tokenContext);
+    const user = useContext(userContext);
+    const coins = useContext(coinsContext);
+    const wallet = useContext(walletContext);
 
     const [transactionData, setTransactionData] = useState({
         date: new Date().toLocaleDateString(),
-        from : 0o00000, ///acá va el hex del user
-        to : 0o00000,
-        amount : 0,
-        token : ""
-    })
-
-
+        from: 0o00000, ///acá va el hex del user
+        to: 0o00000,
+        amount: 0,
+        token: '',
+    });
 
     return (
         <>
-        <div className='bg-alternative dark:bg-alternative/80 w-full m-auto h-70 rounded-lg  lg:col-start-4'>
-            <h2 className='text-lg font-bold p-5 text-center'>Enviá criptos a otro DevCoiner !</h2>
-            <form action="" className='flex flex-col items-center content-center' >
-                <div className="flex w-10/12">
-                    <label htmlFor="token" className='flex flex-col items-center content-center'> Token:
-                        <select name="token" id="" className='w-12/12 text-center text-black font-semibold rounded-md' onChange={(e)=>{setTransactionData({
-                              date: transactionData.date,
-                              from : transactionData.from,
-                              to : transactionData.to,
-                              amount : transactionData.amount,
-                              token : e.target.value
-                        })}}>
-                            <option value="Juanbit">Juanbit</option>
-                            <option value="Maxicoin">Maxicoin</option>
-                            <option value="Terra">Terra</option>
-                            <option value="Lucabit">Lucabit</option>
-                            <option value="Gonzakoin">Gonzakoin</option>
-                            <option value="Leotok">Leotok</option>
-                            <option value="Lauken">Lauken</option>
-                            <option value="Theth">Theth</option>
-                        </select>
-                    </label>
-                    <label htmlFor="amount" className='flex flex-col items-center content-center'>Cantidad:
-                        <input className='w-10/12 text-center text-black font-semibold rounded-md' type="number" name="amount" min={1} onChange={(e)=>{setTransactionData({
-                              date: transactionData.date,
-                              from : transactionData.from,
-                              to : transactionData.to,
-                              amount : e.target.value,
-                              token : transactionData.token
-                        })}}/>
-                    </label>
-                </div>
-                <div className="flex flex-col w-10/12 ">
-                <label htmlFor="to" className='flex flex-col items-center content-center mt-2 md:mt-2 w-12/12'>Destino :
-                    <input className='w-4/12 text-black text-center font-semibold rounded-md' type="text" name="to" min={0} maxLength={6} onChange={(e)=>{setTransactionData({
-                              date: transactionData.date,
-                              from : transactionData.from,
-                              to : parseInt(e.target.value),
-                              amount : transactionData.amount,
-                              token : transactionData.token
-                        })}}/>
-                </label>
-                <button className='w-fit mx-auto px-6 py-1 my-4 text-white bg-secondary font-bold rounded-lg hover:cursor-pointer md:mt-7'>ENVIA</button>
-                </div>
-            </form>
-        </div>
+            <div className="m-auto h-[23rem] w-full rounded-md bg-primary text-white lg:col-start-4">
+                <h2 className="p-5 text-center text-lg font-bold">Transferir Criptos</h2>
+                <form className="flex h-[17.8rem] w-full flex-col justify-between px-4">
+                    <div className="flex flex-col gap-y-2">
+                        <div className="flex w-full flex-col gap-1">
+                            <label htmlFor="token">Token</label>
+                            <select
+                                name="token"
+                                id="token"
+                                className="w-full rounded-md py-2 px-4 text-black focus:outline-none"
+                                onChange={(e) => {
+                                    setTransactionData({
+                                        date: transactionData.date,
+                                        from: transactionData.from,
+                                        to: transactionData.to,
+                                        amount: transactionData.amount,
+                                        token: e.target.value,
+                                    });
+                                }}
+                            >
+                                <option value="">Seleciona una moneda...</option>
+                                <option value="Maxicoin">Maxicoin</option>
+                                <option value="Terra">Terra</option>
+                            </select>
+                        </div>
+                        <div className="flex w-full flex-col gap-1">
+                            <label htmlFor="quantity">Cantidad</label>
+                            <input
+                                id="quantity"
+                                type="number"
+                                placeholder="Ingresa la cantidad"
+                                className="w-full rounded-md py-2 px-4 text-black focus:outline-none"
+                                onChange={(e) => {
+                                    setTransactionData({
+                                        date: transactionData.date,
+                                        from: transactionData.from,
+                                        to: transactionData.to,
+                                        amount: e.target.value,
+                                        token: transactionData.token,
+                                    });
+                                }}
+                            />
+                        </div>
+                        <div className="flex w-full flex-col gap-1">
+                            <label htmlFor="destination">Destino</label>
+                            <input
+                                id="destination"
+                                type="text"
+                                name="to"
+                                min={0}
+                                maxLength={6}
+                                placeholder="Codigo de destino"
+                                className="w-full rounded-md py-2 px-4 text-black focus:outline-none"
+                                onChange={(e) => {
+                                    setTransactionData({
+                                        date: transactionData.date,
+                                        from: transactionData.from,
+                                        to: parseInt(e.target.value),
+                                        amount: transactionData.amount,
+                                        token: transactionData.token,
+                                    });
+                                }}
+                            />
+                        </div>
+                    </div>
+
+                    <button className="buttons w-full">Enviar</button>
+                </form>
+            </div>
         </>
     );
-}
+};
 
 export default Transfer;

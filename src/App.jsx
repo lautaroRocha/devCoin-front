@@ -1,21 +1,25 @@
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 // Pages
-import { HomePage, WalletPage, UserProfilePage, SignUpPage, LoginPage, VerifyPage, RecoveryPage } from './pages';
+import {
+    HomePage,
+    WalletPage,
+    UserProfilePage,
+    SignUpPage,
+    LoginPage,
+    VerifyPage,
+    RecoveryPage,
+} from './pages';
 import { Navbar } from './components';
-import { userContext } from './context/userContext';
-import { tokenContext } from './context/tokenContext';
-import { coinsContext } from './context/coinsContext'
-import { walletContext } from './context/walletContext'
+import { userContext, tokenContext, walletContext, coinsContext } from './context';
 import * as URL from './utils/URL';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ConvertPage from './pages/ConvertPage/ConvertPage';
-import axios from 'axios'
+import axios from 'axios';
 import getProfilePictureURL from './utils/getProfilePicURL';
 
 function App() {
-
     const [user, setUser] = useState();
     const [token, setToken] = useState();
     const [wallet, setWallet] = useState();
@@ -49,11 +53,11 @@ function App() {
         }
     }, [user]);
 
-    useEffect(()=>{
-        if(user){
-            getProfilePictureURL(user.email, setUserPictureURL)
+    useEffect(() => {
+        if (user) {
+            getProfilePictureURL(user.email, setUserPictureURL);
         }
-    }, [user])
+    }, [user]);
 
     function logOut() {
         setUser(null);
@@ -69,45 +73,59 @@ function App() {
         toast.success(`Bienvenido, ${userData.first_name}`)
     }
 
-    function updateUserState(){
-        sessionStorage.removeItem('user')
-        axios.get(URL.users+'/'+user.hex_code)
-            .then( res => { 
-                setUser(res.data.data[0]), sessionStorage.setItem('user', JSON.stringify(res.data.data[0]))
+    function updateUserState() {
+        sessionStorage.removeItem('user');
+        axios
+            .get(URL.users + '/' + user.hex_code)
+            .then((res) => {
+                setUser(res.data.data[0]),
+                    sessionStorage.setItem('user', JSON.stringify(res.data.data[0]));
             })
-            .catch( error => toast.error('Ocurrió un error'))
+            .catch((error) => toast.error('Ocurrió un error'));
     }
 
     return (
         <>
             <userContext.Provider value={user}>
                 <tokenContext.Provider value={token}>
-                <coinsContext.Provider value={coins}>
-                <walletContext.Provider value ={wallet}>
-                    <Navbar logOut={logOut} />
-                    <Routes>
-                        <Route path="/" element={<HomePage />} />
-                        <Route path="/wallet" element={<WalletPage update={updateUserState}/>} />
-                        <Route path="/profile" element={<UserProfilePage wallet={wallet} update={updateUserState} url={userPictureURL}/>} />
-                        <Route path="/login" element={<LoginPage logIn={logIn} />} />
-                        <Route path="/signup" element={<SignUpPage />} />
-                        <Route path="/verify/:email" element={<VerifyPage />} />
-                        <Route path="/convert" element={<ConvertPage />} />
-                    </Routes>
-                    <ToastContainer
-                        position="bottom-left"
-                        autoClose={4000}
-                        hideProgressBar={true}
-                        newestOnTop={true}
-                        closeOnClick
-                        rtl={false}
-                        pauseOnFocusLoss
-                        draggable
-                        pauseOnHover
-                        theme="colored"
-                    />
-                </walletContext.Provider>
-                </coinsContext.Provider>
+                    <coinsContext.Provider value={coins}>
+                        <walletContext.Provider value={wallet}>
+                            <Navbar logOut={logOut} />
+                            <Routes>
+                                <Route path="/" element={<HomePage />} />
+                                <Route
+                                    path="/wallet"
+                                    element={<WalletPage update={updateUserState} />}
+                                />
+                                <Route
+                                    path="/profile"
+                                    element={
+                                        <UserProfilePage
+                                            wallet={wallet}
+                                            update={updateUserState}
+                                            url={userPictureURL}
+                                        />
+                                    }
+                                />
+                                <Route path="/login" element={<LoginPage logIn={logIn} />} />
+                                <Route path="/signup" element={<SignUpPage />} />
+                                <Route path="/verify/:email" element={<VerifyPage />} />
+                                <Route path="/convert" element={<ConvertPage />} />
+                            </Routes>
+                            <ToastContainer
+                                position="bottom-left"
+                                autoClose={4000}
+                                hideProgressBar={true}
+                                newestOnTop={true}
+                                closeOnClick
+                                rtl={false}
+                                pauseOnFocusLoss
+                                draggable
+                                pauseOnHover
+                                theme="colored"
+                            />
+                        </walletContext.Provider>
+                    </coinsContext.Provider>
                 </tokenContext.Provider>
             </userContext.Provider>
         </>

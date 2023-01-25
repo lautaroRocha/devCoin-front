@@ -1,3 +1,3 @@
-import { createContext } from "react";
-
-export const walletContext = createContext(null)
+import { createContext } from 'react';
+const walletContext = createContext(null);
+export default walletContext;

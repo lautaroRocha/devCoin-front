@@ -1,8 +1,7 @@
 import React, { useRef, useState, useContext, useEffect } from 'react';
 import { Balance } from '../../components';
 import { AppWrap } from '../../wrapper';
-import { userContext } from '../../context/userContext';
-import { tokenContext } from '../../context/tokenContext';
+import { userContext, tokenContext } from '../../context';
 import { Navigate } from 'react-router-dom';
 import * as Icons from '../../utils/icons';
 import axios from 'axios';
