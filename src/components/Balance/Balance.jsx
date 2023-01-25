@@ -20,7 +20,10 @@ const Balance = () => {
         { token: 'juanbit', quantity: '3' },
         { token: 'juanbit', quantity: '3' },
         { token: 'juanbit', quantity: '3' },
+        { token: 'juanbit', quantity: '3' },
+        { token: 'juanbit', quantity: '3' },
         { token: 'juanbit', quantity: '3' }
+   
     ];
 
     const Filter = () => {
@@ -35,11 +38,12 @@ const Balance = () => {
         setCoinsFiltered(coinsFiltered);
     };
 
+    const screenIsLG = window.innerWidth >= 1024
+
     return (
-        <div className="mt-8 flex w-8/12 flex-col text-white lg:w-full">
-            <div className="relative max-h-screen overflow-x-auto rounded-lg">
-                <table className="w-full">
-                    <thead className="bg-secondary text-xs uppercase text-white lg:text-base">
+        <div className="flex w-full flex-col text-white lg:w-full lg:h-full lg:max-h-[50vh] overflow-y-scroll">
+                <table className="w-full ">
+                    <thead className="bg-secondary text-xs uppercase text-white lg:text-base ">
                         <tr>
                             {['Moneda', 'Balance', '', ''].map((title, index) => (
                                 <td
@@ -49,16 +53,17 @@ const Balance = () => {
                                     {title}
                                 </td>
                             ))}
-                        </tr>
+                        </tr> 
                     </thead>
                     <tbody>
                         {USER_COINS.map((coin, index) => (
                             <MinCoin coin={coin} key={index} />
                         ))}
-                    </tbody>
+                    </tbody> 
+                    
                 </table>
+
             </div>
-        </div>
     );
 };
 
