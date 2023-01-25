@@ -31,7 +31,7 @@ const Balance = () => {
     };
 
     return (
-        <div className="mt-8 flex w-8/12 lg:w-full flex-col text-white">
+        <div className="mt-8 flex w-/12 lg:w-full flex-col text-white">
             <div className="relative max-h-screen overflow-x-auto rounded-lg">
                 <table className="w-full">
                     <thead className="bg-secondary text-xs uppercase text-white lg:text-base">
