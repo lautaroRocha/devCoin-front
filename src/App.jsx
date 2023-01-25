@@ -5,6 +5,8 @@ import { HomePage, WalletPage, UserProfilePage, SignUpPage, LoginPage, VerifyPag
 import { Navbar } from './components';
 import { userContext } from './context/userContext';
 import { tokenContext } from './context/tokenContext';
+import { coinsContext } from './context/coinsContext'
+import { walletContext } from './context/walletContext'
 import * as URL from './utils/URL';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -33,11 +35,10 @@ function App() {
 
     useEffect(() => {
         window.location.pathname === '/login' && navigate('/');
-        user && toast.success(`Bienvenido, ${user.first_name}`);
     }, [user]);
 
     useEffect(() => {
-        if (user && !wallet) {
+        if (user) {
             fetch(URL.wallet + `/${user.hex_code}`, { headers: { 'x-access-token': token } })
                 .then((res) => res.json())
                 .then((data) => {
@@ -50,7 +51,7 @@ function App() {
 
     useEffect(()=>{
         if(user){
-            const link = getProfilePictureURL(user.email, setUserPictureURL)
+            getProfilePictureURL(user.email, setUserPictureURL)
         }
     }, [user])
 
@@ -65,6 +66,7 @@ function App() {
         setUser(userData);
         setToken(tokenData);
         navigate('/');
+        toast.success(`Bienvenido, ${user.first_name}`)
     }
 
     function updateUserState(){
@@ -80,10 +82,12 @@ function App() {
         <>
             <userContext.Provider value={user}>
                 <tokenContext.Provider value={token}>
+                <coinsContext.Provider value={coins}>
+                <walletContext.Provider value ={wallet}>
                     <Navbar logOut={logOut} />
                     <Routes>
                         <Route path="/" element={<HomePage />} />
-                        <Route path="/wallet" element={<WalletPage wallet={wallet} />} />
+                        <Route path="/wallet" element={<WalletPage update={updateUserState}/>} />
                         <Route path="/profile" element={<UserProfilePage wallet={wallet} update={updateUserState} url={userPictureURL}/>} />
                         <Route path="/login" element={<LoginPage logIn={logIn} />} />
                         <Route path="/signup" element={<SignUpPage />} />
@@ -102,6 +106,8 @@ function App() {
                         pauseOnHover
                         theme="colored"
                     />
+                </walletContext.Provider>
+                </coinsContext.Provider>
                 </tokenContext.Provider>
             </userContext.Provider>
         </>

@@ -7,7 +7,7 @@ import { Navigate } from 'react-router-dom';
 
 import { Balance, History, Transfer, Deposit } from '../../components';
 
-const Wallet = () => {
+const Wallet = (props) => {
     const [selectedView, setSelectedView] = useState('Historial');
 
     const token = useContext(tokenContext);
@@ -43,7 +43,7 @@ const Wallet = () => {
         <>
             <h1 className="text-2xl font-bold mr-auto">Wallet</h1>
             <div className='flex flex-col gap-8 items-center w-full lg:grid lg:grid-cols-4 lg:gap-9 lg:grid-rows-4 lg:h-[70vh] overflow-hidden'>
-                <Deposit />
+                <Deposit update={props.props.update}/>
                 <div className='h-[50vh] flex flex-col items-center lg:items-left lg:col-start-1 lg:col-end-4 lg:row-start-2'>
                     <ul className="mt-4 flex gap-6  text-sm font-bold text-white ">
                         <li
