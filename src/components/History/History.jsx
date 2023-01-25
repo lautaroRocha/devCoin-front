@@ -13,7 +13,7 @@ const History = () => {
 
 
     return (
-        <div className='flex flex-col h-screen items-center lg:flex-row lg:items-start mt-6'>
+        <div className='flex flex-col h-screen items-center lg:flex-row lg:justify-center lg:items-start mt-6 w-full lg:gap-16'>
         <table>
             <thead>
                 <tr>
@@ -23,7 +23,7 @@ const History = () => {
         <tbody>
             {transactionsToUser.map( (trans, idx) => {
                 return(
-                    <tr className="odd:bg-secondary/20 even:bg-secondary/50 w-auto grid grid-cols-4 place-items-center	text-center ml-4" key={idx}>
+                    <tr className="odd:bg-secondary/20 even:bg-secondary/50 w-full grid grid-cols-4 place-items-center	text-center ml-4 lg:m-0" key={idx}>
                         <td>{trans.from}</td>
                         <td>{trans.token}</td>
                         <td>{trans.amount}</td>
@@ -41,7 +41,7 @@ const History = () => {
             </tr>
             {transactionsByUser.map( (trans, idx) => {
                 return(
-                    <tr className="odd:bg-secondary/20 even:bg-secondary/50 w-auto grid grid-cols-4 text-center ml-4 place-items-center" key={idx}>
+                    <tr className="odd:bg-secondary/20 even:bg-secondary/50 w-full grid grid-cols-4 text-center ml-4 place-items-center lg:m-0" key={idx}>
                         <td>{trans.from}</td>
                         <td>{trans.token}</td>
                         <td>{trans.amount}</td>
