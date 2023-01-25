@@ -6,8 +6,8 @@ function ConvertPage() {
   const [monedas, setMonedas] = useState([]);
   const [moneda1, setMoneda1] = useState();
   const [moneda2, setMoneda2] = useState();
-  const [monto, setMonto] = useState(undefined);
-  const [result, setResult] = useState(undefined);
+  const [monto, setMonto] = useState(0);
+  const [result, setResult] = useState(0);
 
   useEffect(() => {
     const host =
@@ -25,6 +25,8 @@ function ConvertPage() {
   }, [moneda1, moneda2]);
 
   const handleConvert = () => {
+    console.log('moneda1 es : ' + moneda1)
+    console.log('moneda2 es : ' + moneda2)
     setResult((moneda1 / moneda2).toFixed(6));
   };
 
@@ -43,24 +45,14 @@ function ConvertPage() {
               id="moneda-1"
               onChange={(e) => setMoneda1(e.target.value)}
             >
-              {monedas.map((moneda) => (
-                <option value={moneda.current_price}>{moneda.symbol}</option>
+              <option value="Seleccioná...">Seleccioná tu moneda</option>
+              {monedas.map((moneda, idx) => (
+                <option key={idx} value={moneda.current_price}>{moneda.symbol}</option>
               ))}
             </select>
             <div className="w-full my-[1rem] text-center">
               <button className="buttons px-8">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  class="h-6 w-6"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M15.97 2.47a.75.75 0 011.06 0l4.5 4.5a.75.75 0 010 1.06l-4.5 4.5a.75.75 0 11-1.06-1.06l3.22-3.22H7.5a.75.75 0 010-1.5h11.69l-3.22-3.22a.75.75 0 010-1.06zm-7.94 9a.75.75 0 010 1.06l-3.22 3.22H16.5a.75.75 0 010 1.5H4.81l3.22 3.22a.75.75 0 11-1.06 1.06l-4.5-4.5a.75.75 0 010-1.06l4.5-4.5a.75.75 0 011.06 0z"
-                    clip-rule="evenodd"
-                  />
-                </svg>
+                {Icons.arrows}
               </button>
             </div>
             <select
@@ -70,8 +62,9 @@ function ConvertPage() {
               id="moneda-2"
               onChange={(e) => setMoneda2(e.target.value)}
             >
-              {monedas.map((moneda) => (
-                <option value={moneda.current_price}>{moneda.symbol}</option>
+              <option value="Seleccioná...">Seleccioná a qué moneda convertir</option>
+              {monedas.map((moneda, idx) => (
+                <option key={idx} value={moneda.current_price}>{moneda.symbol}</option>
               ))}
             </select>
           </div>
