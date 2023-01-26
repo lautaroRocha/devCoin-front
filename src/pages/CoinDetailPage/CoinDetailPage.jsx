@@ -138,6 +138,30 @@ const CoinDetailPage = () => {
                     </div>
                 </div>
             </div>
+            <div className="flex flex-col gap-4 mt-4 h-auto w-full mb-6 lg:flex-row justify-center lg:mt-12">
+
+                <div className="bg-secondary p-3  flex flex-col items-center rounded-md  text-white lg:w-3/6 lg:gap-3">
+                    <input type="text" className='rounded-sm text-sm p-2 bg-cyan-900/70 text-white' placeholder='Cantidad...'/>
+                    <div className='flex  lg:flex-row lg:gap-6 lg:items-center'>
+                    <span>
+                        Recibirás  {coin.symbol.toUpperCase()}
+                    </span>
+                    <button className='bg-green-500 py-2 px-4 rounded-md'>COMPRAR</button>
+                    </div>
+                </div>
+
+                <div className="bg-secondary p-3 lg:gap-3 flex flex-col items-center rounded-md text-white
+lg:w-3/6">
+                    <input type="text" className='rounded-sm text-sm p-2  bg-cyan-900/70' placeholder='Cantidad...'/>
+                    <div className="flex lg:flex-row lg:gap-6 lg:items-center">
+                    <span>
+                        Recibirás USD
+                    </span>
+                    <button className='bg-red-800  py-2 px-4 rounded-md'>VENDER</button>
+                    </div>
+                </div>
+                
+            </div>
         </>
     );
 };
