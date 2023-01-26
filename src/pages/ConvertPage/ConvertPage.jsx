@@ -30,7 +30,9 @@ function ConvertPage() {
   const handleConvert = () => {
     console.log('moneda1 es : ' + moneda1)
     console.log('moneda2 es : ' + moneda2)
-    setResult((moneda1 / moneda2).toFixed(6));
+    
+      setResult((moneda1 / moneda2).toFixed(6));
+        
   };
 
   const limpiarCampos = () => {
@@ -38,6 +40,12 @@ function ConvertPage() {
     setResult('');
     setMoneda1('');
     setMoneda2('');
+  }
+
+  const invertirCoins = () => {
+    setMoneda1(moneda2);
+    setMoneda2(moneda1);
+
   }
 
   return (
@@ -61,11 +69,13 @@ function ConvertPage() {
                 </option>
               ))}
             </select>
+
             <div className="w-full my-[1rem] text-center">
-              <button className="buttons px-8">
-                {Icons.arrows}
+              <button onClick={invertirCoins} className="buttons px-8">
+                {Icons.arrows}                
               </button>
             </div>
+
             <select
               className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-purple-500 focus:ring-purple-600  dark:bg-neutral-800/80 dark:text-white lg:max-w-xl lg:whitespace-normal lg:text-center lg:h-fit"
               value={moneda2}
@@ -106,7 +116,7 @@ function ConvertPage() {
             </div>
           </div>
 
-          <div className="text-center">
+          <div className="text-center flex justify-center gap-4">
             {moneda1 && moneda2 ?
             <button
             onClick={handleConvert}
