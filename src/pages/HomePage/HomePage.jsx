@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { CoinRanking } from '../../components';
 import { AppWrap } from '../../wrapper';
+import { Link } from 'react-router-dom';
+import { userContext, tokenContext } from '../../context';
 
 const HomePage = () => {
+    const token = useContext(tokenContext);
+    const user = useContext(userContext);
+
     return (
         <>
             <div className="flex h-full w-full flex-col gap-[4rem] sm:gap-y-[6rem] lg:gap-y-[8rem] lg:px-8">
@@ -17,7 +22,12 @@ const HomePage = () => {
                                 Controla todas tus monedas, compra, vende y transfiere con Dev Coin!
                             </p>
                             <div className="flex w-full max-lg:justify-center">
-                                <button className="buttons px-8">Comenzar!</button>
+                                <Link
+                                    to={`${user ? '/profile' : '/signup'}`}
+                                    className="buttons px-8"
+                                >
+                                    Comenzar!
+                                </Link>
                             </div>
                         </div>
                         <img
@@ -38,7 +48,12 @@ const HomePage = () => {
                                 En Dev Coin protegemos tus transferencias con la mejor tecnología!
                             </p>
                             <div className="flex w-full max-lg:justify-center">
-                                <button className="buttons px-8">Empieza a transferir!</button>
+                                <Link
+                                    to={`${user ? '/wallet' : '/signup'}`}
+                                    className="buttons px-8"
+                                >
+                                    Empieza a transferir!
+                                </Link>
                             </div>
                         </div>
                         <img
