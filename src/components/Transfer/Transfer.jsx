@@ -1,41 +1,63 @@
 import React, { useState, useContext } from 'react';
 import { userContext, tokenContext, coinsContext, walletContext } from '../../context';
 import * as URL from '../../utils/URL'
+import { toast } from 'react-toastify';
 
-const Transfer = () => {
+const Transfer = (props) => {
 
     const token = useContext(tokenContext);
     const user = useContext(userContext);
     const coins = useContext(coinsContext);
-    const wallet = useContext(walletContext);
+
 
     const [transactionData, setTransactionData] = useState({
-        from: user.hex_code, 
-        to: 0o00000,
+        sender_hexcode: user.hex_code, 
+        receiver_hexcode: 0o00000,
         amount: 0,
-        token: '',
+        symbol: '',
     });
 
+
+
+
     const sendTransaction = (obj) => {
-        fetch(URL.transaction), {
+        if(transactionData.amount <= 0){
+            toast.error('No es un monto válido')
+        }else{
+        fetch(URL.transaction, {
             method : 'POST',
             headers : {
                 'Content-Type' : 'application/json',
                 'x-access-token' : token
             },
             body : JSON.stringify(obj)
-        }
-        .then( res => {
-            console.log(res)
         })
-        .catch(error=>console.log(error))
+        .then( res => res.json())
+        .then(data => {
+            if(data.message){
+                let error = Array.from(data.message.split(','))
+                error.forEach( err => toast.error(err))
+            }else{
+                toast.success('Transferencia realizada')
+                props.update()
+            }
+        })
+        .catch(error=> console.log(error))
+        }
     }
+
+    const handleTransaction = (e) => {
+        e.preventDefault()
+        e.target.reset()
+        sendTransaction(transactionData)
+    }
+
     
     return (
         <>
             <div className="m-auto h-[23rem] w-full rounded-md bg-gray-200/90 text-black shadow-md dark:bg-neutral-800/80 dark:text-white lg:col-start-4">
                 <h2 className="p-5 text-center text-lg font-bold">Transferir Criptos</h2>
-                <form className="flex h-[17.8rem] w-full flex-col justify-between px-4">
+                <form className="flex h-[17.8rem] w-full flex-col justify-between px-4" onSubmit={handleTransaction}>
                     <div className="flex flex-col gap-y-2">
                         <div className="flex w-full flex-col gap-1">
                             <label htmlFor="token">Token</label>
@@ -45,16 +67,14 @@ const Transfer = () => {
                                 className="w-full rounded-md py-2 px-4 text-black focus:outline-none dark:bg-black/90 dark:text-white"
                                 onChange={(e) => {
                                     setTransactionData({
-                                        from: transactionData.from,
-                                        to: transactionData.to,
+                                        sender_hexcode: transactionData.sender_hexcode,
+                                        receiver_hexcode: transactionData.receiver_hexcode,
                                         amount: transactionData.amount,
-                                        token: e.target.value,
+                                        symbol: e.target.value,
                                     });
                                 }}
                             >
                                 <option value="">Seleciona una moneda...</option>
-                                {/* <option value="Maxicoin">Maxicoin</option>
-                                <option value="Terra">Terra</option> */}
                                 {coins.map( (coin, idx) => {
                                     return(<option value={coin.symbol} key={idx}>{coin.name.toUpperCase()}</option>)
                                 })
@@ -71,10 +91,10 @@ const Transfer = () => {
                                 className="w-full rounded-md py-2 px-4 text-black focus:outline-none dark:bg-black/90 dark:text-white"
                                 onChange={(e) => {
                                     setTransactionData({
-                                        from: transactionData.from,
-                                        to: transactionData.to,
+                                        sender_hexcode: transactionData.sender_hexcode,
+                                        receiver_hexcode: transactionData.receiver_hexcode,
                                         amount: e.target.value,
-                                        token: transactionData.token,
+                                        symbol: transactionData.symbol,
                                     });
                                 }}
                             />
@@ -91,16 +111,15 @@ const Transfer = () => {
                                 className="w-full rounded-md py-2 px-4 text-black focus:outline-none dark:bg-black/90 dark:text-white"
                                 onChange={(e) => {
                                     setTransactionData({
-                                        from: transactionData.from,
-                                        to: parseInt(e.target.value),
+                                        sender_hexcode: transactionData.sender_hexcode,
+                                        receiver_hexcode: e.target.value,
                                         amount: transactionData.amount,
-                                        token: transactionData.token,
+                                        symbol: transactionData.symbol,
                                     });
                                 }}
                             />
                         </div>
                     </div>
-
                     <button className="buttons w-full">Enviar</button>
                 </form>
             </div>
