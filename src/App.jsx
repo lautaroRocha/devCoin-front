@@ -25,6 +25,7 @@ function App() {
     const [wallet, setWallet] = useState();
     const [coins, setCoins] = useState();
     const [userPictureURL, setUserPictureURL] = useState();
+    const [transactions, setTransactions] = useState();
 
     const navigate = useNavigate();
 
@@ -58,6 +59,21 @@ function App() {
             getProfilePictureURL(user.email, setUserPictureURL);
         }
     }, [user]);
+
+    useEffect(()=>{
+        if(user){
+            fetch(URL.transaction+'/'+user.hex_code, {headers : {'x-access-token' : token}})
+                .then(res => res.json())
+                .then(data => {
+                    if(data.message){
+                        toast.error(data.message)
+                    }else{
+                        setTransactions(data)
+                    }
+                })
+                .catch(error => toast.error(error))
+        }
+    }, [user])
 
     function logOut() {
         setUser(null);
@@ -111,6 +127,7 @@ function App() {
                                 <Route path="/signup" element={<SignUpPage />} />
                                 <Route path="/verify/:email" element={<VerifyPage />} />
                                 <Route path="/convert" element={<ConvertPage />} />
+                                <Route path="/recovery" element={<RecoveryPage />} />
                             </Routes>
                             <ToastContainer
                                 position="bottom-left"
