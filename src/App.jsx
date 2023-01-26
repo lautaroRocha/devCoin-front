@@ -11,7 +11,7 @@ import {
     RecoveryPage,
 } from './pages';
 import { Navbar } from './components';
-import { userContext, tokenContext, walletContext, coinsContext } from './context';
+import { userContext, tokenContext, walletContext, coinsContext, transactionContext } from './context';
 import * as URL from './utils/URL';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -25,6 +25,7 @@ function App() {
     const [wallet, setWallet] = useState();
     const [coins, setCoins] = useState();
     const [userPictureURL, setUserPictureURL] = useState();
+    const [transactions, setTransactions] = useState();
 
     const navigate = useNavigate();
 
@@ -59,6 +60,21 @@ function App() {
         }
     }, [user]);
 
+    useEffect(()=>{
+        if(user){
+            fetch(URL.transaction+'/'+user.hex_code, {headers : {'x-access-token' : token}})
+                .then(res => res.json())
+                .then(data => {
+                    if(data.message){
+                        toast.error(data.message)
+                    }else{
+                        setTransactions(data)
+                    }
+                })
+                .catch(error => toast.error(error))
+        }
+    }, [user])
+
     function logOut() {
         setUser(null);
         setToken(null);
@@ -90,6 +106,7 @@ function App() {
                 <tokenContext.Provider value={token}>
                     <coinsContext.Provider value={coins}>
                         <walletContext.Provider value={wallet}>
+                        <transactionContext.Provider value={transactions}>
                             <Navbar logOut={logOut} />
                             <Routes>
                                 <Route path="/" element={<HomePage />} />
@@ -111,6 +128,7 @@ function App() {
                                 <Route path="/signup" element={<SignUpPage />} />
                                 <Route path="/verify/:email" element={<VerifyPage />} />
                                 <Route path="/convert" element={<ConvertPage />} />
+                                <Route path="/recovery" element={<RecoveryPage />} />
                             </Routes>
                             <ToastContainer
                                 position="bottom-left"
@@ -124,6 +142,7 @@ function App() {
                                 pauseOnHover
                                 theme="colored"
                             />
+                        </transactionContext.Provider>
                         </walletContext.Provider>
                     </coinsContext.Provider>
                 </tokenContext.Provider>

@@ -1,20 +1,36 @@
 import React, { useState, useContext } from 'react';
 import { userContext, tokenContext, coinsContext, walletContext } from '../../context';
+import * as URL from '../../utils/URL'
 
 const Transfer = () => {
+
     const token = useContext(tokenContext);
     const user = useContext(userContext);
     const coins = useContext(coinsContext);
     const wallet = useContext(walletContext);
 
     const [transactionData, setTransactionData] = useState({
-        date: new Date().toLocaleDateString(),
-        from: 0o00000, ///acá va el hex del user
+        from: user.hex_code, 
         to: 0o00000,
         amount: 0,
         token: '',
     });
 
+    const sendTransaction = (obj) => {
+        fetch(URL.transaction), {
+            method : 'POST',
+            headers : {
+                'Content-Type' : 'application/json',
+                'x-access-token' : token
+            },
+            body : JSON.stringify(obj)
+        }
+        .then( res => {
+            console.log(res)
+        })
+        .catch(error=>console.log(error))
+    }
+    
     return (
         <>
             <div className="m-auto h-[23rem] w-full rounded-md bg-gray-200/90 text-black shadow-md dark:bg-neutral-800/80 dark:text-white lg:col-start-4">
@@ -29,7 +45,6 @@ const Transfer = () => {
                                 className="w-full rounded-md py-2 px-4 text-black focus:outline-none dark:bg-black/90 dark:text-white"
                                 onChange={(e) => {
                                     setTransactionData({
-                                        date: transactionData.date,
                                         from: transactionData.from,
                                         to: transactionData.to,
                                         amount: transactionData.amount,
@@ -38,8 +53,13 @@ const Transfer = () => {
                                 }}
                             >
                                 <option value="">Seleciona una moneda...</option>
-                                <option value="Maxicoin">Maxicoin</option>
-                                <option value="Terra">Terra</option>
+                                {/* <option value="Maxicoin">Maxicoin</option>
+                                <option value="Terra">Terra</option> */}
+                                {coins.map( (coin, idx) => {
+                                    return(<option value={coin.symbol} key={idx}>{coin.name.toUpperCase()}</option>)
+                                })
+
+                                }
                             </select>
                         </div>
                         <div className="flex w-full flex-col gap-1">
@@ -51,7 +71,6 @@ const Transfer = () => {
                                 className="w-full rounded-md py-2 px-4 text-black focus:outline-none dark:bg-black/90 dark:text-white"
                                 onChange={(e) => {
                                     setTransactionData({
-                                        date: transactionData.date,
                                         from: transactionData.from,
                                         to: transactionData.to,
                                         amount: e.target.value,
@@ -72,7 +91,6 @@ const Transfer = () => {
                                 className="w-full rounded-md py-2 px-4 text-black focus:outline-none dark:bg-black/90 dark:text-white"
                                 onChange={(e) => {
                                     setTransactionData({
-                                        date: transactionData.date,
                                         from: transactionData.from,
                                         to: parseInt(e.target.value),
                                         amount: transactionData.amount,
