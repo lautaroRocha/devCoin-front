@@ -1,12 +1,20 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { transactionContext } from '../../context';
 
 
 const History = () => {
 
     const transactions = useContext(transactionContext)
-    const [sentTransactions, setSentTransactions] = useState(transactions.emisor.data)
-    const [receivedTransactions, setReceivedTransactions] = useState(transactions.emisor.data)
+    const [sentTransactions, setSentTransactions] = useState([])
+    const [receivedTransactions, setReceivedTransactions] = useState([])
+
+    useEffect(()=>{
+        const emitted = transactions.emisor.data.slice(1).slice(-5)
+        const received = transactions.receptor.data.slice(1).slice(-5)
+        setSentTransactions(emitted)
+        setReceivedTransactions(received)
+    }, [transactions])
+
 
 
     return (
@@ -18,7 +26,7 @@ const History = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {sentTransactions.map((trans, idx) => {
+                    {receivedTransactions.map((trans, idx) => {
                         return (
                             <tr
                                 className="grid w-full grid-cols-4 place-items-center text-center odd:bg-secondary/20 text-sm	even:bg-secondary/50 lg:m-0 whitespace-nowrap"
@@ -39,13 +47,13 @@ const History = () => {
                     <tr>
                         <th>Enviadas</th>
                     </tr>
-                    {receivedTransactions.map((trans, idx) => {
+                    {sentTransactions.map((trans, idx) => {
                         return (
                             <tr
                                 className="grid w-full grid-cols-4 place-items-center text-center odd:bg-secondary/20 even:bg-secondary/50 lg:m-0 whitespace-nowrap text-sm"
                                 key={idx}
                             >
-                                <td>#{trans.sender_hexcode}</td>
+                                <td>#{trans.receiver_hexcode}</td>
                                 <td>{trans.coinId}</td>
                                 <td>{trans.amount}</td>
                                 <td className='p-3'>{trans.transaction_date.slice(0, 9)}</td>

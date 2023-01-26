@@ -62,7 +62,7 @@ const Wallet = (props) => {
                         </ul>
                         {view}
                     </div>
-                    <Transfer className="lg:col-start-2" />
+                    <Transfer className="lg:col-start-2" update={props.props.update}/>
                 </div>
             </>
         );
