@@ -197,8 +197,8 @@ const UserProfilePage = (props) => {
                                         {user.last_name}{' '}
                                     </span>
                                 </div>
-                                <span className="text-sm italic max-sm:mt-[1rem] sm:mt-[0.5rem] md:pl-1">
-                                    Admin
+                                <span className=" italic max-sm:mt-[1rem] sm:mt-[0.5rem] md:pl-1">
+                                    #{user.hex_code}
                                 </span>
                             </div>
 
