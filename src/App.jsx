@@ -11,7 +11,7 @@ import {
     RecoveryPage,
 } from './pages';
 import { Navbar } from './components';
-import { userContext, tokenContext, walletContext, coinsContext } from './context';
+import { userContext, tokenContext, walletContext, coinsContext, transactionContext } from './context';
 import * as URL from './utils/URL';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -106,6 +106,7 @@ function App() {
                 <tokenContext.Provider value={token}>
                     <coinsContext.Provider value={coins}>
                         <walletContext.Provider value={wallet}>
+                        <transactionContext.Provider value={transactions}>
                             <Navbar logOut={logOut} />
                             <Routes>
                                 <Route path="/" element={<HomePage />} />
@@ -141,6 +142,7 @@ function App() {
                                 pauseOnHover
                                 theme="colored"
                             />
+                        </transactionContext.Provider>
                         </walletContext.Provider>
                     </coinsContext.Provider>
                 </tokenContext.Provider>
