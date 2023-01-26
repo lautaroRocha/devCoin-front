@@ -1,56 +1,69 @@
-import React, {useState} from 'react';
+import React, { useContext, useState, useEffect } from 'react';
+import { transactionContext } from '../../context';
 
-
-///estos dos despues se cambian por datoas reales de la API
-const MOCK_TRANSACTION_SENT = [{transactionId: 456, date: "2/1/2023", from : "Lucas", to : "David", token : "lukether", amount : 10}, {transactionId: 454, date: "8/1/2023", from : "Lucas", to : "David", token : "lukether", amount : 10}, {transactionId: 452, date: "12/1/2023", from : "Lucas", to : "David", token : "lukether", amount : 10}]
-
-const MOCK_TRANSACTION_RECEIVED = [{transactionId: 456, date: "2/1/2023", from : "Gonzalo", to : "Lucas", token : "juanbit", amount : 10}, {transactionId: 457, date: "3/1/2023", from : "Lautaro", to : "Lucas", token : "lauken", amount :7}, {transactionId: 459, date: "5/1/2023", from : "Leo", to : "Lucas", token : "leoilo", amount : 8}]
 
 const History = () => {
 
-    const [transactionsByUser, setTransactionsByUser] = useState(MOCK_TRANSACTION_SENT)
-    const [transactionsToUser, setTransactionsToUser] = useState(MOCK_TRANSACTION_RECEIVED)
+    const transactions = useContext(transactionContext)
+    const [sentTransactions, setSentTransactions] = useState([])
+    const [receivedTransactions, setReceivedTransactions] = useState([])
+
+    useEffect(()=>{
+        const emitted = transactions.emisor.data.slice(1).slice(-5)
+        const received = transactions.receptor.data.slice(1).slice(-5)
+        setSentTransactions(emitted)
+        setReceivedTransactions(received)
+    }, [transactions])
+
 
 
     return (
-        <div className='flex flex-col h-screen items-center lg:flex-row lg:items-start lg:mt-6'>
-        <table>
-            <tr>
-                <th>Recibidas</th>
-            </tr>
-        <tbody>
-            {transactionsToUser.map( (trans) => {
-                return(
-                    <tr class="odd:bg-secondary/20 even:bg-secondary/50 w-auto grid grid-cols-4 place-items-center	text-center ml-4">
-                    <td>{trans.from}</td>
-                    <td>{trans.token}</td>
-                    <td>{trans.amount}</td>
-                    <td>{trans.date}</td>
-                </tr>
-                )
-            })}
-        </tbody>
-        </table>
-        
-        <table className='mt-5 lg:mt-0'>
-        <tbody>
-            <tr>
-            <th>Enviadas</th>
-            </tr>
-            {transactionsByUser.map( (trans) => {
-                return(
-                    <tr class="odd:bg-secondary/20 even:bg-secondary/50 w-auto grid grid-cols-4 text-center ml-4 place-items-center	 ">
-                    <td>{trans.from}</td>
-                    <td>{trans.token}</td>
-                    <td>{trans.amount}</td>
-                    <td>{trans.date}</td>
-                </tr>
-                )
-            })}
-        </tbody>
-        </table>
+        <div className="mt-8 flex w-full flex-col items-center lg:flex-row lg:items-start lg:justify-center lg:gap-16">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Recibidas</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {receivedTransactions.map((trans, idx) => {
+                        return (
+                            <tr
+                                className="grid w-full grid-cols-4 place-items-center text-center odd:bg-secondary/20 text-sm	even:bg-secondary/50 lg:m-0 whitespace-nowrap"
+                                key={idx}
+                            >
+                                <td>#{trans.sender_hexcode}</td>
+                                <td>{trans.coinId}</td>
+                                <td>{trans.amount}</td>
+                                <td className='p-3'>{trans.transaction_date.slice(0, 9)}</td>
+                            </tr>
+                        );
+                    })}
+                </tbody>
+            </table>
+
+            <table className="mt-5 lg:mt-0">
+                <tbody>
+                    <tr>
+                        <th>Enviadas</th>
+                    </tr>
+                    {sentTransactions.map((trans, idx) => {
+                        return (
+                            <tr
+                                className="grid w-full grid-cols-4 place-items-center text-center odd:bg-secondary/20 even:bg-secondary/50 lg:m-0 whitespace-nowrap text-sm"
+                                key={idx}
+                            >
+                                <td>#{trans.receiver_hexcode}</td>
+                                <td>{trans.coinId}</td>
+                                <td>{trans.amount}</td>
+                                <td className='p-3'>{trans.transaction_date.slice(0, 9)}</td>
+                            </tr>
+                        );
+                    })}
+                </tbody>
+            </table>
         </div>
     );
-}
+};
 
 export default History;

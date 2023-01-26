@@ -1,11 +1,16 @@
-import React from 'react';
-import { MinBalance, CoinRanking } from '../../components';
+import React, { useContext } from 'react';
+import { CoinRanking } from '../../components';
 import { AppWrap } from '../../wrapper';
+import { Link } from 'react-router-dom';
+import { userContext, tokenContext } from '../../context';
 
-const Home = () => {
+const HomePage = () => {
+    const token = useContext(tokenContext);
+    const user = useContext(userContext);
+
     return (
         <>
-            <div className="flex h-full w-full flex-col gap-[6rem] lg:px-8">
+            <div className="flex h-full w-full flex-col gap-[4rem] sm:gap-y-[6rem] lg:gap-y-[8rem] lg:px-8">
                 {/* banners */}
                 <div className="mt-[1rem] flex w-full flex-col items-center gap-[3rem] lg:mt-[4rem]">
                     <div className="flex flex-col items-center gap-[3rem] lg:flex-row lg:items-start lg:gap-x-[8rem] 2xl:gap-x-[20rem]">
@@ -17,7 +22,12 @@ const Home = () => {
                                 Controla todas tus monedas, compra, vende y transfiere con Dev Coin!
                             </p>
                             <div className="flex w-full max-lg:justify-center">
-                                <button className="home-buttons">Comenzar!</button>
+                                <Link
+                                    to={`${user ? '/profile' : '/signup'}`}
+                                    className="buttons px-8"
+                                >
+                                    Comenzar!
+                                </Link>
                             </div>
                         </div>
                         <img
@@ -28,7 +38,7 @@ const Home = () => {
                     </div>
                 </div>
 
-                <div className="mt-8 flex w-full flex-col items-center gap-[4rem]">
+                <div className="flex w-full flex-col items-center gap-[4rem] lg:mt-8">
                     <div className="flex flex-col items-center gap-[3rem] lg:flex-row-reverse lg:items-start lg:gap-x-[8rem] 2xl:gap-x-[10rem]">
                         <div className="flex flex-col gap-8 text-center lg:text-left">
                             <h1 className="text-3xl font-bold lg:text-5xl">
@@ -38,7 +48,12 @@ const Home = () => {
                                 En Dev Coin protegemos tus transferencias con la mejor tecnología!
                             </p>
                             <div className="flex w-full max-lg:justify-center">
-                                <button className="home-buttons">Empieza a transferir!</button>
+                                <Link
+                                    to={`${user ? '/wallet' : '/signup'}`}
+                                    className="buttons px-8"
+                                >
+                                    Empieza a transferir!
+                                </Link>
                             </div>
                         </div>
                         <img
@@ -60,4 +75,4 @@ const Home = () => {
     );
 };
 
-export default AppWrap(Home);
+export default AppWrap(HomePage);

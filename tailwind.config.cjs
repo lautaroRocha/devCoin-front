@@ -5,12 +5,20 @@ module.exports = {
     theme: {
         extend: {
             screens: {
+                300: '300px',
+                306: '306px',
+                316: '316px',
+                330: '330px',
+                350: '350px',
+                400: '400px',
+                500: '500px',
+                600: '600px',
                 1150: '1150px',
                 1700: '1700px',
             },
             colors: {
-                primary: '#f5061d',
-                secondary: '#c0012a',
+                primary: '#121111',
+                secondary: '#4F46E5',
                 black: '#161616',
                 white: '#f6f6f6',
                 alternative: '#ffb300',
