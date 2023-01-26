@@ -9,6 +9,7 @@ import {
     LoginPage,
     VerifyPage,
     RecoveryPage,
+    CoinDetailPage,
 } from './pages';
 import { Navbar } from './components';
 import { userContext, tokenContext, walletContext, coinsContext, transactionContext } from './context';
@@ -86,7 +87,7 @@ function App() {
         setUser(userData);
         setToken(tokenData);
         navigate('/');
-        toast.success(`Bienvenido, ${userData.first_name}`)
+        toast.success(`Bienvenido, ${userData.first_name}`);
     }
 
     function updateUserState() {
@@ -128,6 +129,7 @@ function App() {
                                 <Route path="/signup" element={<SignUpPage />} />
                                 <Route path="/verify/:email" element={<VerifyPage />} />
                                 <Route path="/convert" element={<ConvertPage />} />
+                                <Route path="/coins/:id" element={<CoinDetailPage />} />
                                 <Route path="/recovery" element={<RecoveryPage />} />
                             </Routes>
                             <ToastContainer
