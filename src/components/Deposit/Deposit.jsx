@@ -40,7 +40,7 @@ const Deposit = (props) => {
 
     return (
         <div className="max-lg:w-full lg:col-start-4 lg:grid">
-            <div className="mt-6 flex h-[18rem] w-full flex-col items-center rounded-md bg-secondary px-6 text-center text-white shadow-md 306:h-[16rem] 316:h-[14rem] 500:h-[12.5rem] 600:h-[10rem] 600:flex-row lg:gap-x-4">
+            <div className="flex h-[18rem] w-full flex-col items-center rounded-md bg-secondary px-6 text-center text-white shadow-md 306:h-[16rem] 316:h-[14rem] 500:h-[12.5rem] 600:h-[10rem] 600:flex-row lg:gap-x-4">
                 <h4 className="flex w-full flex-col items-center gap-y-2 text-center font-semibold max-600:justify-center max-600:gap-x-4 max-600:py-6 500:flex-row 600:flex-col">
                     Balance actual: <span className="text-2xl">${wallet.balance} USD </span>
                 </h4>
