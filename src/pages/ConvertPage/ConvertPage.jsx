@@ -28,9 +28,8 @@ function ConvertPage() {
 
 
   const handleConvert = () => {
-    console.log('moneda1 es : ' + moneda1)
-    console.log('moneda2 es : ' + moneda2)
-    setResult((moneda1 / moneda2).toFixed(6));
+    let convertionResult = (moneda1 * monto / moneda2).toFixed(6)
+    setResult(convertionResult)
   };
 
   const limpiarCampos = () => {
@@ -40,6 +39,19 @@ function ConvertPage() {
     setMoneda2('');
   }
 
+  const invertirCoins = () => {
+    setMoneda1(moneda2);
+    setMoneda2(moneda1);
+    setResultSymbol()
+  }
+
+  useEffect(()=>{
+    if(moneda2){
+      let outputToken = monedas.find((coin) => coin.current_price === parseFloat(moneda2))
+      setResultSymbol(outputToken.symbol)
+    }
+  }, [moneda2])
+  
   return (
     <div className="background">
       <h1 className="mb-8 text-left text-2xl font-semibold">
@@ -61,22 +73,19 @@ function ConvertPage() {
                 </option>
               ))}
             </select>
+
             <div className="w-full my-[1rem] text-center">
-              <button className="buttons px-8">
-                {Icons.arrows}
+              <button onClick={invertirCoins} className="buttons px-8">
+                {Icons.arrows}                
               </button>
             </div>
+
             <select
               className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-purple-500 focus:ring-purple-600  dark:bg-neutral-800/80 dark:text-white lg:max-w-xl lg:whitespace-normal lg:text-center lg:h-fit"
               value={moneda2}
               name="moneda-2"
               id="moneda-2"
-              onChange={(e) => {
-                setMoneda2(e.target.value);
-                let outputToken = monedas.find((coin) => coin.current_price == e.target.value)
-                setResultSymbol(outputToken.symbol)
-              }}
-            >
+              onChange={(e) => setMoneda2(e.target.value)}>
               <option value="">Seleccioná a qué moneda convertir</option>
               {monedas.map((moneda, idx) => (
                 <option key={idx} value={moneda.current_price}>{moneda.symbol}</option>
@@ -106,7 +115,7 @@ function ConvertPage() {
             </div>
           </div>
 
-          <div className="text-center">
+          <div className="text-center flex justify-center gap-4">
             {moneda1 && moneda2 ?
             <button
             onClick={handleConvert}

@@ -1,36 +1,12 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { MinCoin } from '../../components';
-import { userContext, tokenContext } from '../../context';
+import { userContext, tokenContext, coinsContext } from '../../context';
 
 const Balance = () => {
     const token = useContext(tokenContext);
     const user = useContext(userContext);
+    const coins = useContext(coinsContext)
 
-    const [userCoins, setUserCoins] = useState([]);
-    const [search, setSearch] = useState('');
-    const [coinsFiltered, setCoinsFiltered] = useState([]);
-
-    // esto obviamente después lo sacaríamos del usuario que recibe el componente
-    const USER_COINS = [
-        { token: 'lucascoin', quantity: '5' },
-        { token: 'gonzacoin', quantity: '7' },
-        { token: 'juanbit', quantity: '3' },
-        { token: 'lucascoin', quantity: '5' },
-        { token: 'gonzacoin', quantity: '7' },
-        { token: 'juanbit', quantity: '3' }
-    ];
-
-    const Filter = () => {
-        let coinsFiltered = coins.filter((coin) => {
-            if (
-                coin.name.toLowerCase().includes(search.toLowerCase()) ||
-                coin.symbol.toLowerCase().includes(search.toLowerCase())
-            ) {
-                return coin;
-            }
-        });
-        setCoinsFiltered(coinsFiltered);
-    };
 
     return (
         <div className="mt-8 flex w-8/12 flex-col text-white lg:w-full">
@@ -49,7 +25,7 @@ const Balance = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {USER_COINS.map((coin, index) => (
+                        {coins.map((coin, index) => (
                             <MinCoin coin={coin} key={index} />
                         ))}
                     </tbody>
