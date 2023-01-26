@@ -67,7 +67,8 @@ const Navbar = ({ logOut }) => {
                         <span className="hidden xl:flex">Conversor</span>
                     </NavLink>
                 </div>
-                <div className="flex  basis-1 flex-col items-center gap-4 xl:mt-32 xl:items-start">
+
+                <div className="mx-auto flex w-[95%] basis-3 flex-col items-center gap-4 xl:items-start">
                     <div className="flex w-[90%] gap-x-6 py-2 xl:px-4">
                         {theme === 'light' ? Icons.moon : Icons.sun}
                         <label className="switch max-xl:mx-auto">

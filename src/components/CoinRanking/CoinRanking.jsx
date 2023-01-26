@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import CoinRankingRow from './CoinRankingRow/CoinRankingRow';
-import * as Icons from '../../utils/icons'
+import * as Icons from '../../utils/icons';
 
 const CoinRanking = () => {
     const [coins, setCoins] = useState([]);
@@ -66,6 +66,7 @@ const CoinRanking = () => {
                             ? coins.map((coin, index) => (
                                   <CoinRankingRow
                                       key={index}
+                                      id={coin.id}
                                       symbol={coin.symbol}
                                       name={coin.name}
                                       image={coin.image}
@@ -77,6 +78,7 @@ const CoinRanking = () => {
                             : coinsFiltered.map((coin, index) => (
                                   <CoinRankingRow
                                       key={index}
+                                      id={coin.id}
                                       symbol={coin.symbol}
                                       name={coin.name}
                                       image={coin.image}
