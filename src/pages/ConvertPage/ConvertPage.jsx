@@ -28,10 +28,8 @@ function ConvertPage() {
 
 
   const handleConvert = () => {
-    console.log('moneda1 es : ' + moneda1)
-    console.log('moneda2 es : ' + moneda2)
-    setResult((moneda1 / moneda2).toFixed(6));
-        
+    let convertionResult = (moneda1 * monto / moneda2).toFixed(6)
+    setResult(convertionResult)
   };
 
   const limpiarCampos = () => {
