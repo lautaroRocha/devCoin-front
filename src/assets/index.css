@@ -87,24 +87,30 @@
         border: 1px solid rgba(161, 156, 255, 1);
     }
     /* End BG User information */
+    canvas{
+        min-height: 40vh !important;
+        width: 100% !important;
+      }
+      * {
+        scrollbar-width: thin;
+        scrollbar-color: #4F46E5 #161616;
+      }
+      
+      /* Chrome, Edge, and Safari */
+      *::-webkit-scrollbar {
+        width: 15px;
+      }
+      
+      *::-webkit-scrollbar-track {
+        background: #4F46E5;
+      }
+    
+      *::-webkit-scrollbar-thumb {
+        background: #161616;
+        border-radius: 8px;
+      }
 }
 
-* {
-    scrollbar-width: thin;
-    scrollbar-color: #4F46E5 #161616;
-  }
-  
-  /* Chrome, Edge, and Safari */
-  *::-webkit-scrollbar {
-    width: 15px;
-  }
-  
-  *::-webkit-scrollbar-track {
-    background: #4F46E5;
-  }
 
-  *::-webkit-scrollbar-thumb {
-    background: #161616;
-    border-radius: 8px;
-  }
+
 

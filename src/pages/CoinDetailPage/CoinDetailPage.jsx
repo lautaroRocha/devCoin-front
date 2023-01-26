@@ -89,30 +89,29 @@ const CoinDetailPage = () => {
                 <img src={coin.image} alt={coin.id} width={40} />
                 {coin.name}
             </h1>
-            <div className="mt-[2rem] h-screen w-full">
-                <div className="flex flex-col justify-center lg:flex-row lg:justify-start">
+            <div className="mt-[2rem] w-full">
+                <div className="flex flex-col justify-center lg:flex-row lg:justify-start lg:gap-8">
                     <div className="w-full lg:h-fit lg:w-[58%]">
-                        <Line options={options} data={data} updateMode="resize" />
+                        <Line options={options} data={data}  />
                     </div>
-                    <div className="flex w-full items-start justify-center pt-6 lg:w-[38%]">
-                        <div className="flex flex-col gap-y-1.5">
-                            <div className="flex gap-4">
-                                <h4 className="text-gray-700/80">Ranking: </h4>
+                    <div className=" w-full  pt-6 lg:w-[38%] grid grid-cols-2 gap-2">
+                            <div className="flex flex-col gap-1 text-sm">
+                                <h4 className="text-gray-700/80 ">Ranking: </h4>
                                 <span>{coin.market_cap_rank}</span>
                             </div>
-                            <div className="flex gap-4">
+                            <div className="flex flex-col gap-1 text-sm">
                                 <h4 className="text-gray-700/80">Precio actual:</h4>
                                 <span>${coin.current_price} USD</span>
                             </div>
-                            <div className="flex gap-4">
+                            <div className="flex flex-col gap-1 text-sm">
                                 <h4 className="text-gray-700/80">Minimo en 24h:</h4>
                                 <span>${coin.low_24h} USD</span>
                             </div>
-                            <div className="flex gap-4">
+                            <div className="flex flex-col gap-1 text-sm">
                                 <h4 className="text-gray-700/80">Maximo en 24h:</h4>
                                 <span>${coin.high_24h} USD</span>
                             </div>
-                            <div className="flex gap-4">
+                            <div className="flex flex-col gap-1 text-sm">
                                 <h4 className="whitespace-nowrap text-gray-700/80">
                                     Cambio en 24h:
                                 </h4>
@@ -132,11 +131,10 @@ const CoinDetailPage = () => {
                                     %
                                 </span>
                             </div>
-                            <div className="flex gap-4">
+                            <div className="flex flex-col gap-1 text-sm">
                                 <h4 className="text-gray-700/80">Volumen total:</h4>
                                 <span>{coin.total_volume}</span>
                             </div>
-                        </div>
                     </div>
                 </div>
             </div>
