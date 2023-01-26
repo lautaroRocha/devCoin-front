@@ -28,9 +28,9 @@ const Deposit = (props) => {
 
     const handleDeposit = (e) => {
         e.preventDefault();
-        if (valueToDeposit) {
+        if (valueToDeposit > 0) {
             let depositData = {
-                balance: parseFloat(valueToDeposit),
+                balance: valueToDeposit,
             };
             depositFiatMoney(depositData);
         } else {
@@ -47,9 +47,10 @@ const Deposit = (props) => {
                 <div className="flex w-full flex-col gap-y-4">
                     <input
                         type="number"
+                        min="1"
                         placeholder="¿Cuanto sumas?"
                         className="w-full rounded-md py-2 px-4 text-black focus:outline-none"
-                        onChange={(e) => setValueToDeposit(e.target.value)}
+                        onChange={(e) => setValueToDeposit(parseFloat(e.target.value))}
                     />
                     {valueToDeposit === '' ? (
                         <button
