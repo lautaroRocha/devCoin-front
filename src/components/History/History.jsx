@@ -35,7 +35,7 @@ const History = () => {
                                 <td>#{trans.sender_hexcode}</td>
                                 <td>{trans.coinId}</td>
                                 <td>{trans.amount}</td>
-                                <td className='p-3'>{trans.transaction_date.slice(0, 9)}</td>
+                                <td className='p-3'>{trans.transaction_date.slice(0, 10)}</td>
                             </tr>
                         );
                     })}
@@ -56,7 +56,7 @@ const History = () => {
                                 <td>#{trans.receiver_hexcode}</td>
                                 <td>{trans.coinId}</td>
                                 <td>{trans.amount}</td>
-                                <td className='p-3'>{trans.transaction_date.slice(0, 9)}</td>
+                                <td className='p-3'>{trans.transaction_date.slice(0, 10)}</td>
                             </tr>
                         );
                     })}
