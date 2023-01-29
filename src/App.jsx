@@ -113,7 +113,7 @@ function App() {
                 <Route path="/verify/:email" element={<VerifyPage />} />
                 <Route path="/convert" element={<ConvertPage />} />
                 <Route path="/coins/:id" element={<CoinDetailPage />} />
-                <Route path="/recovery" element={<RecoveryPage />} />
+                <Route path="/recovery/:email" element={<RecoveryPage />} />
             </Routes>
             <ToastContainer position="bottom-left"
                                 autoClose={4000}
