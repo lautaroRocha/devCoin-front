@@ -1,12 +1,10 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { MinCoin } from '../../components';
-import { userContext, tokenContext, coinsContext } from '../../context';
+import { coinsContext } from '../../context';
 
 const Balance = () => {
-    const token = useContext(tokenContext);
-    const user = useContext(userContext);
-    const coins = useContext(coinsContext)
-
+    const coinsData = useContext(coinsContext)
+    const coins = coinsData && coinsData.coins
 
     return (
         <div className="mt-8 flex w-8/12 flex-col text-white lg:w-full">

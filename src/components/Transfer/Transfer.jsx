@@ -1,13 +1,15 @@
 import React, { useState, useContext } from 'react';
-import { userContext, tokenContext, coinsContext, walletContext } from '../../context';
+import { sessionContext, coinsContext} from '../../context';
 import * as URL from '../../utils/URL'
 import { toast } from 'react-toastify';
 
 const Transfer = (props) => {
 
-    const token = useContext(tokenContext);
-    const user = useContext(userContext);
-    const coins = useContext(coinsContext);
+    const session = useContext(sessionContext)
+    const coinsData = useContext(coinsContext)
+    const token = session && session.token;
+    const user = session && session.user;
+    const coins = coinsData && coinsData.coins;
 
 
     const [transactionData, setTransactionData] = useState({
@@ -87,6 +89,7 @@ const Transfer = (props) => {
                             <input
                                 id="quantity"
                                 type="number"
+                                step="0.01"
                                 placeholder="Ingresa la cantidad"
                                 className="w-full rounded-md py-2 px-4 text-black focus:outline-none dark:bg-black/90 dark:text-white"
                                 onChange={(e) => {

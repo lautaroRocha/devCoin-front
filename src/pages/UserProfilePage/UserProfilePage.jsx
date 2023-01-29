@@ -1,7 +1,7 @@
 import React, { useRef, useState, useContext, useEffect } from 'react';
 import { Balance } from '../../components';
 import { AppWrap } from '../../wrapper';
-import { userContext, tokenContext } from '../../context';
+import { sessionContext } from '../../context';
 import { Navigate } from 'react-router-dom';
 import * as Icons from '../../utils/icons';
 import axios from 'axios';
@@ -11,8 +11,9 @@ import imageCompression from 'browser-image-compression';
 import { toast } from 'react-toastify';
 
 const UserProfilePage = (props) => {
-    const token = useContext(tokenContext);
-    const user = useContext(userContext);
+    const session = useContext(sessionContext)
+    const token = session && session.token;
+    const user = session && session.user;
 
     const storage = getStorage();
     const storageRef = user && ref(storage, `images/${user.email}-profilepic`);

@@ -2,11 +2,11 @@ import React, { useContext } from 'react';
 import { CoinRanking } from '../../components';
 import { AppWrap } from '../../wrapper';
 import { Link } from 'react-router-dom';
-import { userContext, tokenContext } from '../../context';
+import { sessionContext} from '../../context';
 
 const HomePage = () => {
-    const token = useContext(tokenContext);
-    const user = useContext(userContext);
+    const session = useContext(sessionContext)
+    const user = session && session.user;
 
     return (
         <>

@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
+import { coinsContext } from '../../context';
 import * as Icons from '../../utils/icons'
 import { AppWrap } from '../../wrapper';
 
@@ -10,16 +11,8 @@ function ConvertPage() {
   const [monto, setMonto] = useState(0);
   const [result, setResult] = useState(0);
 
-
-  useEffect(() => {
-    const host =
-      'api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1&sparkline=false';
-    fetch(`https://${host}/currencies`)
-      .then((resp) => resp.json())
-      .then((data) => {
-        setMonedas(data);
-      });
-  }, []);
+  const coinsData = useContext(coinsContext)
+  monedas === [] && coinsData && setMonedas(coinsData.prices)
 
   useEffect(() => {
     setMonto('');

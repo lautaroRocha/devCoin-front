@@ -1,10 +1,11 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { transactionContext } from '../../context';
+import { coinsContext } from '../../context';
 
 
 const History = () => {
 
-    const transactions = useContext(transactionContext)
+    const coinsData = useContext(coinsContext)
+    const transactions = coinsData && coinsData.transactions
     const [sentTransactions, setSentTransactions] = useState([])
     const [receivedTransactions, setReceivedTransactions] = useState([])
 
@@ -14,7 +15,6 @@ const History = () => {
         setSentTransactions(emitted)
         setReceivedTransactions(received)
     }, [transactions])
-
 
 
     return (

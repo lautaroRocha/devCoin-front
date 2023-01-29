@@ -1,6 +1,6 @@
 // React
 import React, { useEffect, useState, useContext } from 'react';
-import { userContext } from '../../context';
+import { sessionContext } from '../../context';
 import * as Icons from '../../utils/icons';
 
 // Routes
@@ -10,7 +10,9 @@ const Navbar = ({ logOut }) => {
     const savedMode = sessionStorage.getItem('mode');
 
     const [theme, setTheme] = useState(savedMode);
-    const user = useContext(userContext);
+
+    const session = useContext(sessionContext);
+    const user = session && session.user
 
     const documentClass = document.documentElement.classList;
 

@@ -1,12 +1,15 @@
 import React, { useState, useContext } from 'react';
 import { toast } from 'react-toastify';
 import * as URL from '../../utils/URL';
-import { userContext, tokenContext, walletContext } from '../../context';
+import { sessionContext, coinsContext } from '../../context';
 
 const Deposit = (props) => {
-    const wallet = useContext(walletContext);
-    const user = useContext(userContext);
-    const token = useContext(tokenContext);
+
+    const session = useContext(sessionContext)
+    const coinsData = useContext(coinsContext);
+    const wallet = coinsData && coinsData.wallet
+    const user = session && session.user;
+    const token = session && session.token;
 
     const [valueToDeposit, setValueToDeposit] = useState('');
 

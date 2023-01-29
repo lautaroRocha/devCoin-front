@@ -1,7 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { AppWrap } from '../../wrapper';
-
-import { userContext, tokenContext } from '../../context';
+import { sessionContext } from '../../context';
 import { Navigate } from 'react-router-dom';
 
 import { Balance, History, Transfer, Deposit } from '../../components';
@@ -9,8 +8,8 @@ import { Balance, History, Transfer, Deposit } from '../../components';
 const Wallet = (props) => {
     const [selectedView, setSelectedView] = useState('Historial');
 
-    const token = useContext(tokenContext);
-    const user = useContext(userContext);
+    const session = useContext(sessionContext);
+    const user = session && session.user;
 
     function setView(e) {
         setSelectedView(e.target.textContent);
@@ -66,8 +65,7 @@ const Wallet = (props) => {
                 </div>
             </>
         );
-    }
-    {
+    }else{
         return <Navigate to="/login" replace={true} />;
     }
 };
