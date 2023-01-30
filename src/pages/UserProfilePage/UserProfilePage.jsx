@@ -70,7 +70,7 @@ const UserProfilePage = (props) => {
 
     if (user && user.verified_user) {
         return (
-            <div className="relative flex h-full w-full flex-col items-center md:items-start md:overflow-x-hidden">
+            <div className="relative flex h-full w-full flex-col items-center md:items-start md:overflow-x-auto md:overflow-y-clip">
                 {editing && (
                     <>
                         {/* FORMULARIO PARA CAMBIAR DATOS */}
@@ -203,7 +203,7 @@ const UserProfilePage = (props) => {
 
                             <span onClick={editContent}>{Icons.edit}</span>
                         </div>
-                        <div className="md:glassMoney mt-4 flex h-[4rem] w-full items-center justify-start gap-x-4 rounded-lg bg-gray-900/90 px-[4rem] dark:bg-gray-800/50 dark:text-white max-350:px-[0.5rem] md:ml-5 md:mt-0 md:h-full md:w-[40%]">
+                        <div className="glassMoney mt-4 flex h-[4rem] w-full items-center justify-start gap-x-4 rounded-lg px-[4rem] dark:bg-gray-800/50 dark:text-white max-350:px-[0.5rem] md:ml-5 md:mt-0 md:h-full md:w-[40%]">
                             <span>{Icons.bill}</span>
                             <span className="ml-auto text-2xl font-bold lg:text-4xl">
                                 ${props.props.wallet.balance}
@@ -215,8 +215,7 @@ const UserProfilePage = (props) => {
             </div>
         );
     } else {
-        toast.error('Debes estar verificado para ingresar');
-        return <Navigate to="/login" replace={true} />;
+        return <Navigate to="/" replace={true} />;
     }
 };
 
