@@ -28,7 +28,7 @@ const Navbar = ({ logOut }) => {
     };
 
     const checkIfVerified = () => {
-        !user.user_verified && toast.error('Debes verificar tu cuenta para hacer esto')
+        !user.verified_user && toast.error('Debes verificar tu cuenta para hacer esto')
     }
 
     return (
