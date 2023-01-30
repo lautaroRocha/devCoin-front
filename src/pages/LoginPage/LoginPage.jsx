@@ -89,7 +89,7 @@ const LoginPage = (props) => {
                         <input
                             id="email"
                             type="text"
-                            className="w-full rounded-xl py-2 px-4 focus:outline-none dark:bg-black/90 dark:text-white"
+                            className="w-full rounded-md py-2 px-4 focus:outline-none dark:bg-black/90 dark:text-white"
                             onChange={(event) => setEmail(event.target.value)}
                         />
                     </div>
@@ -98,7 +98,7 @@ const LoginPage = (props) => {
                             Contraseña
                             <input
                                 type="password"
-                                className="w-full rounded-xl px-4 py-2 focus:outline-none dark:bg-black/90"
+                                className="w-full rounded-md px-4 py-2 focus:outline-none dark:bg-black/90"
                                 onChange={(event) => setPassword(event.target.value)}
                                 ref={passInput}
                             />
