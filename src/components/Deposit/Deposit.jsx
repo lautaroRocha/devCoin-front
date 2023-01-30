@@ -5,11 +5,8 @@ import { sessionContext, coinsContext } from '../../context';
 
 const Deposit = (props) => {
 
-    const session = useContext(sessionContext)
-    const coinsData = useContext(coinsContext);
-    const wallet = coinsData && coinsData.wallet
-    const user = session && session.user;
-    const token = session && session.token;
+    const {user, token} = useContext(sessionContext)
+    const {wallet} = useContext(coinsContext)
 
     const [valueToDeposit, setValueToDeposit] = useState('');
 

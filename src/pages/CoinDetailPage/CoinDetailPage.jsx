@@ -81,7 +81,6 @@ const CoinDetailPage = () => {
         ],
     };
 
-    console.log(coin);
 
     return (
         <>

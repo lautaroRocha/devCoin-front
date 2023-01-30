@@ -5,8 +5,7 @@ import { Link } from 'react-router-dom';
 import { sessionContext} from '../../context';
 
 const HomePage = () => {
-    const session = useContext(sessionContext)
-    const user = session && session.user;
+    const {user} = useContext(sessionContext);
 
     return (
         <>

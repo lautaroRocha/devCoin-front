@@ -8,8 +8,7 @@ import { Balance, History, Transfer, Deposit } from '../../components';
 const Wallet = (props) => {
     const [selectedView, setSelectedView] = useState('Historial');
 
-    const session = useContext(sessionContext);
-    const user = session && session.user;
+    const {user} = useContext(sessionContext);
 
     function setView(e) {
         setSelectedView(e.target.textContent);

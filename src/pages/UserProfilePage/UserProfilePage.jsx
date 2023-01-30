@@ -11,9 +11,7 @@ import imageCompression from 'browser-image-compression';
 import { toast } from 'react-toastify';
 
 const UserProfilePage = (props) => {
-    const session = useContext(sessionContext)
-    const token = session && session.token;
-    const user = session && session.user;
+    const {token, user} = useContext(sessionContext)
 
     const storage = getStorage();
     const storageRef = user && ref(storage, `images/${user.email}-profilepic`);

@@ -5,11 +5,8 @@ import { toast } from 'react-toastify';
 
 const Transfer = (props) => {
 
-    const session = useContext(sessionContext)
-    const coinsData = useContext(coinsContext)
-    const token = session && session.token;
-    const user = session && session.user;
-    const coins = coinsData && coinsData.coins;
+    const {token, user} = useContext(sessionContext)
+    const {coins} = useContext(coinsContext)
 
 
     const [transactionData, setTransactionData] = useState({

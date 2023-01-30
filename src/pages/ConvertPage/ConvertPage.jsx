@@ -11,8 +11,8 @@ function ConvertPage() {
   const [monto, setMonto] = useState(0);
   const [result, setResult] = useState(0);
 
-  const coinsData = useContext(coinsContext)
-  monedas === [] && coinsData && setMonedas(coinsData.prices)
+  const {prices} = useContext(coinsContext)
+  prices && monedas === [] && setMonedas(prices)
 
   useEffect(() => {
     setMonto('');

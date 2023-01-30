@@ -4,8 +4,7 @@ import { coinsContext } from '../../context';
 
 const History = () => {
 
-    const coinsData = useContext(coinsContext)
-    const transactions = coinsData && coinsData.transactions
+    const {transactions} = useContext(coinsContext)
     const [sentTransactions, setSentTransactions] = useState([])
     const [receivedTransactions, setReceivedTransactions] = useState([])
 

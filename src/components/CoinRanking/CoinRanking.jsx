@@ -5,8 +5,7 @@ import { coinsContext } from '../../context';
 
 const CoinRanking = () => {
 
-    const coinsData = useContext(coinsContext)
-    const coins = coinsData && coinsData.prices   
+    const {prices} = useContext(coinsContext)
 
 
     const [search, setSearch] = useState('');
@@ -56,8 +55,8 @@ const CoinRanking = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {coins && search === ''
-                            ? coins.map((coin, index) => (
+                        {prices && search === ''
+                            ? prices.map((coin, index) => (
                                   <CoinRankingRow
                                       key={index}
                                       id={coin.id}
