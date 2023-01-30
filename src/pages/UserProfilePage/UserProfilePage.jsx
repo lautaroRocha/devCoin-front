@@ -221,6 +221,7 @@ const UserProfilePage = (props) => {
             </div>
         );
     } else {
+        toast.error('Debes estar verificado para ingresar')
         return <Navigate to="/login" replace={true} />;
     }
 };

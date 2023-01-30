@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from 'react';
 import { AppWrap } from '../../wrapper';
 import { sessionContext } from '../../context';
 import { Navigate } from 'react-router-dom';
-
+import { toast } from 'react-toastify'
 import { Balance, History, Transfer, Deposit } from '../../components';
 
 const Wallet = (props) => {
@@ -64,7 +64,8 @@ const Wallet = (props) => {
                 </div>
             </>
         );
-    }else{
+    }else{  
+        toast.error('Debes estar verificado para ingresar')
         return <Navigate to="/login" replace={true} />;
     }
 };
