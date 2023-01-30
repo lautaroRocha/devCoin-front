@@ -2,7 +2,6 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { sessionContext } from '../../context';
 import * as Icons from '../../utils/icons';
-import { useNavigate } from 'react-router-dom';
 import {toast} from 'react-toastify'
 
 // Routes
@@ -13,7 +12,6 @@ const Navbar = ({ logOut }) => {
 
     const [theme, setTheme] = useState(savedMode);
     const {user} = useContext(sessionContext)
-    const navigate = useNavigate()
     
     const documentClass = document.documentElement.classList;
 
