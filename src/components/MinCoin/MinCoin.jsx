@@ -19,15 +19,15 @@ const MinCoin = ({ coin, index }) => {
                     <span className="text-[#707a8a] dark:text-[848e9c]">{coin.name}</span>
                 </Link>
             </td>
-            <td className='whitespace-nowrap'>
+            <td>
                 {parseFloat(coin.amount).toFixed(4)} {coin.symbol.toUpperCase()}
             </td>
-            <td className='whitespace-nowrap'>${(parseFloat(coin.amount) * coinCurrentPrice.current_price).toFixed(2)} USD</td>
-            <td className="flex gap-x-4 hover:cursor-pointer h-full justify-center">
-                <Link to={`/coins/${nameForLink}`} className="text-yellow-500/90">
+            <td>${parseFloat(coin.amount) * coinCurrentPrice.current_price} USD</td>
+            <td className="flex gap-x-4 hover:cursor-pointer">
+                <Link to={`/coins/${coin.id}`} className="text-yellow-500/90">
                     Comprar
                 </Link>
-                <Link to={`/coins/${nameForLink}`} className="text-yellow-500/90">
+                <Link to={`/coins/${coin.id}`} className="text-yellow-500/90">
                     Vender
                 </Link>
             </td>
