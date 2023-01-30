@@ -64,7 +64,8 @@ const Wallet = (props) => {
             </>
         );
     } else {
-        return <Navigate to="/" replace={true} />;
+        toast.error('Debes estar verificado para ingresar');
+        return <Navigate to="/login" replace={true} />;
     }
 };
 

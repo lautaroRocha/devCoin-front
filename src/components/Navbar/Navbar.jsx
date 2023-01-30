@@ -2,8 +2,6 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { sessionContext } from '../../context';
 import * as Icons from '../../utils/icons';
-import { useNavigate } from 'react-router-dom';
-import {toast} from 'react-toastify'
 
 // Routes
 import { NavLink } from 'react-router-dom';
@@ -13,7 +11,6 @@ const Navbar = ({ logOut }) => {
 
     const [theme, setTheme] = useState(savedMode);
     const {user} = useContext(sessionContext)
-    const navigate = useNavigate()
     
     const documentClass = document.documentElement.classList;
 
@@ -22,14 +19,9 @@ const Navbar = ({ logOut }) => {
         sessionStorage.setItem('mode', theme);
     }, [theme]);
 
-
     const handleThemeSwitch = () => {
         setTheme(theme === 'dark' ? 'light' : 'dark');
     };
-
-    const checkIfVerified = () => {
-        !user.user_verified && toast.error('Debes verificar tu cuenta para hacer esto')
-    }
 
     return (
         <nav className="fixed top-0 h-screen min-w-[4rem] bg-gradient-to-b from-indigo-600 via-zinc-900 to-zinc-900 text-white dark:bg-primary xl:w-[15%] 1700:w-[12%]">
@@ -49,7 +41,6 @@ const Navbar = ({ logOut }) => {
                     {user && (
                         <>
                             <NavLink
-                                onClick={checkIfVerified}
                                 to="/wallet"
                                 className="navbar-links flex gap-x-6"
                                 activeclassname="active"
@@ -58,7 +49,6 @@ const Navbar = ({ logOut }) => {
                                 <span className="hidden xl:flex">Cartera</span>
                             </NavLink>
                             <NavLink
-                                onClick={checkIfVerified}
                                 to="/profile"
                                 className="navbar-links flex gap-x-6"
                                 activeclassname="active"
