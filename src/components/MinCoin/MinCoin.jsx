@@ -24,10 +24,10 @@ const MinCoin = ({ coin, index }) => {
             </td>
             <td>${parseFloat(coin.amount) * coinCurrentPrice.current_price} USD</td>
             <td className="flex gap-x-4 hover:cursor-pointer">
-                <Link to={`/coins/${coin.id}`} className="text-yellow-500/90">
+                <Link to={`/coins/${nameForLink}`} className="text-yellow-500/90">
                     Comprar
                 </Link>
-                <Link to={`/coins/${coin.id}`} className="text-yellow-500/90">
+                <Link to={`/coins/${nameForLink}`} className="text-yellow-500/90">
                     Vender
                 </Link>
             </td>

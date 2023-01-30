@@ -51,6 +51,7 @@ const Navbar = ({ logOut }) => {
                                 to="/wallet"
                                 className="navbar-links flex gap-x-6"
                                 activeclassname="active"
+                                onClick={checkIfVerified}
                             >
                                 {Icons.wallet}
                                 <span className="hidden xl:flex">Cartera</span>
@@ -59,6 +60,7 @@ const Navbar = ({ logOut }) => {
                                 to="/profile"
                                 className="navbar-links flex gap-x-6"
                                 activeclassname="active"
+                                onClick={checkIfVerified}
                             >
                                 {Icons.profile}
                                 <span className="hidden xl:flex">Perfil</span>
