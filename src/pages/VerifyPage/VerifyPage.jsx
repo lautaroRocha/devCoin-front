@@ -20,6 +20,7 @@ const VerifyPage = () => {
                 toast.error('Hubo un problema, intentá de nuevo más tarde')
             }else{
                 toast.success('¡Verificado!')
+                toast.info('Te cargamos U$D2000 para que empieces a usar DevCoin!')
                 navigate('/login')
             }
         })
