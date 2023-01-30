@@ -1,4 +1,4 @@
-import React, { useRef, useState, useContext, useEffect } from 'react';
+import React, { useRef, useState, useContext} from 'react';
 import { Balance } from '../../components';
 import { AppWrap } from '../../wrapper';
 import { sessionContext } from '../../context';

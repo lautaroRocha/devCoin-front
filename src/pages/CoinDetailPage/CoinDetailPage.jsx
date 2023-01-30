@@ -5,6 +5,7 @@ import { AppWrap } from '../../wrapper';
 import { Navigate } from 'react-router-dom';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import { BuyCrypto } from '../../components';
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -30,7 +31,7 @@ ChartJS.register(
     Legend
 );
 
-const CoinDetailPage = () => {
+const CoinDetailPage = (props) => {
 
     const {user} = useContext(sessionContext)
 
@@ -145,15 +146,7 @@ const CoinDetailPage = () => {
                 </div>
                 <div className="flex flex-col gap-4 mt-4 h-auto w-full mb-6 lg:flex-row justify-center lg:mt-12">
     
-                    <div className="bg-secondary p-3  flex flex-col items-center rounded-md  text-white lg:w-3/6 lg:gap-3">
-                        <input type="text" className='rounded-sm text-sm p-2 bg-cyan-900/70 text-white lg:text-lg' placeholder='Cantidad...'/>
-                        <div className='flex  lg:flex-row lg:gap-6 lg:items-center lg:text-lg'>
-                        <span>
-                            Recibirás  {coin.symbol}
-                        </span>
-                        <button className='bg-green-500 py-2 px-4 rounded-md'>COMPRAR</button>
-                        </div>
-                    </div>
+                   <BuyCrypto coin={coin} update={props.props.update}/>
     
                     <div className="bg-secondary p-3 lg:gap-3 flex flex-col items-center rounded-md text-white
     lg:w-3/6">

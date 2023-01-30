@@ -113,7 +113,7 @@ function App() {
                 <Route path="/signup" element={<SignUpPage />} />
                 <Route path="/verify/:email" element={<VerifyPage />} />
                 <Route path="/convert" element={<ConvertPage />} />
-                <Route path="/coins/:id" element={<CoinDetailPage />} />
+                <Route path="/coins/:id" element={<CoinDetailPage update={updateUserState}/>} />
                 <Route path="/recovery/:email" element={<RecoveryPage />} />
             </Routes>
             <ToastContainer position="bottom-left"
