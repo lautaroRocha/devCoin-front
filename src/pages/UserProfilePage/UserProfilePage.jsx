@@ -11,7 +11,7 @@ import imageCompression from 'browser-image-compression';
 import { toast } from 'react-toastify';
 
 const UserProfilePage = (props) => {
-    const {token, user} = useContext(sessionContext)
+    const { token, user } = useContext(sessionContext);
 
     const storage = getStorage();
     const storageRef = user && ref(storage, `images/${user.email}-profilepic`);
@@ -203,12 +203,6 @@ const UserProfilePage = (props) => {
 
                             <span onClick={editContent}>{Icons.edit}</span>
                         </div>
-                        {/* <div className="glassMoney ml-4 hidden h-full  lg:w-[40%] items-center justify-start gap-x-4 rounded-lg px-[4rem] text-black dark:text-white md:flex">
-                            {Icons.bill}
-                            <span className="ml-auto text-4xl font-bold">
-                                ${props.props.wallet.balance}
-                            </span>
-                        </div> */}
                         <div className="md:glassMoney mt-4 flex h-[4rem] w-full items-center justify-start gap-x-4 rounded-lg bg-gray-900/90 px-[4rem] dark:bg-gray-800/50 dark:text-white max-350:px-[0.5rem] md:ml-5 md:mt-0 md:h-full md:w-[40%]">
                             <span>{Icons.bill}</span>
                             <span className="ml-auto text-2xl font-bold lg:text-4xl">
@@ -221,7 +215,7 @@ const UserProfilePage = (props) => {
             </div>
         );
     } else {
-        toast.error('Debes estar verificado para ingresar')
+        toast.error('Debes estar verificado para ingresar');
         return <Navigate to="/login" replace={true} />;
     }
 };

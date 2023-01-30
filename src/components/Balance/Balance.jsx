@@ -3,15 +3,14 @@ import { MinCoin } from '../../components';
 import { coinsContext } from '../../context';
 
 const Balance = () => {
-    const {coins} = useContext(coinsContext)
-
+    const { coins } = useContext(coinsContext);
     return (
-        <div className="mt-8 flex w-8/12 flex-col text-white lg:w-full">
-            <div className="relative max-h-screen overflow-x-auto rounded-lg">
+        <div className="mt-8 flex w-full flex-col">
+            <div className="relative max-h-screen overflow-x-auto rounded-md">
                 <table className="w-full">
-                    <thead className="bg-secondary text-xs uppercase text-white lg:text-base">
+                    <thead className="bg-secondary text-xs uppercase text-white lg:text-xs">
                         <tr>
-                            {['Moneda', 'Balance', '', ''].map((title, index) => (
+                            {['Moneda', 'Balance', 'Valor en USD', ''].map((title, index) => (
                                 <td
                                     className="whitespace-nowrap py-3 px-6 font-semibold"
                                     key={index}
@@ -22,9 +21,18 @@ const Balance = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {coins.map((coin, index) => (
-                            <MinCoin coin={coin} key={index} />
-                        ))}
+                        {coins.length === 0 ? (
+                            <tr className="text-center text-lg">
+                                <td
+                                    colSpan={4}
+                                    className="py-8 text-gray-400 dark:text-gray-400/80"
+                                >
+                                    No tienes ninguna moneda
+                                </td>
+                            </tr>
+                        ) : (
+                            coins.map((coin, index) => <MinCoin coin={coin} key={index} />)
+                        )}
                     </tbody>
                 </table>
             </div>

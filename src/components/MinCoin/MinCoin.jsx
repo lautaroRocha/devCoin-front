@@ -1,25 +1,37 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
+import { coinsContext } from '../../context';
 
-const MinCoin = ({coin, idx}) => {
+const MinCoin = ({ coin, index }) => {
+    const { prices } = useContext(coinsContext);
+    let coinCurrentPrice = prices.find((prices) => prices.name === coin.name);
+
     return (
-        <tr key={idx} className=" bg-secondary/80 dark:bg-secondary/30  font-semibold text-left border-solid border-2 border-white dark:border-black" >
-            <td className='flex py-3'>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 w-1/4 ">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125" />
-                </svg>
-                <span>{coin.name.toUpperCase()}</span>
+        <tr
+            key={index}
+            className="border-b bg-white text-black/90 dark:border-gray-700 dark:bg-neutral-800/20 dark:text-white"
+        >
+            <td className="flex items-center gap-3 py-4 pl-6">
+                <Link to={`/coins/${coin.id}`} className="flex items-center gap-3 py-4 pl-6">
+                    <img className="min-w-[25px] max-w-[30px]" src={coin.image} alt={coin.name} />
+                    <span className="font-bold uppercase  dark:text-white">{coin.symbol}</span>
+                    <span className="text-[#707a8a] dark:text-[848e9c]">{coin.name}</span>
+                </Link>
             </td>
-            <td >
-                {parseFloat(coin.amount).toFixed(2)}
+            <td>
+                {parseFloat(coin.amount).toFixed(4)} {coin.symbol.toUpperCase()}
             </td>
-            <td className='hover:cursor-pointer '>
-                COMPRAR
-            </td>
-            <td className='hover:cursor-pointer '>
-                VENDER
+            <td>${parseFloat(coin.amount) * coinCurrentPrice.current_price} USD</td>
+            <td className="flex gap-x-4 hover:cursor-pointer">
+                <Link to={`/coins/${coin.id}`} className="text-yellow-500/90">
+                    Comprar
+                </Link>
+                <Link to={`/coins/${coin.id}`} className="text-yellow-500/90">
+                    Vender
+                </Link>
             </td>
         </tr>
     );
-}
+};
 
 export default MinCoin;
