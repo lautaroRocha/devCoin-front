@@ -12,7 +12,6 @@ function ConvertPage() {
   const [result, setResult] = useState(0);
 
   const {prices} = useContext(coinsContext)
-  prices && monedas === [] && setMonedas(prices)
 
   useEffect(() => {
     setMonto('');
@@ -40,7 +39,7 @@ function ConvertPage() {
 
   useEffect(()=>{
     if(moneda2){
-      let outputToken = monedas.find((coin) => coin.current_price === parseFloat(moneda2))
+      let outputToken = prices.find((coin) => coin.current_price === parseFloat(moneda2))
       setResultSymbol(outputToken.symbol)
     }
   }, [moneda2])
@@ -61,7 +60,7 @@ function ConvertPage() {
               onChange={(e) => setMoneda1(e.target.value)}
             >
               <option value="">Seleccioná tu moneda</option>
-              {monedas.map((moneda, idx) => (
+              {prices.map((moneda, idx) => (
                 <option key={idx} className="uppercase" value={moneda.current_price}>{moneda.symbol}
                 </option>
               ))}
@@ -80,7 +79,7 @@ function ConvertPage() {
               id="moneda-2"
               onChange={(e) => setMoneda2(e.target.value)}>
               <option value="">Seleccioná a qué moneda convertir</option>
-              {monedas.map((moneda, idx) => (
+              {prices.map((moneda, idx) => (
                 <option key={idx} value={moneda.current_price}>{moneda.symbol}</option>
               ))}
             </select>

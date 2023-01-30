@@ -10,3 +10,4 @@ export {default as Transfer} from "./Transfer/Transfer"
 export {default as Deposit} from './Deposit/Deposit'
 export {default as EyeIcon} from './EyeIcon/EyeIcon'
 export {default as BuyCrypto} from './BuyCrypto/BuyCrypto'
+export {default as SellCrypto} from './SellCrypto/SellCrypto'
