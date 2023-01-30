@@ -17,7 +17,7 @@ function SignUpPage() {
     const [newEmail, setNewEmail] = useState('');
     const [newPassword, setNewPassword] = useState('');
 
-    const passInput = useRef()
+    const passInput = useRef();
 
     const handleSubmitRegister = (event) => {
         event.preventDefault();
@@ -56,13 +56,13 @@ function SignUpPage() {
 
     return (
         <>
-        
-                <div className="mx-auto flex h-fit w-full flex-col items-center rounded-md bg-white shadow-lg dark:bg-neutral-800/80 md:flex-row 1150:w-[60rem] 2xl:w-[75rem] md:p-5 ">
+            <div className="flex h-full w-full items-center justify-center">
+                <div className="flex h-fit w-full flex-col items-center rounded-md bg-white shadow-lg dark:bg-neutral-800/80 md:flex-row md:p-5 1150:w-[60rem] 2xl:w-[75rem]">
                     <div className="flex flex-col items-center justify-center max-md:mt-10 max-md:max-h-[30%] md:w-full md:gap-y-[4rem] lg:ml-[4rem]">
                         <img
                             src="/register-image.svg"
                             alt="login"
-                            className="w-full max-md:max-w-[20rem] md:max-w-[30rem] p-3"
+                            className="w-full p-3 max-md:max-w-[20rem] md:max-w-[30rem]"
                         />
                         <p className="hidden px-8 text-center text-xl font-bold md:inline 2xl:px-[8rem]">
                             Crea tu cuenta y empieza a{' '}
@@ -82,7 +82,7 @@ function SignUpPage() {
                                 <label htmlFor="">Nombre</label>
                                 <input
                                     type="text"
-                                    className="w-full rounded-xl py-2 px-4 focus:outline-none dark:bg-black/90 dark:text-white"
+                                    className="w-full rounded-md py-2 px-4 focus:outline-none dark:bg-black/90 dark:text-white"
                                     onChange={(event) => setName(event.target.value)}
                                 />
                             </div>
@@ -90,16 +90,16 @@ function SignUpPage() {
                                 <label htmlFor="">Apellido</label>
                                 <input
                                     type="text"
-                                    className="w-full rounded-xl py-2 px-4 focus:outline-none dark:bg-black/90 dark:text-white"
+                                    className="w-full rounded-md py-2 px-4 focus:outline-none dark:bg-black/90 dark:text-white"
                                     onChange={(event) => setLastname(event.target.value)}
                                 />
                             </div>
-                            <div className="flex w-full flex-row gap-2">
+                            <div className="flex w-full flex-col gap-2 500:flex-row">
                                 <div>
                                     <label htmlFor="">Telefono</label>
                                     <input
                                         type="text"
-                                        className="w-full rounded-xl py-2 px-4 focus:outline-none dark:bg-black/90 dark:text-white"
+                                        className="w-full rounded-md py-2 px-4 focus:outline-none dark:bg-black/90 dark:text-white"
                                         onChange={(event) => setPhoneNumber(event.target.value)}
                                     />
                                 </div>
@@ -107,7 +107,7 @@ function SignUpPage() {
                                     <label htmlFor="">Dirección</label>
                                     <input
                                         type="text"
-                                        className="w-full rounded-xl py-2 px-4 focus:outline-none dark:bg-black/90 dark:text-white"
+                                        className="w-full rounded-md py-2 px-4 focus:outline-none dark:bg-black/90 dark:text-white"
                                         onChange={(event) => setNewAddress(event.target.value)}
                                     />
                                 </div>
@@ -116,27 +116,33 @@ function SignUpPage() {
                                 <label htmlFor="">Email</label>
                                 <input
                                     type="email"
-                                    className="w-full rounded-xl py-2 px-4 focus:outline-none dark:bg-black/90 dark:text-white"
+                                    className="w-full rounded-md py-2 px-4 focus:outline-none dark:bg-black/90 dark:text-white"
                                     onChange={(event) => setNewEmail(event.target.value)}
                                 />
                             </div>
                             <div className="flex w-full flex-col gap-2">
-                                <label htmlFor="" className='relative'>Contraseña
-                                <input
-                                    ref={passInput}
-                                    type="password"
-                                    className="w-full rounded-xl px-4 py-2 focus:outline-none dark:bg-black/90 dark:text-white"
-                                    onChange={(event) => setNewPassword(event.target.value)}
-                                />
-                                  <span onClick={() => {changePasswordInputType(passInput)}} className="hover:cursor-pointer absolute top-1">
-                                <EyeIcon/>
-                                </span>
+                                <label htmlFor="" className="relative">
+                                    Contraseña
+                                    <input
+                                        ref={passInput}
+                                        type="password"
+                                        className="w-full rounded-md px-4 py-2 focus:outline-none dark:bg-black/90 dark:text-white"
+                                        onChange={(event) => setNewPassword(event.target.value)}
+                                    />
+                                    <span
+                                        onClick={() => {
+                                            changePasswordInputType(passInput);
+                                        }}
+                                        className="absolute top-1 hover:cursor-pointer"
+                                    >
+                                        <EyeIcon />
+                                    </span>
                                 </label>
                             </div>
                             <button className="buttons mt-4 w-full">Registrarse</button>
                         </form>
                         <div className="mt-4 flex w-full flex-col items-start 500:w-[19rem] md:mx-auto">
-                            <p className='text-center'>
+                            <p className="text-center">
                                 ¿Ya tienes una cuenta? ingresa{' '}
                                 <Link
                                     to="/login"
@@ -148,6 +154,7 @@ function SignUpPage() {
                         </div>
                     </div>
                 </div>
+            </div>
         </>
     );
 }
