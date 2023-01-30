@@ -79,16 +79,18 @@ function SignUpPage() {
                         >
                             <h1 className="mb-1 text-3xl font-semibold">Registro</h1>
                             <div className="flex w-full flex-col gap-2">
-                                <label htmlFor="">Nombre</label>
+                                <label htmlFor="name">Nombre</label>
                                 <input
+                                    id="name"
                                     type="text"
                                     className="w-full rounded-md py-2 px-4 focus:outline-none dark:bg-black/90 dark:text-white"
                                     onChange={(event) => setName(event.target.value)}
                                 />
                             </div>
                             <div className="flex w-full flex-col gap-2">
-                                <label htmlFor="">Apellido</label>
+                                <label htmlFor="lastname">Apellido</label>
                                 <input
+                                    id="lastname"
                                     type="text"
                                     className="w-full rounded-md py-2 px-4 focus:outline-none dark:bg-black/90 dark:text-white"
                                     onChange={(event) => setLastname(event.target.value)}
@@ -96,16 +98,18 @@ function SignUpPage() {
                             </div>
                             <div className="flex w-full flex-col gap-2 500:flex-row">
                                 <div>
-                                    <label htmlFor="">Telefono</label>
+                                    <label htmlFor="phone">Telefono</label>
                                     <input
+                                        id="phone"
                                         type="text"
                                         className="w-full rounded-md py-2 px-4 focus:outline-none dark:bg-black/90 dark:text-white"
                                         onChange={(event) => setPhoneNumber(event.target.value)}
                                     />
                                 </div>
                                 <div>
-                                    <label htmlFor="">Dirección</label>
+                                    <label htmlFor="address">Dirección</label>
                                     <input
+                                        id="address"
                                         type="text"
                                         className="w-full rounded-md py-2 px-4 focus:outline-none dark:bg-black/90 dark:text-white"
                                         onChange={(event) => setNewAddress(event.target.value)}
@@ -113,17 +117,19 @@ function SignUpPage() {
                                 </div>
                             </div>
                             <div className="flex w-full flex-col gap-2">
-                                <label htmlFor="">Email</label>
+                                <label htmlFor="email">Email</label>
                                 <input
+                                    id="email"
                                     type="email"
                                     className="w-full rounded-md py-2 px-4 focus:outline-none dark:bg-black/90 dark:text-white"
                                     onChange={(event) => setNewEmail(event.target.value)}
                                 />
                             </div>
                             <div className="flex w-full flex-col gap-2">
-                                <label htmlFor="" className="relative">
+                                <label htmlFor="pass" className="relative">
                                     Contraseña
                                     <input
+                                        id="pass"
                                         ref={passInput}
                                         type="password"
                                         className="w-full rounded-md px-4 py-2 focus:outline-none dark:bg-black/90 dark:text-white"
