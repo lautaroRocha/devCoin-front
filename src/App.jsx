@@ -12,6 +12,7 @@ import axios from 'axios';
 import getProfilePictureURL from './utils/getProfilePicURL';
 
 function App() {
+    
     const [user, setUser] = useState();
     const [token, setToken] = useState();
     const [prices, setPrices] = useState()

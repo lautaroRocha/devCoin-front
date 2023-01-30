@@ -2,14 +2,13 @@ import React, { useState, useContext, useEffect } from 'react';
 import { AppWrap } from '../../wrapper';
 import { sessionContext } from '../../context';
 import { Navigate } from 'react-router-dom';
-
+import { toast } from 'react-toastify'
 import { Balance, History, Transfer, Deposit } from '../../components';
 
 const Wallet = (props) => {
     const [selectedView, setSelectedView] = useState('Historial');
 
-    const session = useContext(sessionContext);
-    const user = session && session.user;
+    const {user} = useContext(sessionContext);
 
     function setView(e) {
         setSelectedView(e.target.textContent);
@@ -65,7 +64,8 @@ const Wallet = (props) => {
                 </div>
             </>
         );
-    }else{
+    }else{  
+        toast.error('Debes estar verificado para ingresar')
         return <Navigate to="/login" replace={true} />;
     }
 };

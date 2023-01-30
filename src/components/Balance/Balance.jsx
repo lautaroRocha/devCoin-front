@@ -3,8 +3,7 @@ import { MinCoin } from '../../components';
 import { coinsContext } from '../../context';
 
 const Balance = () => {
-    const coinsData = useContext(coinsContext)
-    const coins = coinsData && coinsData.coins
+    const {coins} = useContext(coinsContext)
 
     return (
         <div className="mt-8 flex w-8/12 flex-col text-white lg:w-full">

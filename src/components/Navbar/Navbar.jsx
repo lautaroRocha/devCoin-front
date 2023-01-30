@@ -10,10 +10,8 @@ const Navbar = ({ logOut }) => {
     const savedMode = sessionStorage.getItem('mode');
 
     const [theme, setTheme] = useState(savedMode);
-
-    const session = useContext(sessionContext);
-    const user = session && session.user
-
+    const {user} = useContext(sessionContext)
+    
     const documentClass = document.documentElement.classList;
 
     useEffect(() => {
