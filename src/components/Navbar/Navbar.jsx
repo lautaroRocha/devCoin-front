@@ -2,6 +2,8 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { sessionContext } from '../../context';
 import * as Icons from '../../utils/icons';
+import {toast} from 'react-toastify'
+
 
 // Routes
 import { NavLink } from 'react-router-dom';
@@ -22,6 +24,11 @@ const Navbar = ({ logOut }) => {
     const handleThemeSwitch = () => {
         setTheme(theme === 'dark' ? 'light' : 'dark');
     };
+
+    const checkIfVerified = () => {
+        !user.verified_user && toast.error('Debes verificar tu cuenta para hacer esto')
+    }
+
 
     return (
         <nav className="fixed top-0 h-screen min-w-[4rem] bg-gradient-to-b from-indigo-600 via-zinc-900 to-zinc-900 text-white dark:bg-primary xl:w-[15%] 1700:w-[12%]">
