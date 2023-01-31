@@ -5,13 +5,13 @@ import { coinsContext } from '../../context';
 const MinCoin = ({ coin, index }) => {
     const { prices } = useContext(coinsContext);
     let coinCurrentPrice = prices.find((prices) => prices.name === coin.name);
-    const nameForLink = coin.name.toLowerCase()
-    let formattedLink
-    
-    if(nameForLink.includes(' ')){
-        formattedLink = nameForLink.replace(' ', '-')
+    const nameForLink = coin.name.toLowerCase();
+    let formattedLink;
+
+    if (nameForLink.includes(' ')) {
+        formattedLink = nameForLink.replace(' ', '-');
     }
-   
+
     return (
         <tr
             key={index}
@@ -24,13 +24,24 @@ const MinCoin = ({ coin, index }) => {
                     <span className="text-[#707a8a] dark:text-[848e9c]">{coin.name}</span>
                 </Link>
             </td>
-            <td className='whitespace-nowrap p-3'>
+            <td className="whitespace-nowrap pl-12">
                 {parseFloat(coin.amount).toFixed(4)} {coin.symbol.toUpperCase()}
             </td>
-            <td className='whitespace-nowrap'>${(parseFloat(coin.amount) * coinCurrentPrice.current_price).toFixed(2)} USD</td>
-            <td className=" gap-x-4 hover:cursor-pointer text-center">
-                <Link to={`/coins/${formattedLink ? formattedLink : nameForLink}`} className="text-yellow-500/90 mb-3">
-                    Comprar  Vender
+            <td className="whitespace-nowrap pl-16">
+                ${(parseFloat(coin.amount) * coinCurrentPrice.current_price).toFixed(2)}
+            </td>
+            <td className="whitespace-nowrap pr-4 text-center hover:cursor-pointer">
+                <Link
+                    to={`/coins/${formattedLink ? formattedLink : nameForLink}`}
+                    className="mr-8 text-yellow-500/90 hover:underline"
+                >
+                    Comprar
+                </Link>
+                <Link
+                    to={`/coins/${formattedLink ? formattedLink : nameForLink}`}
+                    className="text-yellow-500/90 hover:underline"
+                >
+                    Vender
                 </Link>
             </td>
         </tr>

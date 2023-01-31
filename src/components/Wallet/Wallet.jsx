@@ -1,8 +1,8 @@
-import React, { useContext, useState, useEffect } from 'react';
-import { MinCoin } from '../../components';
+import React, { useContext } from 'react';
+import { MinCoin } from '..';
 import { coinsContext } from '../../context';
 
-const Balance = () => {
+const Wallet = () => {
     const { coins } = useContext(coinsContext);
     return (
         <div className="mt-8 flex w-full flex-col">
@@ -12,7 +12,7 @@ const Balance = () => {
                         <tr>
                             {['Moneda', 'Balance', 'Valor en USD', ''].map((title, index) => (
                                 <td
-                                    className="whitespace-nowrap py-3 px-6 font-semibold"
+                                    className="whitespace-nowrap py-3 px-14 font-semibold"
                                     key={index}
                                 >
                                     {title}
@@ -40,4 +40,4 @@ const Balance = () => {
     );
 };
 
-export default Balance;
+export default Wallet;

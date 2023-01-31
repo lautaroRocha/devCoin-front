@@ -4,9 +4,8 @@ import * as URL from '../../utils/URL';
 import { sessionContext, coinsContext } from '../../context';
 
 const Deposit = (props) => {
-
-    const {user, token} = useContext(sessionContext)
-    const {wallet} = useContext(coinsContext)
+    const { user, token } = useContext(sessionContext);
+    const { wallet } = useContext(coinsContext);
 
     const [valueToDeposit, setValueToDeposit] = useState('');
 
@@ -28,7 +27,7 @@ const Deposit = (props) => {
 
     const handleDeposit = (e) => {
         e.preventDefault();
-        e.target.reset()
+        e.target.reset();
         if (valueToDeposit > 0) {
             let depositData = {
                 balance: valueToDeposit,
@@ -41,7 +40,10 @@ const Deposit = (props) => {
 
     return (
         <div className="max-lg:w-full lg:col-start-4 lg:grid">
-            <form className="flex h-[18rem] w-full flex-col items-center rounded-md bg-secondary px-6 text-center text-white shadow-md 306:h-[16rem] 316:h-[14rem] 500:h-[12.5rem] 600:h-[10rem] 600:flex-row lg:gap-x-4" onSubmit={handleDeposit}>
+            <form
+                className="flex h-fit w-full flex-col items-center rounded-md bg-secondary px-6 pb-6 text-center text-white shadow-md 600:flex-row 600:py-6 lg:gap-x-4"
+                onSubmit={handleDeposit}
+            >
                 <h4 className="flex w-full flex-col items-center gap-y-2 text-center font-semibold max-600:justify-center max-600:gap-x-4 max-600:py-6 500:flex-row 600:flex-col">
                     Balance actual: <span className="text-2xl">${wallet.balance} USD </span>
                 </h4>
@@ -61,9 +63,7 @@ const Deposit = (props) => {
                             Depositar
                         </button>
                     ) : (
-                        <button
-                            className="w-full overflow-hidden overflow-ellipsis whitespace-nowrap rounded-md bg-green-500 p-2 px-0 font-semibold transition-colors hover:bg-green-500/80"
-                        >
+                        <button className="w-full overflow-hidden overflow-ellipsis whitespace-nowrap rounded-md bg-green-500 p-2 px-0 font-semibold transition-colors hover:bg-green-500/80">
                             Depositar
                         </button>
                     )}
