@@ -51,7 +51,7 @@ function ConvertPage() {
           </h1>
       <div className="mt-12 relative flex justify-center">
         
-        <div className=" w-full rounded-md bg-white p-6 shadow-xl dark:bg-neutral-800/80 dark:text-white lg:max-w-xl h-fit ">
+        <div className=" w-full rounded-md bg-gradient-to-b from-indigo-400 via-zinc-500 to-zinc-900 p-6 shadow-xl dark:bg-neutral-800/80 dark:text-white lg:max-w-xl h-fit ">
           
           <div className="selects-container mb-2 block text-xl font-medium text-gray-900 lg:flex lg:my-6 lg:items-center">
             <select
