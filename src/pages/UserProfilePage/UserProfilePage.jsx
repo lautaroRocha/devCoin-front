@@ -1,164 +1,32 @@
 import React, { useRef, useState, useContext} from 'react';
-import { Balance } from '../../components';
+import { Balance, ProfileModal } from '../../components';
 import { AppWrap } from '../../wrapper';
 import { sessionContext } from '../../context';
 import { Navigate } from 'react-router-dom';
 import * as Icons from '../../utils/icons';
-import axios from 'axios';
-import { users } from '../../utils/URL';
-import { getStorage, ref, uploadBytes } from 'firebase/storage';
-import imageCompression from 'browser-image-compression';
-import { toast } from 'react-toastify';
 
 const UserProfilePage = (props) => {
-    const { token, user } = useContext(sessionContext);
 
-    const storage = getStorage();
-    const storageRef = user && ref(storage, `images/${user.email}-profilepic`);
+    const { user } = useContext(sessionContext);
 
     const [editing, setEditing] = useState(false);
 
-    const [nameUpdated, setNameUpdated] = useState(user && user.first_name);
-    const [lastNameUpdated, setLastnameUpdated] = useState(user && user.last_name);
-    const [phoneNumberUpdated, setPhoneNumberUpdated] = useState(user && user.phone);
-    const [addressUpdated, setAddressUpdated] = useState(user && user.address);
-    const [passwordUpdated, setPasswordUpdated] = useState();
-
     const userPicture = useRef();
-    const newPhoto = useRef();
 
     function editContent() {
         setEditing(true);
     }
 
-    async function uploadToStorage(ref, file) {
-        if (!file) {
-            toast.error('No se ha detectado ningun archivo');
-        } else {
-            const options = {
-                maxSizeMB: 1,
-                maxWidthOrHeight: 500,
-                useWebWorker: true,
-                convertSize: 500,
-                convertTypes: ['image/png', 'image/webp', 'image/jpg'],
-            };
-            const compressedFile = await imageCompression(file, options);
-            await uploadBytes(ref, compressedFile).then((snapshot) => {
-                toast.info('Estamos subiendo tu foto...');
-            });
-        }
-    }
 
-    function updateContentEdited(event) {
-        event.preventDefault();
-        const updateData = {
-            first_name: nameUpdated,
-            last_name: lastNameUpdated,
-            address: addressUpdated,
-            phone: phoneNumberUpdated,
-        };
-        axios
-            .put(users + `/${user.hex_code}`, updateData, { headers: { 'x-access-token': token } })
-            .then((res) => props.props.update())
-            .catch((error) => console.log(error));
-        if (newPhoto.current.files[0] !== undefined) {
-            const newFile = newPhoto.current.files[0];
-            uploadToStorage(storageRef, newFile);
-        }
-        setEditing(false);
+
+    function changeEditState(){
+        setEditing(!editing)
     }
 
     if (user && user.verified_user) {
         return (
-            <div className="relative flex h-full w-full flex-col items-center md:items-start md:overflow-x-hidden">
-                {editing && (
-                    <>
-                        {/* FORMULARIO PARA CAMBIAR DATOS */}
-                        <div className="absolute z-10 flex h-full w-full items-center justify-center">
-                            <form
-                                onSubmit={updateContentEdited}
-                                className="h-[43rem] w-[35rem] rounded-md bg-white/90 px-[2rem] py-[2rem] shadow-lg dark:bg-black/90 500:h-[36rem]"
-                            >
-                                <div
-                                    className="flex w-full cursor-pointer justify-end"
-                                    onClick={(e) => setEditing(false)}
-                                >
-                                    {Icons.close}
-                                </div>
-
-                                <h1 className="mb-8 text-center text-2xl font-semibold">
-                                    Actualizar datos
-                                </h1>
-
-                                <div className="flex flex-col gap-y-3">
-                                    <input type="file" className="flex w-full" ref={newPhoto} />
-
-                                    <div className="flex w-full flex-col gap-2">
-                                        <label htmlFor="name">Nombre</label>
-                                        <input
-                                            id="name"
-                                            type="text"
-                                            value={nameUpdated}
-                                            className="w-full rounded-md bg-indigo-700/30 py-2 px-4 text-black focus:outline-none dark:text-white"
-                                            onChange={(event) => setNameUpdated(event.target.value)}
-                                        />
-                                    </div>
-                                    <div className="flex w-full flex-col gap-2">
-                                        <label htmlFor="lastname">Apellido</label>
-                                        <input
-                                            id="lastname"
-                                            type="text"
-                                            value={lastNameUpdated}
-                                            className="w-full rounded-md bg-indigo-700/30 py-2 px-4 text-black focus:outline-none dark:text-white"
-                                            onChange={(event) =>
-                                                setLastnameUpdated(event.target.value)
-                                            }
-                                        />
-                                    </div>
-                                    <div className="flex w-full flex-col gap-2 500:flex-row">
-                                        <div>
-                                            <label htmlFor="phone">Telefono</label>
-                                            <input
-                                                id="phone"
-                                                type="text"
-                                                value={phoneNumberUpdated}
-                                                className="w-full rounded-md bg-indigo-700/30 py-2 px-4 focus:outline-none dark:text-white"
-                                                onChange={(event) =>
-                                                    setPhoneNumberUpdated(event.target.value)
-                                                }
-                                            />
-                                        </div>
-                                        <div>
-                                            <label htmlFor="address">Dirección</label>
-                                            <input
-                                                id="address"
-                                                type="text"
-                                                value={addressUpdated}
-                                                className="w-full rounded-md bg-indigo-700/30 py-2 px-4 focus:outline-none dark:text-white"
-                                                onChange={(event) =>
-                                                    setAddressUpdated(event.target.value)
-                                                }
-                                            />
-                                        </div>
-                                    </div>
-                                    <div className="flex w-full flex-col gap-2">
-                                        <label htmlFor="password">Contraseña</label>
-                                        <input
-                                            id="password"
-                                            type="password"
-                                            className="w-full rounded-md bg-indigo-700/30 py-2 px-4 text-black focus:outline-none dark:text-white"
-                                            onChange={(event) =>
-                                                setPasswordUpdated(event.target.value)
-                                            }
-                                        />
-                                    </div>
-                                </div>
-                                <button className="buttons mt-8 w-full">Actualizar</button>
-                            </form>
-                        </div>
-                        {/* FIN FORMULARIO PARA CAMBIAR DATOS */}
-                    </>
-                )}
+            <div className="relative flex h-full w-full flex-col items-center md:items-start md:overflow-x-hidden overflow-y-clip">
+                {editing && <ProfileModal changeEdit={changeEditState} updateUser={props.props.update}/>}
 
                 <div
                     className={`flex h-full w-full flex-col items-center md:items-start ${
