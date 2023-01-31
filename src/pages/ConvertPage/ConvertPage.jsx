@@ -46,11 +46,11 @@ function ConvertPage() {
   
   return (
     <div className="background">
-      <h1 className="mb-8 text-left text-2xl font-semibold">
-        Conversor
-      </h1>
-      <div className="mt-12 relative flex min-h-screen justify-center overflow-hidden ">
+      <div className="mt-12 relative flex justify-center">
         <div className=" w-full rounded-md bg-white p-6 shadow-xl dark:bg-neutral-800/80 dark:text-white lg:max-w-xl h-fit ">
+          <h1 className="mb-8 text-center text-2xl font-semibold">
+            Conver$or
+          </h1>
           <div className="selects-container mb-2 block text-xl font-medium text-gray-900 lg:flex lg:my-6 lg:items-center">
             <select
               className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-purple-500 focus:ring-purple-600  dark:bg-neutral-800/80 dark:text-white lg:max-w-xl lg:whitespace-normal lg:text-center lg:h-fit"
