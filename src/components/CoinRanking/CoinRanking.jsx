@@ -25,7 +25,7 @@ const CoinRanking = () => {
 
     return (
         <>
-            <div className="flex flex-col items-center gap-8 sm:flex-row sm:justify-between">
+            <div className="flex flex-col items-center gap-8 sm:flex-row sm:justify-between ">
                 <h1 className="text-3xl font-bold">Monedas</h1>
                 <div className="flex items-center rounded-md bg-secondary/80 py-2 pl-4 text-white max-md:w-full md:w-[20rem]">
                     {Icons.search}
