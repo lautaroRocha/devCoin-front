@@ -15,8 +15,6 @@ const ProfileModal = (props) => {
     const storage = getStorage();
     const storageRef = ref(storage, `images/${user.email}-profilepic`);
 
-
-
     const [nameUpdated, setNameUpdated] = useState(user && user.first_name);
     const [lastNameUpdated, setLastnameUpdated] = useState(user && user.last_name);
     const [phoneNumberUpdated, setPhoneNumberUpdated] = useState(user && user.phone);
