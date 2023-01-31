@@ -5,7 +5,7 @@ export { default as MinBalance } from './MinBalance/MinBalance';
 export { default as Wallet } from './Wallet/Wallet';
 export { default as Navbar } from './Navbar/Navbar';
 export { default as MinCoin } from './MinCoin/MinCoin';
-export { default as History } from './History/History';
+export { default as TransferHistory } from './TransferHistory/TransferHistory';
 export { default as Transfer } from './Transfer/Transfer';
 export { default as Deposit } from './Deposit/Deposit';
 export { default as EyeIcon } from './EyeIcon/EyeIcon';
