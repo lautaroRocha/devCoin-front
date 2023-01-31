@@ -20,7 +20,7 @@ const UserProfilePage = (props) => {
 
     if (user && user.verified_user) {
         return (
-            <div className="relative flex h-full w-full flex-col items-center md:items-start md:overflow-x-hidden ">
+            <div className="relative flex h-full w-full flex-col items-center md:items-start">
                 {editing && <ProfileModal changeEdit={changeEditState} updateUser={props.props.update}/>}
                 <div
                     className={`flex h-full w-full flex-col items-center md:items-start ${
