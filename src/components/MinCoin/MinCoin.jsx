@@ -10,7 +10,6 @@ const MinCoin = ({ coin, index }) => {
     
     if(nameForLink.includes(' ')){
         formattedLink = nameForLink.replace(' ', '-')
-        console.log(formattedLink)
     }
    
     return (
