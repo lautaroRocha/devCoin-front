@@ -48,7 +48,7 @@ const Transfer = (props) => {
 
     return (
         <>
-            <div className="h-[23rem] w-full rounded-md bg-gray-200/90 text-black shadow-md dark:bg-neutral-800/80 dark:text-white lg:col-start-4 lg:mb-auto">
+            <div className="h-fit w-full rounded-md bg-gray-200/90 pb-6 text-black shadow-md dark:bg-neutral-800/80 dark:text-white lg:col-start-4 lg:mb-auto">
                 <h2 className="p-5 text-center text-lg font-bold">Transferir Criptos</h2>
                 <form
                     className="flex h-[17.8rem] w-full flex-col justify-between px-4"
