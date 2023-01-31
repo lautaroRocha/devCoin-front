@@ -58,7 +58,6 @@ const Wallet = (props) => {
                         </ul>
                         {view}
                     </div>
-                    <hr className="hidden w-full rounded-md border-black/30 dark:border-white/30 max-lg:flex" />
                     <Transfer className="lg:col-start-2" update={props.props.update} />
                 </div>
             </>

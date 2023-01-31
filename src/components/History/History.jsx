@@ -9,8 +9,8 @@ const History = () => {
     const [receivedTransactions, setReceivedTransactions] = useState([])
 
     useEffect(()=>{
-        const emitted = transactions.emisor.data.slice(1).slice(-5)
-        const received = transactions.receptor.data.slice(1).slice(-5)
+        const emitted = transactions.emisor.data.slice(0).slice(-5)
+        const received = transactions.receptor.data.slice(0).slice(-5)
         setSentTransactions(emitted)
         setReceivedTransactions(received)
     }, [transactions])

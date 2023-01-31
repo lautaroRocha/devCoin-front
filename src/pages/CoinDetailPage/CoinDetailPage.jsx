@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom';
-import { sessionContext } from '../../context';
 import { AppWrap } from '../../wrapper';
 import axios from 'axios';
+import{ CoinData} from '../../components';
 import { BuyCrypto, SellCrypto } from '../../components';
 import {
     Chart as ChartJS,
@@ -31,8 +31,6 @@ ChartJS.register(
 
 const CoinDetailPage = (props) => {
 
-    const {user} = useContext(sessionContext)
-
     const [coin, setCoin] = useState([]);
     const [dataCoin, setDataCoin] = useState([]);
     const [dataChartCoin, setDataChartCoin] = useState([]);
@@ -40,7 +38,6 @@ const CoinDetailPage = (props) => {
     const params = useParams();
     const element = params.id;
 
-    // GET para detalles de la criptomoneda (nombre, imagen, ...)
     async function CoinAPI() {
         const res = await axios.get(
             `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${element}&order=market_cap_desc&per_page=10&page=1&sparkline=false`
@@ -48,7 +45,6 @@ const CoinDetailPage = (props) => {
         setCoin(res.data[0]);
     }
 
-    // GET Market Chart (prices, market_cap, total_volume)
     async function DataCoinAPI() {
         const res = await axios.get(
             `https://api.coingecko.com/api/v3/coins/${element}/market_chart?vs_currency=usd&days=7`
@@ -62,7 +58,6 @@ const CoinDetailPage = (props) => {
         setDataChartCoin(coinChartData);
     }
 
-    // useEffect para iniciar las funciones GET
     useEffect(() => {
         CoinAPI();
         DataCoinAPI();
@@ -97,48 +92,7 @@ const CoinDetailPage = (props) => {
                         <div className="w-full lg:h-fit lg:w-[58%]">
                             <Line options={options} data={data}  />
                         </div>
-                        <div className=" w-full  pt-6 lg:w-[38%] grid grid-cols-2 gap-2 text-sm lg:text-xl">
-                                <div className="flex flex-col gap-1">
-                                    <h4 className="text-gray-700/80 dark:text-gray-300/80">Ranking: </h4>
-                                    <span>{coin.market_cap_rank}</span>
-                                </div>
-                                <div className="flex flex-col gap-1">
-                                    <h4 className="text-gray-700/80 dark:text-gray-300/80">Precio actual:</h4>
-                                    <span>${coin.current_price} USD</span>
-                                </div>
-                                <div className="flex flex-col gap-1">
-                                    <h4 className="text-gray-700/80 dark:text-gray-300/80">Minimo en 24h:</h4>
-                                    <span>${coin.low_24h} USD</span>
-                                </div>
-                                <div className="flex flex-col gap-1">
-                                    <h4 className="text-gray-700/80 dark:text-gray-300/80">Maximo en 24h:</h4>
-                                    <span>${coin.high_24h} USD</span>
-                                </div>
-                                <div className="flex flex-col gap-1">
-                                    <h4 className="whitespace-nowrap text-gray-700/80 dark:text-gray-300/80">
-                                        Cambio en 24h:
-                                    </h4>
-                                    <span
-                                        className={`
-                                        ${
-                                            coin.price_change_percentage_24h > 0
-                                                ? 'text-green-500 dark:text-green-400'
-                                                : 'text-red-500'
-                                        }`}
-                                    >
-                                        {coin.price_change_percentage_24h > 0 ? (
-                                            <>+{coin.price_change_percentage_24h}</>
-                                        ) : (
-                                            <>{coin.price_change_percentage_24h}</>
-                                        )}
-                                        %
-                                    </span>
-                                </div>
-                                <div className="flex flex-col gap-1">
-                                    <h4 className="text-gray-700/80 dark:text-gray-300/80">Volumen total:</h4>
-                                    <span>{coin.total_volume}</span>
-                                </div>
-                        </div>
+                        <CoinData coin={coin}/>
                     </div>
                 </div>
                 <div className="flex flex-col gap-4 mt-4 h-auto w-full mb-6 lg:flex-row justify-center lg:mt-12">

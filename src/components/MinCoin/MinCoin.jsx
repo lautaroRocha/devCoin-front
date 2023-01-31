@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { coinsContext } from '../../context';
 
@@ -6,7 +6,12 @@ const MinCoin = ({ coin, index }) => {
     const { prices } = useContext(coinsContext);
     let coinCurrentPrice = prices.find((prices) => prices.name === coin.name);
     const nameForLink = coin.name.toLowerCase()
-
+    let formattedLink
+    
+    if(nameForLink.includes(' ')){
+        formattedLink = nameForLink.replace(' ', '-')
+    }
+   
     return (
         <tr
             key={index}
@@ -19,16 +24,13 @@ const MinCoin = ({ coin, index }) => {
                     <span className="text-[#707a8a] dark:text-[848e9c]">{coin.name}</span>
                 </Link>
             </td>
-            <td>
+            <td className='whitespace-nowrap p-3'>
                 {parseFloat(coin.amount).toFixed(4)} {coin.symbol.toUpperCase()}
             </td>
-            <td>${parseFloat(coin.amount) * coinCurrentPrice.current_price} USD</td>
-            <td className="flex gap-x-4 hover:cursor-pointer">
-                <Link to={`/coins/${nameForLink}`} className="text-yellow-500/90">
-                    Comprar
-                </Link>
-                <Link to={`/coins/${nameForLink}`} className="text-yellow-500/90">
-                    Vender
+            <td className='whitespace-nowrap'>${(parseFloat(coin.amount) * coinCurrentPrice.current_price).toFixed(2)} USD</td>
+            <td className=" gap-x-4 hover:cursor-pointer text-center">
+                <Link to={`/coins/${formattedLink ? formattedLink : nameForLink}`} className="text-yellow-500/90 mb-3">
+                    Comprar  Vender
                 </Link>
             </td>
         </tr>
