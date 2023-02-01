@@ -33,6 +33,7 @@ const Transfer = (props) => {
                         error.forEach((err) => toast.error(err));
                     } else {
                         toast.success('Transferencia realizada');
+                        props.socket.emit('transfer' , {sender: user.hex_code, receiver: transactionData.receiver_hexcode})
                         props.update();
                     }
                 })
