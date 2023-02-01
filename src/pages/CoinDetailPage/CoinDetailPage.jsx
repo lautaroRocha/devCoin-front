@@ -1,8 +1,9 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect, useContext} from 'react';
 import { useParams } from 'react-router-dom';
 import { AppWrap } from '../../wrapper';
 import axios from 'axios';
-import{ CoinData} from '../../components';
+import{ CoinData, MinCoin, Wallet} from '../../components';
+import { coinsContext } from '../../context';
 import { BuyCrypto, SellCrypto } from '../../components';
 import {
     Chart as ChartJS,
@@ -34,6 +35,7 @@ const CoinDetailPage = (props) => {
     const [coin, setCoin] = useState([]);
     const [dataCoin, setDataCoin] = useState([]);
     const [dataChartCoin, setDataChartCoin] = useState([]);
+    const { wallet } = useContext(coinsContext);
 
     const params = useParams();
     const element = params.id;
@@ -94,6 +96,10 @@ const CoinDetailPage = (props) => {
                         </div>
                         <CoinData coin={coin}/>
                     </div>
+                </div>
+                <div className='text-center mt-[2rem]'>
+                    <p>Ud. Dispone de <span className="text-1xl">${wallet.balance} USD </span> </p>
+                    
                 </div>
                 <div className="flex flex-col gap-4 mt-4 h-auto w-full mb-6 lg:flex-row justify-center lg:mt-12">
                    <BuyCrypto coin={coin} update={props.props.update}/>
