@@ -13,13 +13,20 @@ const TransferHistory = () => {
         setReceivedTransactions(received);
     }, [transactions]);
 
-
     return (
-        <div className="mt-8 flex w-full flex-col items-center justify-center gap-x-[8rem] max-2xl:gap-y-[1rem] 850:flex-row lg:flex-col 2xl:flex-row">
-            <table className="mt-5 lg:mt-2">
+        <div className="mt-8 flex w-full flex-col justify-center gap-x-[8rem] overflow-x-auto max-2xl:gap-y-[1rem] 850:flex-row lg:flex-col 2xl:flex-row">
+            <table className="mt-5 h-fit w-full lg:mt-2">
                 <thead>
                     <tr>
-                        <th>Recibidas</th>
+                        <th colSpan={4} className="pb-2 lg:text-lg">
+                            Recibidas
+                        </th>
+                    </tr>
+                    <tr className="text-[0.6rem] lg:text-xs">
+                        <th>De</th>
+                        <th>Moneda</th>
+                        <th>Cantidad</th>
+                        <th>Fecha</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -27,13 +34,15 @@ const TransferHistory = () => {
                         receivedTransactions.map((trans, idx) => {
                             return (
                                 <tr
-                                    className="grid w-full grid-cols-4 place-items-center whitespace-nowrap text-center text-sm	odd:bg-secondary/20 even:bg-secondary/50 lg:m-0"
+                                    className="w-full whitespace-nowrap text-center text-sm odd:bg-secondary/20 even:bg-secondary/50 lg:m-0"
                                     key={idx}
                                 >
-                                    <td>#{trans.sender_hexcode}</td>
-                                    <td>{trans.symbol}</td>
-                                    <td>{trans.amount}</td>
-                                    <td className="p-3">{trans.transaction_date.slice(0, 10)}</td>
+                                    <td className="py-3.5">#{trans.sender_hexcode}</td>
+                                    <td className="py-3.5">{trans.symbol}</td>
+                                    <td className="py-3.5">{trans.amount}</td>
+                                    <td className="py-3.5">
+                                        {trans.transaction_date.slice(0, 10)}
+                                    </td>
                                 </tr>
                             );
                         })
@@ -45,10 +54,18 @@ const TransferHistory = () => {
                 </tbody>
             </table>
 
-            <table className="mt-5 lg:mt-2">
+            <table className="mt-5 h-fit w-full lg:mt-2">
                 <thead>
                     <tr>
-                        <th>Enviadas</th>
+                        <th colSpan={4} className="pb-2 lg:text-lg">
+                            Enviadas
+                        </th>
+                    </tr>
+                    <tr className="text-[0.6rem] lg:text-xs">
+                        <th>A</th>
+                        <th>Moneda</th>
+                        <th>Cantidad</th>
+                        <th>Fecha</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -56,13 +73,15 @@ const TransferHistory = () => {
                         sentTransactions.map((trans, idx) => {
                             return (
                                 <tr
-                                    className="grid w-full grid-cols-4 place-items-center whitespace-nowrap text-center text-sm odd:bg-secondary/20 even:bg-secondary/50 lg:m-0"
+                                    className="w-full whitespace-nowrap text-center text-sm odd:bg-secondary/20 even:bg-secondary/50 lg:m-0"
                                     key={idx}
                                 >
-                                    <td>#{trans.receiver_hexcode}</td>
-                                    <td>{trans.coinId}</td>
-                                    <td>{trans.amount}</td>
-                                    <td className="p-3">{trans.transaction_date.slice(0, 10)}</td>
+                                    <td className="py-3.5">#{trans.receiver_hexcode}</td>
+                                    <td className="py-3.5">{trans.coinId}</td>
+                                    <td className="py-3.5">{trans.amount}</td>
+                                    <td className="py-3.5">
+                                        {trans.transaction_date.slice(0, 10)}
+                                    </td>
                                 </tr>
                             );
                         })
