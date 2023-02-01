@@ -71,7 +71,7 @@ const BuyCrypto = ( {coin, update} ) => {
     }    
     
     return (
-        <form className="bg-secondary p-3 flex flex-col items-center rounded-md  text-white lg:w-3/6 lg:gap-3" onSubmit={(e)=>{buyCrypto(e, purchaseData)}}>
+        <form className="bg-gradient-to-b from-indigo-600 via-zinc-900 to-zinc-900 p-3 flex flex-col items-center rounded-md  text-white lg:w-3/6 lg:gap-3" onSubmit={(e)=>{buyCrypto(e, purchaseData)}}>
             <input type='number' step="0.01" className='rounded-sm text-sm p-2 bg-cyan-900/70 text-white lg:text-lg' placeholder='Cantidad...' onChange={handleInput}/>
                 <div className='flex flex-col items-center lg:flex-row lg:gap-6 lg:items-center text-center lg:text-lg'>
                     <span>
