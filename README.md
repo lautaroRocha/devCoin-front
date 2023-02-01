@@ -1,4 +1,4 @@
-# DevCoin API 🏛️💰💱
+# DevCoin 🏛️💰💱
 
 https://dev-coin.web.app/
 
