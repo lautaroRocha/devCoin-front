@@ -13,8 +13,6 @@ const TransferHistory = () => {
         setReceivedTransactions(received);
     }, [transactions]);
 
-    console.log(sentTransactions.length);
-    console.log(receivedTransactions.length);
 
     return (
         <div className="mt-8 flex w-full flex-col items-center justify-center gap-x-[8rem] max-2xl:gap-y-[1rem] 850:flex-row lg:flex-col 2xl:flex-row">
@@ -33,7 +31,7 @@ const TransferHistory = () => {
                                     key={idx}
                                 >
                                     <td>#{trans.sender_hexcode}</td>
-                                    <td>{trans.coinId}</td>
+                                    <td>{trans.symbol}</td>
                                     <td>{trans.amount}</td>
                                     <td className="p-3">{trans.transaction_date.slice(0, 10)}</td>
                                 </tr>

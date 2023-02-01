@@ -57,7 +57,7 @@ const WalletPage = (props) => {
                         </ul>
                         {view}
                     </div>
-                    <Transfer className="lg:col-start-2 lg:grid" update={props.props.update} />
+                    <Transfer className="lg:col-start-2 lg:grid" update={props.props.update} socket={props.props.socket} />
                 </div>
             </>
         );

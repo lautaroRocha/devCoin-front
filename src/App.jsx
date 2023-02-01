@@ -10,6 +10,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import ConvertPage from './pages/ConvertPage/ConvertPage';
 import axios from 'axios';
 import getProfilePictureURL from './utils/getProfilePicURL';
+import socketIO from "socket.io-client";
+
 
 function App() {
     
@@ -20,6 +22,8 @@ function App() {
     const [coins, setCoins] = useState();
     const [userPictureURL, setUserPictureURL] = useState();
     const [transactions, setTransactions] = useState();
+    const [socket, setSocket] = useState()
+
 
     const navigate = useNavigate();
 
@@ -76,6 +80,13 @@ function App() {
         }
     }, [user])
 
+    useEffect(()=>{
+        if(!socket){
+            const socket = socketIO.connect(URL.socket);
+            socket && setSocket(socket)
+        }
+      }, [])
+
     function logOut() {
         setUser(null);
         setToken(null);
@@ -101,13 +112,25 @@ function App() {
             .catch((error) => toast.error('Ocurrió un error'));
     }
 
+    if(socket){
+        socket.off("new-transfer").on("new-transfer", (arg) => {
+            const data = JSON.parse(arg)
+            console.log(data)
+            if(data.receiver == user.hex_code){
+                toast.info('Has recibido una transferencia')
+                updateUserState()
+            } 
+        })
+
+      }
+
     return (
         <sessionContext.Provider value={sessionData}>
         <coinsContext.Provider value ={coinsData}> 
             <Navbar logOut={logOut} />
             <Routes>
                 <Route path="/" element={<HomePage />} />
-                <Route path="/wallet"element={<WalletPage update={updateUserState} />}/>
+                <Route path="/wallet"element={<WalletPage update={updateUserState} socket={socket}/>}/>
                 <Route path="/profile" element={ <UserProfilePage wallet={wallet} update={updateUserState} url={userPictureURL}/>}/>
                 <Route path="/login" element={<LoginPage logIn={logIn} />} />
                 <Route path="/signup" element={<SignUpPage />} />
