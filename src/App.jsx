@@ -115,14 +115,13 @@ function App() {
     if(socket){
         socket.off("new-transfer").on("new-transfer", (arg) => {
             const data = JSON.parse(arg)
-            console.log(data)
             if(data.receiver == user.hex_code){
                 toast.info('Has recibido una transferencia')
                 updateUserState()
             } 
         })
 
-      }
+    }
 
     return (
         <sessionContext.Provider value={sessionData}>
