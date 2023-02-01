@@ -13,6 +13,7 @@ https://github.com/JRobuschi/DEVCOIN
 | Tool            | Used to                                                                     |
 | --------------- | --------------------------------------------------------------------------- |
 | ✅ React   | Creating the UI with state based components   |
+| ✅ Vite  | Bootstraping the project in the most modern and efficient way   |
 | ✅ TailwindCSS   | Style the components based on utility-first classes      |
 | ✅ Firebase       | Upload and retrieve profile pictures              |
 | ✅ Axios     | HTTP requests  |
