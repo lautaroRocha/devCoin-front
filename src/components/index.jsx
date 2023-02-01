@@ -15,3 +15,5 @@ export { default as ProfileModal } from './ProfileModal/ProfileModal';
 export { default as UserBanner } from './UserBanner/UserBanner';
 export { default as CoinData } from './CoinData/CoinData';
 export { default as HomeBanners } from './HomeBanners/HomeBanners';
+export { default as SentTable } from './SentTable/SentTable'
+export { default as ReceivedTable } from './ReceivedTable/ReceivedTable'
