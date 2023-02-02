@@ -1,21 +1,19 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 
-const SentTable = ({sent}) => {
-
+const SentTable = ({ sent }) => {
     const [sentTransactions, setSentTransactions] = useState(sent.slice(0, 5));
 
     const handleExpand = () => {
-        if(sentTransactions.length === 5){
-            setSentTransactions(sent)
-        }else{
-            setSentTransactions(sent.slice(0, 5))
+        if (sentTransactions.length === 5) {
+            setSentTransactions(sent);
+        } else {
+            setSentTransactions(sent.slice(0, 5));
         }
-    }
-
+    };
 
     return (
-        <>
-                        <table className="mt-5 h-fit w-full lg:mt-2">
+        <div className="flex w-full flex-col">
+            <table className="mt-5 h-fit w-full lg:mt-2">
                 <thead>
                     <tr>
                         <th colSpan={4} className="pb-2 lg:text-lg">
@@ -38,7 +36,7 @@ const SentTable = ({sent}) => {
                                     key={idx}
                                 >
                                     <td className="py-3.5">#{trans.receiver_hexcode}</td>
-                                    <td className="py-3.5">{trans.coinId}</td>
+                                    <td className="py-3.5">{trans.symbol}</td>
                                     <td className="py-3.5">{trans.amount}</td>
                                     <td className="py-3.5">
                                         {trans.transaction_date.slice(0, 10)}
@@ -53,10 +51,16 @@ const SentTable = ({sent}) => {
                     )}
                 </tbody>
             </table>
-            {sentTransactions.length >= 5 &&
-            <span className="text-center text-secondary dark:text-alternative/80 font-semibold" onClick={handleExpand}>{sentTransactions.length === 5 ? "ver más" : "ver menos"}</span>}
-        </>
+            {sentTransactions.length >= 5 && (
+                <span
+                    className="mt-2 text-center font-semibold text-secondary dark:text-alternative/80"
+                    onClick={handleExpand}
+                >
+                    {sentTransactions.length === 5 ? 'ver más' : 'ver menos'}
+                </span>
+            )}
+        </div>
     );
-}
+};
 
 export default SentTable;
