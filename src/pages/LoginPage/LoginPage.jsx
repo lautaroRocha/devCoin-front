@@ -50,7 +50,7 @@ const LoginPage = (props) => {
     const sendRecoveryEmail = (e) => {
         e.preventDefault();
         const recoverLink = {
-            link: `http://127.0.0.1:5173/recovery/${email.slice(0, -4)}`,
+            link: `https://dev-coin.web.app/recovery/${email.slice(0, -4)}`,
             email: email,
         };
         if (email !== '') {
@@ -78,7 +78,7 @@ const LoginPage = (props) => {
     };
 
     return (
-        <div className="relative flex min-h-screen flex-col justify-center overflow-hidden">
+        <div className="relative flex h-[90vh] flex-col justify-center overflow-y-hidden">
             <div className="m-auto w-full rounded-md bg-white p-6 shadow-xl dark:bg-neutral-800/80 dark:text-white lg:max-w-xl ">
                 <h1 className="text-center text-3xl font-semibold">Iniciar sesión</h1>
                 <form className="mt-6" onSubmit={handleSubmitLogin}>
@@ -89,7 +89,7 @@ const LoginPage = (props) => {
                         <input
                             id="email"
                             type="text"
-                            className="w-full rounded-xl py-2 px-4 focus:outline-none dark:bg-black/90 dark:text-white"
+                            className="w-full rounded-md py-2 px-4 focus:outline-none dark:bg-black/90 dark:text-white"
                             onChange={(event) => setEmail(event.target.value)}
                         />
                     </div>
@@ -98,7 +98,7 @@ const LoginPage = (props) => {
                             Contraseña
                             <input
                                 type="password"
-                                className="w-full rounded-xl px-4 py-2 focus:outline-none dark:bg-black/90"
+                                className="w-full rounded-md px-4 py-2 focus:outline-none dark:bg-black/90"
                                 onChange={(event) => setPassword(event.target.value)}
                                 ref={passInput}
                             />

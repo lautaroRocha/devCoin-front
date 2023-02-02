@@ -5,6 +5,24 @@
 @tailwind utilities;
 
 @layer base {
+    * {
+        scrollbar-width: thin;
+        scrollbar-color: #4f46e5 #161616;
+    }
+
+    /* Chrome, Edge, and Safari */
+    *::-webkit-scrollbar {
+        @apply w-[15px];
+    }
+
+    *::-webkit-scrollbar-track {
+        @apply bg-[#4f46e5];
+    }
+
+    *::-webkit-scrollbar-thumb {
+        @apply rounded-sm bg-[#161616];
+    }
+
     body {
         font-family: 'Montserrat', sans-serif;
         @apply bg-white text-black transition-colors dark:bg-black dark:text-white;
@@ -69,48 +87,25 @@
 
     /* BG User information */
     .glass {
-        /* From https://css.glass */
         background: rgba(161, 156, 255, 0.35);
-        border-radius: 16px;
+        border-radius: 6px;
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         backdrop-filter: blur(9.1px);
         -webkit-backdrop-filter: blur(9.1px);
         border: 1px solid rgba(161, 156, 255, 1);
     }
     .glassMoney {
-        /* From https://css.glass */
         background: rgba(161, 156, 255, 0.35);
-        border-radius: 16px;
+        border-radius: 6px;
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         backdrop-filter: blur(9.1px);
         -webkit-backdrop-filter: blur(9.1px);
         border: 1px solid rgba(161, 156, 255, 1);
     }
     /* End BG User information */
-    canvas{
+
+    canvas {
         min-height: 35vh !important;
         width: 100% !important;
-      }
-      * {
-        scrollbar-width: thin;
-        scrollbar-color: #4F46E5 #161616;
-      }
-      
-      /* Chrome, Edge, and Safari */
-      *::-webkit-scrollbar {
-        width: 15px;
-      }
-      
-      *::-webkit-scrollbar-track {
-        background: #4F46E5;
-      }
-    
-      *::-webkit-scrollbar-thumb {
-        background: #161616;
-        border-radius: 8px;
-      }
+    }
 }
-
-
-
-

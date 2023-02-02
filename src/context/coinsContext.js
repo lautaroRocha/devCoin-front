@@ -1,3 +1,3 @@
 import { createContext } from 'react';
-const coinsContext = createContext(null);
+const coinsContext = createContext();
 export default coinsContext;

@@ -1,22 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React, { useContext, useState } from 'react';
 import CoinRankingRow from './CoinRankingRow/CoinRankingRow';
 import * as Icons from '../../utils/icons';
+import { coinsContext } from '../../context';
 
 const CoinRanking = () => {
-    const [coins, setCoins] = useState([]);
-    const urlCoins =
-        'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1&sparkline=false';
+
+    const {prices} = useContext(coinsContext)
+
+
     const [search, setSearch] = useState('');
     const [coinsFiltered, setCoinsFiltered] = useState([]);
-
-    const AxiosCoins = () => {
-        axios.get(urlCoins).then((res) => setCoins(res.data));
-    };
-
-    useEffect(() => {
-        AxiosCoins();
-    }, []);
 
     const Filter = () => {
         let coinsFiltered = coins.filter((coin) => {
@@ -32,7 +25,7 @@ const CoinRanking = () => {
 
     return (
         <>
-            <div className="flex flex-col items-center gap-8 sm:flex-row sm:justify-between">
+            <div className="flex flex-col items-center gap-8 sm:flex-row sm:justify-between ">
                 <h1 className="text-3xl font-bold">Monedas</h1>
                 <div className="flex items-center rounded-md bg-secondary/80 py-2 pl-4 text-white max-md:w-full md:w-[20rem]">
                     {Icons.search}
@@ -62,8 +55,8 @@ const CoinRanking = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {search === ''
-                            ? coins.map((coin, index) => (
+                        {prices && search === ''
+                            ? prices.map((coin, index) => (
                                   <CoinRankingRow
                                       key={index}
                                       id={coin.id}
