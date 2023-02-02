@@ -92,11 +92,9 @@ const Navbar = ({ logOut }) => {
                             <span className="hidden whitespace-nowrap xl:flex">Iniciar sesión</span>
                         </NavLink>
                     ) : (
-                        <div className="navbar-links flex gap-x-6">
+                        <div onClick={logOut} className="navbar-links flex gap-x-6">
                             {Icons.logOut}
-                            <span onClick={logOut} className="hidden whitespace-nowrap xl:flex">
-                                Cerrar sesión
-                            </span>
+                            <span className="hidden whitespace-nowrap xl:flex">Cerrar sesión</span>
                         </div>
                     )}
                 </div>
