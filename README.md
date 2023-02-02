@@ -48,6 +48,36 @@ In order to make use of the context, we took advantage of the destructuring synt
 
 ![Screenshot_7](https://user-images.githubusercontent.com/102425176/216168761-9135682b-5c2e-4cdc-b0a2-9e5d4edd5bb2.png)
 
+### Buying and Selling 
+
+In order to buy and sell cryptocurrencies, the user has many links to the detail page of each coin.
+![buycrip1](https://user-images.githubusercontent.com/102425176/216432281-d282f2ec-c46d-4cf4-aa8a-bde16d5c6c1b.png)
+
+There, the user can see all the latest data about the coin, buy and selll.
+
+![buu2](https://user-images.githubusercontent.com/102425176/216432345-24ee709f-8644-431a-ae73-b5cb4335e7d0.png)
+
+###Deposit and Transactions
+
+There's a view dedicated to hold the deposit of fiat money to the user's account and the transferences data (sending one and showing transferences history) and the current balance of the user's wallet.
+
+![wallet1](https://user-images.githubusercontent.com/102425176/216433337-ae301f16-7687-4ebb-8d4c-4d74181b79bc.png)
+
+Once you enter a valid value, the Deposit component lets you enter USD to your account.
+
+![wallet2](https://user-images.githubusercontent.com/102425176/216433429-98939d19-eff7-4886-b507-de534eaa8c6e.png)
+
+The transfer button activates once the user loads all the necesary data
+
+![wallet3](https://user-images.githubusercontent.com/102425176/216433502-1cfbeb08-c32d-4bc2-9ae4-a62e2893df55.png)
+
+The user can view his/her last 5 movements as sent or received transactions, and has the option to view all movements.
+
+
+
+
+
+
 
 ### Styling and Responsiveness
 
@@ -60,3 +90,7 @@ The app's design system is based on TailwindCSS, it's fully responsive and shoul
 <a href="https://www.linkedin.com/in/juan-cruz-robuschi/"><u>Robuschi Juan Cruz<u><a><br>
 <a href="https://www.linkedin.com/in/victor-maximiliano-herrera/"><u>Herrera Victor Maximiliano<u>
 </a><br>
+<a href="https://www.linkedin.com/in/lautaro-rocha/"><u>Rocha Lautaro<u></a><br>
+<a href="https://www.linkedin.com/in/lucaspereyradev/"><u>Pereyra Lucas<u></a><br>
+<a href="https://www.linkedin.com/in/leonardo-sebastian-gauto-30a185216/"><u>Gauto Leonardo Sebastian<u> </a><br>
+<a href="https://www.linkedin.com/in/gonzalo-ordo%C3%B1ez-8aa9b2177/"><u>Ordoñez Gonzalo<u></a><br>
