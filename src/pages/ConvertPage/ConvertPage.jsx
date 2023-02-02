@@ -105,7 +105,7 @@ function ConvertPage() {
                             />
                         </div>
 
-                        <span className="m-2 h-8 uppercase">
+                        <span className="m-2 h-8 uppercase text-white">
                             {result} {result != 0 && resultSymbol}
                         </span>
                     </div>
