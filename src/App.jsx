@@ -107,9 +107,23 @@ function App() {
             .get(URL.users + '/' + user.hex_code)
             .then((res) => {
                 setUser(res.data.data[0]),
-                    sessionStorage.setItem('user', JSON.stringify(res.data.data[0]));
+                sessionStorage.setItem('user', JSON.stringify(res.data.data[0]));
             })
             .catch((error) => toast.error('Ocurrió un error'));
+    }
+
+    function updateUserTransactions(){
+        console.log('updating transactions')
+        fetch(URL.transaction+'/'+user.hex_code, {headers : {'x-access-token' : token}})
+                .then(res => res.json())
+                .then(data => {
+                    if(data.message){
+                        toast.error(data.message)
+                    }else{
+                        setTransactions(data)
+                    }
+                })
+                .catch(error => toast.error(error))
     }
 
     if(socket){
@@ -118,6 +132,7 @@ function App() {
             if(data.receiver == user.hex_code){
                 toast.info('Has recibido una transferencia')
                 updateUserState()
+                setTimeout(updateUserTransactions(), 3000)
             } 
         })
 

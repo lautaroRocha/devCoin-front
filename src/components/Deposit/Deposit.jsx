@@ -21,6 +21,7 @@ const Deposit = (props) => {
             .then((res) => {
                 props.update();
                 toast.success('Operación exitosa');
+                setValueToDeposit(null)
             })
             .catch((err) => toast.error(err));
     };

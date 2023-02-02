@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 const SentTable = ({ sent }) => {
+    
     const [sentTransactions, setSentTransactions] = useState(sent.slice(0, 5));
 
     const handleExpand = () => {

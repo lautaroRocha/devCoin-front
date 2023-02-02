@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 const ReceivedTable = ({ received }) => {
+    
     const [receivedTransactions, setReceivedTransactions] = useState(received.slice(0, 5));
 
     const handleExpand = () => {

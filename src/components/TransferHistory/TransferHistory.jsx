@@ -3,7 +3,9 @@ import { coinsContext } from '../../context';
 import { SentTable, ReceivedTable } from '../../components';
 
 const TransferHistory = () => {
+    
     const { transactions } = useContext(coinsContext);
+
 
     const emitted = [...transactions.emisor.data].reverse();
     const received = [...transactions.receptor.data].reverse().slice(0, 5);

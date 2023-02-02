@@ -9,13 +9,13 @@ const Transfer = (props) => {
 
     const [transactionData, setTransactionData] = useState({
         sender_hexcode: user.hex_code,
-        receiver_hexcode: 0o00000,
+        receiver_hexcode: "",
         amount: 0,
         symbol: '',
     });
 
     const sendTransaction = (obj) => {
-        if (transactionData.amount <= 0) {
+        if (transactionData.amount <= 0 || transactionData.receiver_hexcode == "") {
             toast.error('No es un monto válido');
         } else {
             fetch(URL.transaction, {
@@ -38,6 +38,12 @@ const Transfer = (props) => {
                             receiver: transactionData.receiver_hexcode,
                         });
                         props.update();
+                        setTransactionData({
+                            sender_hexcode: user.hex_code,
+                            receiver_hexcode: "",
+                            amount: 0,
+                            symbol: ''}
+                        )
                     }
                 })
                 .catch((error) => console.log(error));

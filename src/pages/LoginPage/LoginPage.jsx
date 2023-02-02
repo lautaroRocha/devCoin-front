@@ -50,7 +50,7 @@ const LoginPage = (props) => {
     const sendRecoveryEmail = (e) => {
         e.preventDefault();
         const recoverLink = {
-            link: `http://127.0.0.1:5173/recovery/${email.slice(0, -4)}`,
+            link: `https://dev-coin.web.app/recovery/${email.slice(0, -4)}`,
             email: email,
         };
         if (email !== '') {
