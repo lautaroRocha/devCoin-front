@@ -78,7 +78,7 @@ const LoginPage = (props) => {
     };
 
     return (
-        <div className="relative flex max-h-screen flex-col justify-center overflow-y-hidden md:h-[90vh]">
+        <div className="relative flex h-[90vh] flex-col justify-center overflow-y-hidden">
             <div className="m-auto w-full rounded-md bg-white p-6 shadow-xl dark:bg-neutral-800/80 dark:text-white lg:max-w-xl ">
                 <h1 className="text-center text-3xl font-semibold">Iniciar sesión</h1>
                 <form className="mt-6" onSubmit={handleSubmitLogin}>
