@@ -31,8 +31,8 @@ function App() {
     let coinsData = {prices : prices, wallet : wallet, coins : coins, transactions : transactions}
    
     useEffect(() => {
-        const savedUser = sessionStorage.getItem('user');
-        const savedToken = sessionStorage.getItem('token');
+        const savedUser = localStorage.getItem('user');
+        const savedToken = localStorage.getItem('token');
         if (savedUser && savedToken) {
             setUser(JSON.parse(savedUser));
             setToken(savedToken);
@@ -90,8 +90,8 @@ function App() {
     function logOut() {
         setUser(null);
         setToken(null);
-        sessionStorage.removeItem('user');
-        sessionStorage.removeItem('token');
+        localStorage.removeItem('user');
+        localStorage.removeItem('token');
     }
 
     function logIn(userData, tokenData) {
@@ -107,7 +107,7 @@ function App() {
             .get(URL.users + '/' + user.hex_code)
             .then((res) => {
                 setUser(res.data.data[0]),
-                sessionStorage.setItem('user', JSON.stringify(res.data.data[0]));
+                localStorage.setItem('user', JSON.stringify(res.data.data[0]));
             })
             .catch((error) => toast.error('Ocurrió un error'));
     }

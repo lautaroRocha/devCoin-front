@@ -8,7 +8,7 @@ import { toast } from 'react-toastify';
 import { NavLink } from 'react-router-dom';
 
 const Navbar = ({ logOut }) => {
-    const savedMode = sessionStorage.getItem('mode');
+    const savedMode = localStorage.getItem('mode');
 
     const [theme, setTheme] = useState(savedMode);
     const { user } = useContext(sessionContext);
@@ -17,7 +17,7 @@ const Navbar = ({ logOut }) => {
 
     useEffect(() => {
         theme === 'dark' ? documentClass.add('dark') : documentClass.remove('dark');
-        sessionStorage.setItem('mode', theme);
+        localStorage.setItem('mode', theme);
     }, [theme]);
 
     const handleThemeSwitch = () => {
