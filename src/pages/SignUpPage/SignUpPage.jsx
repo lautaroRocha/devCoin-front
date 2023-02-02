@@ -29,7 +29,7 @@ function SignUpPage() {
             password: newPassword,
             address: newAddress,
             phone: phoneNumber,
-            link: 'http://127.0.0.1:5173/verify/' + newEmail.slice(0, -4),
+            link: `https://dev-coin.web.app/verify/${newEmail.slice(0, -4)}`,
         };
 
         fetch(URL.users, {
