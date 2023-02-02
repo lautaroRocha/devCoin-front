@@ -2,8 +2,7 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { sessionContext } from '../../context';
 import * as Icons from '../../utils/icons';
-import {toast} from 'react-toastify'
-
+import { toast } from 'react-toastify';
 
 // Routes
 import { NavLink } from 'react-router-dom';
@@ -12,8 +11,8 @@ const Navbar = ({ logOut }) => {
     const savedMode = sessionStorage.getItem('mode');
 
     const [theme, setTheme] = useState(savedMode);
-    const {user} = useContext(sessionContext)
-    
+    const { user } = useContext(sessionContext);
+
     const documentClass = document.documentElement.classList;
 
     useEffect(() => {
@@ -26,20 +25,18 @@ const Navbar = ({ logOut }) => {
     };
 
     const checkIfVerified = () => {
-        !user.verified_user && toast.error('Debes verificar tu cuenta para hacer esto')
-    }
-
+        !user.verified_user && toast.error('Debes verificar tu cuenta para hacer esto');
+    };
 
     return (
         <nav className="fixed top-0 h-screen min-w-[4rem] bg-gradient-to-b from-indigo-600 via-zinc-900 to-zinc-900 text-white dark:bg-primary xl:w-[15%] 1700:w-[12%]">
-            <div className="mt-12 flex h-[85%] flex-col justify-between">
-                <div className="relative flex basis-1 justify-center text-center">
-                    <span className="z-[1] xl:scale-125">{Icons.D}</span>
-                    <span className="absolute -top-[1.3rem] z-0 text-7xl text-alternative xl:scale-110">
-                        ||
-                    </span>
-                </div>
-
+            <div className="relative mt-8 flex basis-1 justify-center text-center md:mt-12">
+                <span className="z-[1] xl:scale-125">{Icons.D}</span>
+                <span className="absolute -top-[1.3rem] z-0 text-7xl text-alternative xl:scale-110">
+                    ||
+                </span>
+            </div>
+            <div className="mt-12 flex h-[75%] flex-col justify-between md:mt-[4rem]">
                 <div className="mx-auto flex w-[95%] basis-3 flex-col items-center gap-4 xl:items-start">
                     <NavLink to="/" className="navbar-links flex gap-x-6" activeclassname="active">
                         {Icons.home}
