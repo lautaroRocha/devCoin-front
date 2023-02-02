@@ -113,7 +113,6 @@ function App() {
     }
 
     function updateUserTransactions(){
-        console.log('updating transactions')
         fetch(URL.transaction+'/'+user.hex_code, {headers : {'x-access-token' : token}})
                 .then(res => res.json())
                 .then(data => {
@@ -132,7 +131,7 @@ function App() {
             if(data.receiver == user.hex_code){
                 toast.info('Has recibido una transferencia')
                 updateUserState()
-                setTimeout(updateUserTransactions(), 3000)
+               updateUserTransactions()
             } 
         })
 

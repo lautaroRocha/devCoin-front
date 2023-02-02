@@ -1,8 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
+import { coinsContext } from '../../context';
 
-const ReceivedTable = ({ received }) => {
-    
-    const [receivedTransactions, setReceivedTransactions] = useState(received.slice(0, 5));
+const ReceivedTable = () => {
+
+    const { transactions } = useContext(coinsContext);
+
+    const received = [...transactions.receptor.data].reverse();
+
+    const [receivedTransactions, setReceivedTransactions] = useState([]);
+
+    useEffect(()=>{
+        const slicedReceived = received.slice(0, 5)
+        setReceivedTransactions(slicedReceived)
+    },[transactions])
 
     const handleExpand = () => {
         if (receivedTransactions.length === 5) {
@@ -37,7 +47,7 @@ const ReceivedTable = ({ received }) => {
                                     key={idx}
                                 >
                                     <td className="py-3.5">#{trans.sender_hexcode}</td>
-                                    <td className="py-3.5">{trans.symbol}</td>
+                                    <td className="py-3.5 uppercase">{trans.symbol}</td>
                                     <td className="py-3.5">{trans.amount}</td>
                                     <td className="py-3.5">
                                         {trans.transaction_date.slice(0, 10)}
@@ -54,7 +64,7 @@ const ReceivedTable = ({ received }) => {
             </table>
             {received.length > 5 && (
                 <span
-                    className="mt-2 text-center font-semibold text-secondary dark:text-alternative/80"
+                    className="hover:cursor-pointer mt-2 text-center font-semibold text-secondary dark:text-alternative/80"
                     onClick={handleExpand}
                 >
                     {receivedTransactions.length === 5 ? 'ver más' : 'ver menos'}

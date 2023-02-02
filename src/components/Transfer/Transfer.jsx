@@ -17,7 +17,9 @@ const Transfer = (props) => {
     const sendTransaction = (obj) => {
         if (transactionData.amount <= 0 || transactionData.receiver_hexcode == "") {
             toast.error('No es un monto válido');
-        } else {
+        }else if(transactionData.receiver_hexcode == transactionData.sender_hexcode){
+            toast.error('No puedes transferirte a ti mismo')
+        }else {
             fetch(URL.transaction, {
                 method: 'POST',
                 headers: {

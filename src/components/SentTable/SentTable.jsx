@@ -1,8 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
+import { coinsContext } from '../../context';
 
-const SentTable = ({ sent }) => {
-    
+const SentTable = () => {
+    const { transactions } = useContext(coinsContext);
+
+    const sent = [...transactions.emisor.data].reverse();
+
     const [sentTransactions, setSentTransactions] = useState(sent.slice(0, 5));
+
+    useEffect(()=>{
+        const slicedSent = sent.slice(0, 5)
+        setSentTransactions(slicedSent)
+    },[transactions])
 
     const handleExpand = () => {
         if (sentTransactions.length === 5) {
@@ -37,7 +46,7 @@ const SentTable = ({ sent }) => {
                                     key={idx}
                                 >
                                     <td className="py-3.5">#{trans.receiver_hexcode}</td>
-                                    <td className="py-3.5">{trans.symbol}</td>
+                                    <td className="py-3.5 uppercase">{trans.symbol}</td>
                                     <td className="py-3.5">{trans.amount}</td>
                                     <td className="py-3.5">
                                         {trans.transaction_date.slice(0, 10)}
@@ -54,7 +63,7 @@ const SentTable = ({ sent }) => {
             </table>
             {sentTransactions.length >= 5 && (
                 <span
-                    className="mt-2 text-center font-semibold text-secondary dark:text-alternative/80"
+                    className="hover:cursor-pointer mt-2 text-center font-semibold text-secondary dark:text-alternative/80"
                     onClick={handleExpand}
                 >
                     {sentTransactions.length === 5 ? 'ver más' : 'ver menos'}
