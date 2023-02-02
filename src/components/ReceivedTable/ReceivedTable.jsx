@@ -1,21 +1,19 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 
-const ReceivedTable = ({received}) => {
-
+const ReceivedTable = ({ received }) => {
     const [receivedTransactions, setReceivedTransactions] = useState(received.slice(0, 5));
 
     const handleExpand = () => {
-        if(receivedTransactions.length === 5){
-            setReceivedTransactions(received)
-        }else{
-            setReceivedTransactions(received.slice(0, 5))
+        if (receivedTransactions.length === 5) {
+            setReceivedTransactions(received);
+        } else {
+            setReceivedTransactions(received.slice(0, 5));
         }
-    }
-
+    };
 
     return (
-        <>
-                        <table className="mt-5 h-fit w-full lg:mt-2">
+        <div className="flex w-full flex-col">
+            <table className="mt-5 h-fit w-full lg:mt-2">
                 <thead>
                     <tr>
                         <th colSpan={4} className="pb-2 lg:text-lg">
@@ -37,8 +35,8 @@ const ReceivedTable = ({received}) => {
                                     className="w-full whitespace-nowrap text-center text-sm odd:bg-secondary/20 even:bg-secondary/50 lg:m-0"
                                     key={idx}
                                 >
-                                    <td className="py-3.5">#{trans.receiver_hexcode}</td>
-                                    <td className="py-3.5">{trans.coinId}</td>
+                                    <td className="py-3.5">#{trans.sender_hexcode}</td>
+                                    <td className="py-3.5">{trans.symbol}</td>
                                     <td className="py-3.5">{trans.amount}</td>
                                     <td className="py-3.5">
                                         {trans.transaction_date.slice(0, 10)}
@@ -53,10 +51,16 @@ const ReceivedTable = ({received}) => {
                     )}
                 </tbody>
             </table>
-            {received.length > 5 &&
-            <span className="text-center " onClick={handleExpand}>{receivedTransactions.length === 5 ? "ver más" : "ver menos"}</span>}
-        </>
+            {received.length > 5 && (
+                <span
+                    className="mt-2 text-center font-semibold text-secondary dark:text-alternative/80"
+                    onClick={handleExpand}
+                >
+                    {receivedTransactions.length === 5 ? 'ver más' : 'ver menos'}
+                </span>
+            )}
+        </div>
     );
-}
+};
 
 export default ReceivedTable;
