@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { AppWrap } from '../../wrapper';
 import axios from 'axios';
 import { CoinData, MinCoin, Wallet } from '../../components';
-import { coinsContext } from '../../context';
+import { coinsContext, sessionContext } from '../../context';
 import { BuyCrypto, SellCrypto } from '../../components';
 import {
     Chart as ChartJS,
@@ -34,6 +34,7 @@ const CoinDetailPage = (props) => {
     const [coin, setCoin] = useState([]);
     const [dataCoin, setDataCoin] = useState([]);
     const [dataChartCoin, setDataChartCoin] = useState([]);
+    const {user} = useContext(sessionContext)
     const { wallet } = useContext(coinsContext);
 
     const params = useParams();
@@ -95,6 +96,8 @@ const CoinDetailPage = (props) => {
                     <CoinData coin={coin} />
                 </div>
             </div>
+            {user && 
+            <>
             <div className="mt-[4rem] text-center max-lg:mb-[1.5rem]">
                 <p className="text-lg">
                     Tu saldo actual es:{' '}
@@ -105,6 +108,8 @@ const CoinDetailPage = (props) => {
                 <BuyCrypto coin={coin} update={props.props.update} />
                 <SellCrypto coin={coin} update={props.props.update} />
             </div>
+            </>
+            }
         </>
     );
 };
