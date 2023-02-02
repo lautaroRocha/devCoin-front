@@ -33,7 +33,10 @@ const Transfer = (props) => {
                         error.forEach((err) => toast.error(err));
                     } else {
                         toast.success('Transferencia realizada');
-                        props.socket.emit('transfer' , {sender: user.hex_code, receiver: transactionData.receiver_hexcode})
+                        props.socket.emit('transfer', {
+                            sender: user.hex_code,
+                            receiver: transactionData.receiver_hexcode,
+                        });
                         props.update();
                     }
                 })
@@ -120,7 +123,18 @@ const Transfer = (props) => {
                             />
                         </div>
                     </div>
-                    <button className="buttons w-full">Enviar</button>
+                    {!transactionData.symbol ||
+                    !transactionData.receiver_hexcode ||
+                    !transactionData.amount ? (
+                        <button
+                            className="w-full rounded-md bg-slate-400 px-4 py-2 font-bold text-white"
+                            disabled
+                        >
+                            Enviar
+                        </button>
+                    ) : (
+                        <button className="buttons w-full">Enviar</button>
+                    )}
                 </form>
             </div>
         </>

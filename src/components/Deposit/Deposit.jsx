@@ -55,7 +55,7 @@ const Deposit = (props) => {
                         className="w-full rounded-md py-2 px-4 text-black focus:outline-none"
                         onChange={(e) => setValueToDeposit(parseFloat(e.target.value))}
                     />
-                    {valueToDeposit === '' ? (
+                    {!valueToDeposit ? (
                         <button
                             className="w-full overflow-hidden overflow-ellipsis whitespace-nowrap rounded-md bg-slate-400 p-2 px-0 font-semibold transition-colors"
                             disabled
