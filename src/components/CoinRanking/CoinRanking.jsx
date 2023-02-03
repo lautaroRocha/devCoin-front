@@ -4,15 +4,13 @@ import * as Icons from '../../utils/icons';
 import { coinsContext } from '../../context';
 
 const CoinRanking = () => {
-
-    const {prices} = useContext(coinsContext)
-
+    const { prices } = useContext(coinsContext);
 
     const [search, setSearch] = useState('');
     const [coinsFiltered, setCoinsFiltered] = useState([]);
 
     const Filter = () => {
-        let coinsFiltered = coins.filter((coin) => {
+        let coinsFiltered = prices.filter((coin) => {
             if (
                 coin.name.toLowerCase().includes(search.toLowerCase()) ||
                 coin.symbol.toLowerCase().includes(search.toLowerCase())
