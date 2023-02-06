@@ -18,7 +18,6 @@ const RecoveryPage = () => {
 
     const cipheredMail = useParams()
     const navigate = useNavigate()
-    const secret = 'alaska2020'
 
     const handleInput = (e, setter) => {
         setter(e.target.value)
@@ -30,9 +29,12 @@ const RecoveryPage = () => {
     }
 
     const decryptEmail = (crypt) => {
-        let bytes = AES.decrypt(crypt, secret);
-        const decrypted = bytes.toString(enc.Utf8);
-        return decrypted;
+        let reb64 = enc.Hex.parse(crypt);
+        let bytes = reb64.toString(enc.Base64);
+        let decrypt = AES.decrypt(bytes, 'secret');
+        let plain = decrypt.toString(enc.Utf8);
+
+        return plain
     }
 
 

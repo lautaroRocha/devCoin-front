@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 import * as Icons from '../../utils/icons';
 import { EyeIcon } from '../../components';
 import { changePasswordInputType } from '../../utils/changePassType';
-import { AES } from 'crypto-js';
+import { AES, enc } from 'crypto-js';
 
 
 
@@ -50,10 +50,12 @@ const LoginPage = (props) => {
 
     const sendRecoveryEmail = (e) => {
         e.preventDefault();
-        const cipherText = AES.encrypt(email.slice(0, -4), 'alaska2020');
-        let cipheredMail = cipherText.toString()
+        let cipherText = AES.encrypt(email.slice(0, -4), 'secret').toString();
+        let ciphered64 = enc.Base64.parse(cipherText);
+        let cipheredMail = ciphered64.toString(enc.Hex);
+
         const recoverLink = {
-            link: `https://dev-coin.web.app/recovery/${cipheredMail}`,
+            link:  `https://dev-coin.web.app/recovery/${cipheredMail}`,
             email: email,
         };
         if (email !== '') {
