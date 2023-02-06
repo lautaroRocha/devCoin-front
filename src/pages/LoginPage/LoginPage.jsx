@@ -3,16 +3,17 @@ import { AppWrap } from '../../wrapper';
 import { Link } from 'react-router-dom';
 import * as URL from '../../utils/URL';
 import { toast } from 'react-toastify';
-
 import * as Icons from '../../utils/icons';
 import { EyeIcon } from '../../components';
 import { changePasswordInputType } from '../../utils/changePassType';
+import { AES } from 'crypto-js';
+
+
 
 const LoginPage = (props) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [remember, setRemember] = useState(false);
-
     const passInput = useRef();
 
     const handleRememberSession = (user, token) => {
@@ -49,8 +50,10 @@ const LoginPage = (props) => {
 
     const sendRecoveryEmail = (e) => {
         e.preventDefault();
+        const cipherText = AES.encrypt(email.slice(0, -4), 'alaska2020');
+        let cipheredMail = cipherText.toString()
         const recoverLink = {
-            link: `https://dev-coin.web.app/recovery/${email.slice(0, -4)}`,
+            link: `https://dev-coin.web.app/recovery/${cipheredMail}`,
             email: email,
         };
         if (email !== '') {

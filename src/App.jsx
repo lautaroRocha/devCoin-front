@@ -102,7 +102,7 @@ function App() {
     }
 
     function updateUserState() {
-        sessionStorage.removeItem('user');
+        localStorage.removeItem('user');
         axios
             .get(URL.users + '/' + user.hex_code)
             .then((res) => {

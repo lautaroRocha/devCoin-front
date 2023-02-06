@@ -5,6 +5,7 @@ import {useParams, useNavigate} from 'react-router-dom'
 import { toast } from 'react-toastify';
 import { EyeIcon } from '../../components';
 import { changePasswordInputType } from '../../utils/changePassType';
+import {AES, enc} from 'crypto-js'
 
 const RecoveryPage = () => {
 
@@ -15,8 +16,9 @@ const RecoveryPage = () => {
     const confirmPassInput = useRef()
 
 
-    const email = useParams()
+    const cipheredMail = useParams()
     const navigate = useNavigate()
+    const secret = 'alaska2020'
 
     const handleInput = (e, setter) => {
         setter(e.target.value)
@@ -27,11 +29,19 @@ const RecoveryPage = () => {
         newPass === confirmPass ? sendNewPassword() : toast.error('Las contraseñas ingresadas no coinciden')
     }
 
+    const decryptEmail = (crypt) => {
+        let bytes = AES.decrypt(crypt, secret);
+        const decrypted = bytes.toString(enc.Utf8);
+        return decrypted;
+    }
+
+
     const sendNewPassword = () => {
         const newPassData = {
             password : newPass
         }
-        fetch(URL.recoverPass+'/'+email.email+'.com', {
+        const decipheredMail = decryptEmail(cipheredMail.email)+'.com'
+        fetch(URL.recoverPass+'/'+decipheredMail, {
             method : "PUT",
             headers: {
                 'Content-Type': 'application/json',
@@ -51,13 +61,15 @@ const RecoveryPage = () => {
 
 
 
+
+
     return (
         <div className="relative flex min-h-screen flex-col justify-center overflow-hidden">
         <div className="m-auto w-full rounded-md bg-white p-6 shadow-xl dark:bg-neutral-800/80 dark:text-white lg:max-w-xl ">
             <h1 className="text-center text-3xl font-semibold">Reestablecer contraseña</h1>
         <form className="mt-6" onSubmit={updatePassword}>
         <div className="mb-2 flex flex-col gap-y-2">
-            <label htmlfor="new-pass" className="block text-sm font-semibold relative">
+            <label htmlFor="new-pass" className="block text-sm font-semibold relative">
                 Nueva contraseña 
                 <input
                     ref={passInput}
@@ -72,7 +84,7 @@ const RecoveryPage = () => {
             </label>
         </div>
         <div className="mb-2 flex flex-col gap-y-2">
-            <label for="password" className="block text-sm font-semibold relative" >
+            <label htmlFor="password" className="block text-sm font-semibold relative" >
                 Repetir contraseña
                 <input
                     ref={confirmPassInput}

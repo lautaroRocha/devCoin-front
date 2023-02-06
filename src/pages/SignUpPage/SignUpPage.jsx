@@ -41,12 +41,18 @@ function SignUpPage() {
         })
             .then((res) => res.json())
             .then((data) => {
-                if (data.message) {
+                console.log(data)
+                if (data.message || data.user.error) {
                     //creamos un array de todos los mensajes de error
                     //usando la coma como punto de separación
                     //y por cada uno tiramos un error toast
-                    Array.from(data.message.split(',')).forEach((err) => toast.error(err));
-                } else {
+                    if(data.message){
+                        Array.from(data.message.split(',')).forEach((err) => toast.error(err));
+                    }else if(data.user.error){
+                        toast.error('Ese email ya está registrado')
+                    }
+
+                }else{
                     toast.success('Ya estás registrado! Revisá tu correo para verificar tu cuenta');
                     document.getElementById('form').reset();
                 }
