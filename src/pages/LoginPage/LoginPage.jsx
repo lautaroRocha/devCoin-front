@@ -18,8 +18,8 @@ const LoginPage = (props) => {
 
     const handleRememberSession = (user, token) => {
         if (remember) {
-            sessionStorage.setItem('user', JSON.stringify(user));
-            sessionStorage.setItem('token', token);
+            localStorage.setItem('user', JSON.stringify(user));
+            localStorage.setItem('token', token);
         }
     };
 
