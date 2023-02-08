@@ -59,7 +59,7 @@ const ProfileModal = (props) => {
 
 
     return (
-        <div className="absolute z-10 flex h-full w-full items-center justify-center">
+        <div className="absolute z-10 flex h-full w-full items-center justify-center mt-32">
         <form
             onSubmit={updateContentEdited}
             className="h-[43rem] w-[35rem] rounded-md bg-white/90 px-[2rem] py-[2rem] shadow-lg dark:bg-black/90 500:h-[36rem]"

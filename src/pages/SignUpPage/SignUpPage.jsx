@@ -41,7 +41,6 @@ function SignUpPage() {
         })
             .then((res) => res.json())
             .then((data) => {
-                console.log(data)
                 if (data.message || data.user.error) {
                     //creamos un array de todos los mensajes de error
                     //usando la coma como punto de separación
@@ -49,7 +48,7 @@ function SignUpPage() {
                     if(data.message){
                         Array.from(data.message.split(',')).forEach((err) => toast.error(err));
                     }else if(data.user.error){
-                        toast.error('Ese email ya está registrado')
+                        toast.error('El mail y el telefóno deben ser únicos. Si ya tienes una cuenta puedes recuperar tu contraseña desde la pantalla de login')
                     }
 
                 }else{
