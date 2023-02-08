@@ -59,7 +59,7 @@ const ProfileModal = (props) => {
 
 
     return (
-        <div className="absolute z-10 flex h-full w-full items-center justify-center mt-32">
+        <div className="absolute z-10 flex min-h-screen h-full w-full items-center justify-center">
         <form
             onSubmit={updateContentEdited}
             className="h-[43rem] w-[35rem] rounded-md bg-white/90 px-[2rem] py-[2rem] shadow-lg dark:bg-black/90 500:h-[36rem]"
@@ -126,15 +126,7 @@ const ProfileModal = (props) => {
                         />
                     </div>
                 </div>
-                <div className="flex w-full flex-col gap-2">
-                    <label htmlFor="password">Contraseña</label>
-                    <input
-                        id="password"
-                        type="password"
-                        className="w-full rounded-md bg-indigo-700/30 py-2 px-4 text-black focus:outline-none dark:text-white"
-                     
-                    />
-                </div>
+
             </div>
             <button className="buttons mt-8 w-full">Actualizar</button>
         </form>

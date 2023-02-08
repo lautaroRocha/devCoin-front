@@ -5,6 +5,8 @@ import * as URL from '../../utils/URL';
 import { toast } from 'react-toastify';
 import { EyeIcon } from '../../components';
 import { changePasswordInputType } from '../../utils/changePassType';
+import { AES, enc } from 'crypto-js';
+
 
 const DEFAULT_PICTURE =
     'https://img.freepik.com/vector-gratis/fondo-azul-galaxia_125540-99.jpg?w=2000';
@@ -21,6 +23,11 @@ function SignUpPage() {
 
     const handleSubmitRegister = (event) => {
         event.preventDefault();
+
+        let cipherText = AES.encrypt(newEmail.slice(0, -4), 'secret').toString();
+        let ciphered64 = enc.Base64.parse(cipherText);
+        let cipheredMail = ciphered64.toString(enc.Hex);
+
         const newUser = {
             first_name: name,
             last_name: lastname,
@@ -29,7 +36,7 @@ function SignUpPage() {
             password: newPassword,
             address: newAddress,
             phone: phoneNumber,
-            link: `https://dev-coin.web.app/verify/${newEmail.slice(0, -4)}`,
+            link: `https://dev-coin.web.app/verify/${cipheredMail}`,
         };
 
         fetch(URL.users, {

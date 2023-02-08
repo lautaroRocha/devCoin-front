@@ -3,15 +3,27 @@ import { AppWrap } from '../../wrapper';
 import * as URL from '../../utils/URL'
 import {useParams, useNavigate} from 'react-router-dom'
 import { toast } from 'react-toastify';
+import { AES, enc } from 'crypto-js';
 
 const VerifyPage = () => {
 
-    const email = useParams()
+    const cipheredMail = useParams()
     const navigate = useNavigate()
+
+    const decryptEmail = (crypt) => {
+        let reb64 = enc.Hex.parse(crypt);
+        let bytes = reb64.toString(enc.Base64);
+        let decrypt = AES.decrypt(bytes, 'secret');
+        let plain = decrypt.toString(enc.Utf8);
+
+        return plain
+    }
 
 
     function verifyUser(){
-        fetch(URL.users+'/'+email.email+'.com',{
+        const decipheredMail = decryptEmail(cipheredMail.email)+'.com'
+        console.log(decipheredMail)
+        fetch(URL.users+'/'+decipheredMail,{
             method : "PATCH"
         })
         .then(res => res.json())
@@ -20,6 +32,7 @@ const VerifyPage = () => {
                 toast.error('Hubo un problema, intentá de nuevo más tarde')
             }else{
                 toast.success('¡Verificado!')
+                toast.info('Te regalamos USD2000 para que empieces a operar')
                 navigate('/login')
             }
         })

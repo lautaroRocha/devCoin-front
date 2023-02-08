@@ -57,7 +57,7 @@ const ReceivedTable = () => {
                         })
                     ) : (
                         <p className="py-8 text-center text-gray-400 dark:text-gray-400/80">
-                            Aún no has enviado criptos.
+                            Aún no has recibido criptos.
                         </p>
                     )}
                 </tbody>
