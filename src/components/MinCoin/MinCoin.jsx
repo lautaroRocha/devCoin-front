@@ -29,7 +29,7 @@ const MinCoin = ({ coin, index }) => {
                 {parseFloat(coin.amount).toFixed(4)} {coin.symbol.toUpperCase()}
             </td>
             <td className="whitespace-nowrap pl-16">
-                ${(parseFloat(coin.amount) * coinCurrentPrice.current_price).toFixed(2)}}
+                ${(parseFloat(coin.amount) * coinCurrentPrice.current_price).toFixed(2)}
             </td>
             <td className="whitespace-nowrap pr-4 text-center hover:cursor-pointer">
                 <Link
