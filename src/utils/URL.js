@@ -1,4 +1,4 @@
-export const url = "https://devcoin-production.up.railway.app"
+export const url = "https://devcoin-back.production.up.railway.app"
                 
 export const users = url + "/user"
 
